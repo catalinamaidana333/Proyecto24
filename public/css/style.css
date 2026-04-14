@@ -133,6 +133,7 @@ p {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    
     }
     .site-nav__left { display: flex; align-items: center; gap: 2rem; }
     .site-nav__logo {
@@ -184,18 +185,7 @@ p {
       width: 10rem;
       color: var(--on-surface);
     }
-    .btn-icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 2.5rem; height: 2.5rem;
-      border-radius: 50%;
-      background: var(--surface-lowest);
-      color: var(--primary);
-      border: none; cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .btn-icon:hover { transform: scale(1.08); }
-    .btn-icon:active { transform: scale(0.95); }
-
+    
     /* ── Hero ──────────────────────────────────────────── */
     .hero {
       position: relative;
