@@ -157,9 +157,8 @@
         <img src="{{ asset('images/card-.jpg') }}" style="opacity:0.5;"/>
         <div class="bento-card__overlay-pink"></div>
         <div class="bento-center">
-          <span class="material-symbols-filled bento-center__icon">lock</span>
-          <h3 class="bento-center__title">The Vault</h3>
-          <p class="bento-center__sub">Members Only Access</p>
+          <h3 class="bento-center__title">I like to see my money right where I can see it... hanging in my closet</h3>
+          <p class="bento-center__sub">Me too Carrie</p>
         </div>
       </div>
 
