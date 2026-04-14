@@ -22,14 +22,20 @@
   <div class="site-nav__left">
     <span class="site-nav__logo">NEOGAUCHO</span>
     <ul class="site-nav__links d-none d-md-flex">
-      <li><a href="#" class="active">Shop</a></li>
-      <li><a href="{{ route('productos')  }}">Drops</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="{{ route('productos')  }}" class="active">Drops</a></li>
       <li><a href="#">Editorial</a></li>
       <li><a href="#">Curated</a></li>
     </ul>
   </div>
   
 </nav>
+
+<header class="hero">
+  <div class="hero__bg">
+    <img src="{{ asset('images/carrusel-bottega.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+  </div>
+</header>
 
 <div class="row g-4" style="margin-top: 5rem;">
       <!-- Card 1 -->
