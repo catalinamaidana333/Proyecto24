@@ -23,7 +23,7 @@
     <span class="site-nav__logo">NEOGAUCHO</span>
     <ul class="site-nav__links d-none d-md-flex">
       <li><a href="#" class="active">Shop</a></li>
-      <li><a href="#">Drops</a></li>
+      <li><a href="{{ route('productos')  }}">Drops</a></li>
       <li><a href="#">Editorial</a></li>
       <li><a href="#">Curated</a></li>
     </ul>
