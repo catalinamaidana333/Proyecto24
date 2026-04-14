@@ -17,6 +17,10 @@ return view('contacto');
 Route::get('/prueba-home', function () {
 return view('prueba-home');
 });
+//no se si esta forma de rutear esta bien(?
+Route::get('/catalogo-productos', function (){
+    return view('catalogo-productos');
+})->name('productos');
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
 //controlador ContactoController 
 Route::post('/contacto', [ContactoController::class, 'procesar']);
