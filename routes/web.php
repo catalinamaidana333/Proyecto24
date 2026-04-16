@@ -12,7 +12,7 @@ return view('sobre-mi');
 });
 Route::get('/contacto', function () {
 return view('contacto');
-});
+})->name('contacto');
 
 Route::get('/prueba-home', function () {
 return view('prueba-home');
