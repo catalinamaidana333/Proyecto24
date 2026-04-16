@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;0,900;1,900&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
-  <!-- Material Icons -->
+  <!-- Footer Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
   
@@ -17,18 +17,41 @@
 <body>
 
 
-<!-- ═══ NAVBAR ════════════════════════════════════════════ -->
-<nav class="site-nav">
+<!-- ═══ NAVBAR ════════════════════════════════════════════ --
+<nav class="site-nav navbar-expand-lg">
   <div class="site-nav__left">
     <span class="site-nav__logo">NEOGAUCHO</span>
     <ul class="site-nav__links d-none d-md-flex">
-      <li><a href="#" class="active">Shop</a></li>
+      <li><a href="{{ route('home')  }}" class="active">Shop</a></li>
       <li><a href="{{ route('productos')  }}">Drops</a></li>
       <li><a href="#">Editorial</a></li>
       <li><a href="#">Curated</a></li>
     </ul>
   </div>
   
+</nav>
+<!--prueba-->
+<nav class="site-nav navbar navbar-expand-md navbar-light" data-bs-theme="light">
+  <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+    
+    <a href="{{ route('home') }}" class="site-nav__logo navbar-brand m-0">NEOGAUCHO</a>
+    
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuNeo" aria-controls="menuNeo" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\");"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="menuNeo">
+      <ul class="site-nav__links navbar-nav ms-auto mt-3 mt-md-0">
+        <li class="nav-item"><a href="{{ route('home') }}" class="active nav-link p-0">Shop</a></li>
+        <li class="nav-item"><a href="{{ route('productos') }}" class="nav-link p-0">Drops</a></li>
+        <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
+        <li class="nav-item"><a href="#" class="nav-link p-0">Contacto</a></li>
+        <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
+        <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
+      </ul>
+    </div>
+    
+  </div>
 </nav>
 
 
@@ -125,12 +148,13 @@
     </div>
     <!-- View More Button -->
   <div class="d-flex justify-content-center mt-5">
-  <a href="productos.html" class="btn-view-more">
+  <a href="{{ route('productos') }}" class="btn-view-more">
     View More
   </a>
 </div>
   </div>
 </section>
+
 
 
 
@@ -140,7 +164,7 @@
     <h2 class="section-title text-center mb-5">Curated <span class="accent">Collections</span></h2>
     <div class="bento-grid">
 
-      <!-- Large: Y2K Tech -->
+      <!-- Large-->
       <div class="bento-card bento-large" style="min-height: 400px;">
         <img src="{{ asset('images/card-port-enter.jpg') }}" alt="Y2K Tech"/>
         <div class="bento-card__overlay"></div>
@@ -152,9 +176,9 @@
         </div>
       </div>
 
-      <!-- Medium: The Vault COMPLETAR-->
+      <!-- Medium: Carrie Bradshaw-->
       <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
-        <img src="{{ asset('images/card-.jpg') }}" style="opacity:0.5;"/>
+    
         <div class="bento-card__overlay-pink"></div>
         <div class="bento-center">
           <h3 class="bento-center__title">I like to see my money right where I can see it... hanging in my closet</h3>
@@ -190,6 +214,7 @@
         <p class="site-footer__tagline">
           A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
         </p>
+        <!--sacarlos o cambiarlos-->
         <div class="d-flex gap-3">
           <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">share</span></a>
           <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">camera</span></a>

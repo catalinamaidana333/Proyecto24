@@ -24,32 +24,6 @@ p {
     height: auto;
     
 }
-.navbar-brand{
-    max-width: 30%;
-}
-.navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px 20px;
-    width: 100%;
-    border-radius: 30%;
-    background-color: rgb(23, 71, 187);
-}
-
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: bold;
-    
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
 .row {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -116,7 +90,7 @@ p {
     }
   
 
-    /* ── Navbar ────────────────────────────────────────── */
+    /* ── Navbar ────────────────────────────────────────── 
     .site-nav {
       position: fixed;
       top: 1rem;
@@ -146,8 +120,8 @@ p {
       color: var(--primary);
     }
     .site-nav__links {
-      display: flex;            /* <--- ESTO FALTABA */
-      flex-direction: row;      /* <--- Fuerza la línea horizontal */
+      display: flex;            
+      flex-direction: row;      
       align-items: center;
       gap: 1.5rem;
       list-style: none; margin: 0; padding: 0;
@@ -185,6 +159,84 @@ p {
       width: 10rem;
       color: var(--on-surface);
     }
+      */
+      /* ── Navbar ────────────────────────────────────────── */
+.site-nav {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  z-index: 1000;
+  border-radius: var(--radius-pill);
+  background: rgba(249,246,245,0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-pink);
+  padding: 0.85rem 1.5rem;
+  /* Eliminamos el display: flex de aquí porque .navbar de Bootstrap ya lo aplica */
+}
+
+.site-nav__logo {
+  font-family: var(--font-headline);
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-decoration: none; /* Quitamos el subrayado base */
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none; 
+  margin: 0; 
+  padding: 0;
+  /* Quitamos flex-direction: row; para que en celular pase a columna automáticamente */
+}
+
+.site-nav__links a {
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--on-surface);
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block; /* Necesario para que el transform: scale() funcione bien */
+}
+
+.site-nav__links a:hover { opacity: 1; transform: scale(1.05); }
+.site-nav__links a.active {
+  color: var(--primary);
+  opacity: 1;
+  border-bottom: 2px solid var(--primary);
+}
+
+/* ──  ── */
+@media (max-width: 767px) {
+  /* Separamos el nav de los bordes del celular para que no quede "pegado" a la pantalla */
+  .site-nav {
+    width: 90%; 
+    top: 1.5rem; 
+    border-radius: 1.5rem; 
+    padding: 0.8rem 1.2rem;
+  }
+
+  /* Acomodamos los links en columna cuando se abre la hamburguesa */
+  .site-nav__links {
+    flex-direction: row; /*Lo puse como row ya que por lo menos de esta manera ocupa - espacio */
+    align-items: center; 
+    gap: 1rem;
+    padding-top: 1rem; /* Espacio entre el logo y el primer link */
+    padding-bottom: 0.5rem;
+  }
+}
     
     /* ── Hero ──────────────────────────────────────────── */
     .hero {
