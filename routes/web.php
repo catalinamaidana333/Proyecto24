@@ -16,8 +16,8 @@ return view('contacto');
 
 Route::get('/prueba-home', function () {
 return view('prueba-home');
-});
-//no se si esta forma de rutear esta bien(?
+})->name('home');
+//no se si esta forma de rutear esta bien(? ANDUVO
 Route::get('/catalogo-productos', function (){
     return view('catalogo-productos');
 })->name('productos');
