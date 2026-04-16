@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>NEOGAUCHO | VintagePRODUCTS E-commerce</title>
+  <title>NEOGAUCHO | Vintage catalogo</title>
 
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -30,10 +30,10 @@
     
     <div class="collapse navbar-collapse" id="menuNeo">
       <ul class="site-nav__links navbar-nav ms-auto mt-3 mt-md-0">
-        <li class="nav-item"><a href="{{ route('home') }}" class="active nav-link p-0">Shop</a></li>
-        <li class="nav-item"><a href="{{ route('productos') }}" class="nav-link p-0">Drops</a></li>
+        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link p-0">Shop</a></li>
+        <li class="nav-item"><a href="{{ route('productos') }}" class="active nav-link p-0">Drops</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Contacto</a></li>
+        <li class="nav-item"><a href="{{ route('contacto') }}" class="nav-link p-0">Contacto</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
       </ul>

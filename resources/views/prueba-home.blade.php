@@ -30,7 +30,7 @@
   </div>
   
 </nav>
-<!--prueba-->
+<!-- prueba-->
 <nav class="site-nav navbar navbar-expand-md navbar-light" data-bs-theme="light">
   <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
     
@@ -45,7 +45,7 @@
         <li class="nav-item"><a href="{{ route('home') }}" class="active nav-link p-0">Shop</a></li>
         <li class="nav-item"><a href="{{ route('productos') }}" class="nav-link p-0">Drops</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Contacto</a></li>
+        <li class="nav-item"><a href="{{ route('contacto') }}" class="nav-link p-0">Contacto</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
         <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
       </ul>
@@ -158,9 +158,9 @@
 
 
 
-<!-- ═══ CURATED COLLECTIONS ══════════════════════════════ -->
+<!-- ═══ CURATED COLLECTIONS class="container-xl px-4 px-md-5"══════════════════════════════ -->
 <section class="py-section bento-section">
-  <div class="container-xl px-4 px-md-5">
+  <div class="container-xl">
     <h2 class="section-title text-center mb-5">Curated <span class="accent">Collections</span></h2>
     <div class="bento-grid">
 
