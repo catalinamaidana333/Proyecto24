@@ -215,11 +215,7 @@
           A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
         </p>
         <!--sacarlos o cambiarlos-->
-        <div class="d-flex gap-3">
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">share</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">camera</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">mail</span></a>
-        </div>
+        
       </div>
 
       <!-- Explore -->
