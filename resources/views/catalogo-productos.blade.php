@@ -178,10 +178,27 @@
         </div>
       </div>
       <!-- Card 9 no se pq se ve de distinto tamaño y rompe la card MAS CHICA-->
+      
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <div class="product-card">
           <div class="product-card__img-wrap">
-            <img src="{{ asset('images/dior-belt.jpg') }}" alt="Glossy Patent Mini"/>
+            <img src="{{ asset('images/dior-corset1.jpg') }}" alt="Glossy Patent Mini"/>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__header">
+              <span class="product-card__name">ISABEL MARANT</span>
+              <span class="product-card__price">$2,100</span>
+            </div>
+            <p class="product-card__sub mb-0">Suede wedge sneakers</p>
+            <button class="product-card__btn">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="{{ asset('images/miss-sixty-belt.jpg') }}" alt="Glossy Patent Mini"/>
           </div>
           <div class="product-card__body">
             <div class="product-card__header">
