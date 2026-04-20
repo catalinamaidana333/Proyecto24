@@ -169,7 +169,9 @@ p {
   padding: 0.85rem 1.5rem;
   /* Eliminamos el display: flex de aquí porque .navbar de Bootstrap ya lo aplica */
 }
-
+.navbar-toggler-icon[
+  filter: invert(10%) sepia(90%) saturate(5000%) hue-rotate(320deg);
+]
 .site-nav__logo {
   font-family: var(--font-headline);
   font-size: 1.6rem;
