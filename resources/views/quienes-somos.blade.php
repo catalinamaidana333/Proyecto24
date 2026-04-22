@@ -88,19 +88,19 @@
     <div class="carousel-inner">
 
         <div class="carousel-item active">
-            <img src="{{ asset('imagen/carrusel-bottega.jpg') }}" class="d-block w-100" alt="Moda 1">
+            <img src="{{ asset('images/carrusel-bottega.jpg') }}" class="d-block w-100" alt="Moda 1">
         </div>
 
         <div class="carousel-item">
-            <img src="{{ asset('imagen/carrusel-pasarela1.jpg') }}" class="d-block w-100" alt="Moda 3">
+            <img src="{{ asset('images/carrusel-pasarela1.jpg') }}" class="d-block w-100" alt="Moda 3">
         </div>
 
         <div class="carousel-item">
-            <img src="{{ asset('imagen/carrusel-runway.jpg') }}" class="d-block w-100" alt="Moda 2">
+            <img src="{{ asset('images/carrusel-runway.jpg') }}" class="d-block w-100" alt="Moda 2">
         </div>
 
         <div class="carousel-item">
-            <img src="{{ asset('imagen/carrusel-byn.jpg') }}" class="d-block w-100" alt="Moda 4">
+            <img src="{{ asset('images/carrusel-byn.jpg') }}" class="d-block w-100" alt="Moda 4">
         </div>
 
     </div>
