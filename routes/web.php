@@ -21,6 +21,15 @@ return view('prueba-home');
 Route::get('/catalogo-productos', function (){
     return view('catalogo-productos');
 })->name('productos');
+
+Route::get('/terminos', function () {
+    return view('terminos-y-condiciones');
+});
+
+Route::get('/quienes-somos', function () {
+    return view('quienes-somos');
+});
+
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
 //controlador ContactoController 
 Route::post('/contacto', [ContactoController::class, 'procesar']);
