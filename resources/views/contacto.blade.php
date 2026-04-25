@@ -161,6 +161,7 @@
 </form>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
   <div class="container-xl px-4 px-md-5">
     <div class="row g-5">
@@ -171,15 +172,11 @@
           A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
         </p>
         <!--sacarlos o cambiarlos-->
-        <div class="d-flex gap-3">
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">share</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">camera</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">mail</span></a>
-        </div>
+        
       </div>
 
       <!-- Explore -->
-      <div class="col-6 col-md-2 offset-md-1">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
           <li><a href="#">Shop All</a></li>
@@ -190,7 +187,7 @@
       </div>
 
       <!-- Service -->
-      <div class="col-6 col-md-2">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Service</h5>
         <ul class="footer-col__links">
           <li><a href="#">Contact</a></li>

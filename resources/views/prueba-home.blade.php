@@ -31,26 +31,44 @@
   
 </nav>
 <!-- prueba-->
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg site-nav flex-column">
-    <div class="container-fluid flex-column">
-        <a class="navbar-brand brand-name" href="/">NEOGAUCHO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="site-nav__links navbar-nav">
-                <li class="nav-item item-nav"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/">Shop</a></li> 
-                <li class="nav-item"><a href="/">Comercializacion</a></li>
-                <li class="nav-item"><a href="/quienes-somos">Quiénes somos</a></li>
-                <li class="nav-item"><a href="/">Contactar</a></li>
-                <li class="nav-item"><a href="/terminos" class="active">Términos</a></li>
-            </ul>
+ <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg site-nav flex-column">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-name" href="/">NEOGAUCHO</a>
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+ 
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="site-nav__links navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop">Shop</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/comercializacion">Comercialización</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/quienes-somos">Quiénes somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contactar">Contactar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/terminos">Términos</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">

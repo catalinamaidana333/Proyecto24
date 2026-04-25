@@ -119,9 +119,54 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="mt-5">
-    <p>© 2026 Catalina & Camila</p>
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer class="site-footer pb-5">
+  <div class="container-xl px-4 px-md-5">
+    <div class="row g-5">
+      <!-- Brand -->
+      <div class="col-12 col-md-5">
+        <span class="site-footer__logo">NEOGAUCHO</span>
+        <p class="site-footer__tagline">
+          A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
+        </p>
+        <!--sacarlos o cambiarlos-->
+        
+      </div>
+
+      <!-- Explore -->
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Explore</h5>
+        <ul class="footer-col__links">
+          <li><a href="#">Shop All</a></li>
+          <li><a href="#">Drops</a></li>
+          <li><a href="#">Editorial</a></li>
+          <li><a href="#">Curated</a></li>
+        </ul>
+      </div>
+
+      <!-- Service -->
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Service</h5>
+        <ul class="footer-col__links">
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <span class="footer-copy">© 2024 The Digital Archive. All rights reserved.</span>
+      <div class="d-flex gap-4">
+        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Privacy Policy</a>
+        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Accessibility</a>
+      </div>
+    </div>
+  </div>
 </footer>
+
 
 <!-- JS Bootstrap -->
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
