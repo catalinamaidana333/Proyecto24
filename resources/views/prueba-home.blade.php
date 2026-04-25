@@ -31,30 +31,26 @@
   
 </nav>
 <!-- prueba-->
-<nav class="site-nav navbar navbar-expand-md navbar-light" data-bs-theme="light">
-  <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-    
-    <a href="{{ route('home') }}" class="site-nav__logo navbar-brand m-0">NEOGAUCHO</a>
-    
-    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuNeo" aria-controls="menuNeo" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" style="background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\");"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="menuNeo">
-      <ul class="site-nav__links navbar-nav ms-auto mt-3 mt-md-0">
-        <li class="nav-item"><a href="{{ route('home') }}" class="active nav-link p-0">Shop</a></li>
-        <li class="nav-item"><a href="{{ route('productos') }}" class="nav-link p-0">Drops</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
-        <li class="nav-item"><a href="{{ route('contacto') }}" class="nav-link p-0">Contacto</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
-      </ul>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg site-nav flex-column">
+    <div class="container-fluid flex-column">
+        <a class="navbar-brand brand-name" href="/">NEOGAUCHO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="site-nav__links navbar-nav">
+                <li class="nav-item item-nav"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/">Shop</a></li> 
+                <li class="nav-item"><a href="/">Comercializacion</a></li>
+                <li class="nav-item"><a href="/quienes-somos">Quiénes somos</a></li>
+                <li class="nav-item"><a href="/">Contactar</a></li>
+                <li class="nav-item"><a href="/terminos" class="active">Términos</a></li>
+            </ul>
+        </div>
     </div>
-    
-  </div>
 </nav>
-
-
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">
@@ -219,7 +215,7 @@
       </div>
 
       <!-- Explore -->
-      <div class="col-6 col-md-2 offset-md-1">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
           <li><a href="#">Shop All</a></li>
@@ -230,7 +226,7 @@
       </div>
 
       <!-- Service -->
-      <div class="col-6 col-md-2">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Service</h5>
         <ul class="footer-col__links">
           <li><a href="#">Contact</a></li>
@@ -253,41 +249,7 @@
 </footer>
 
 
-    <footer>
-        <section class=" d-flex  justify-content-center align-items-center" style=  "gap: 1rem; flex-wrap: wrap;">
-          <div class="card-f " style="width: 90%; max-width: 300px; height: auto;  background-color: beige; text-align: center;">
-            <img src="./img/footer1.png" class="card-img" alt="..." style="background-color: beige; width: 100%; height: auto;">
-            <div class="card-img-overlay">
-              <h5 class="card-title">Ubicacion</h5>
-              <p class="card-text"> Shopping RioSul - Rua Lauro Muller, 116 - Botafogo, Rio de Janeiro</p>
-              
-            </div>
-          </div>
-          <div class="card-f" style="width: 90%; max-width: 300px; height: auto;  background-color: beige; text-align: center;"
-            <div class="card-body">
-              <h5 class="card-title">Contacto</h5>
-              <a href="#" class="card-link" style="color: black;">skalabrasil.com</a>
-              <p class="card-text"> Mandanos tu consulta!</p>
-              
-              
-            </div>
-          </div>
-        </section>
-        <section class="skala-suscribe" style="margin-top: 1rem; text-align: center;">
-          <img src="./img/Skala-removebg.png" alt="skala logo" class="skala-logo2">
-          <div class="skala-form1">
-              <form action="submit" method="post">
-                  <label for="mail" style="color: rgb(37, 36, 36);"> Registrate para recibir consejos de belleza, trucos y secretos brasileños!</label>
-                  <input type="text" name="mail" id="mail">
-                  <input type="submit" value="Enviar">
-              </form>
-          </div>
-      </section>
     
-    </section>
-    </footer>
-
-
 <!-- Bootstrap JS -->
  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
