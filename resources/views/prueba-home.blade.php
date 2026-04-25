@@ -253,6 +253,41 @@
 </footer>
 
 
+    <footer>
+        <section class=" d-flex  justify-content-center align-items-center" style=  "gap: 1rem; flex-wrap: wrap;">
+          <div class="card-f " style="width: 90%; max-width: 300px; height: auto;  background-color: beige; text-align: center;">
+            <img src="./img/footer1.png" class="card-img" alt="..." style="background-color: beige; width: 100%; height: auto;">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Ubicacion</h5>
+              <p class="card-text"> Shopping RioSul - Rua Lauro Muller, 116 - Botafogo, Rio de Janeiro</p>
+              
+            </div>
+          </div>
+          <div class="card-f" style="width: 90%; max-width: 300px; height: auto;  background-color: beige; text-align: center;"
+            <div class="card-body">
+              <h5 class="card-title">Contacto</h5>
+              <a href="#" class="card-link" style="color: black;">skalabrasil.com</a>
+              <p class="card-text"> Mandanos tu consulta!</p>
+              
+              
+            </div>
+          </div>
+        </section>
+        <section class="skala-suscribe" style="margin-top: 1rem; text-align: center;">
+          <img src="./img/Skala-removebg.png" alt="skala logo" class="skala-logo2">
+          <div class="skala-form1">
+              <form action="submit" method="post">
+                  <label for="mail" style="color: rgb(37, 36, 36);"> Registrate para recibir consejos de belleza, trucos y secretos brasileños!</label>
+                  <input type="text" name="mail" id="mail">
+                  <input type="submit" value="Enviar">
+              </form>
+          </div>
+      </section>
+    
+    </section>
+    </footer>
+
+
 <!-- Bootstrap JS -->
  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>

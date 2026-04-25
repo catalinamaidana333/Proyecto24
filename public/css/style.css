@@ -575,4 +575,52 @@ p {
       opacity: 0.4;
     }
 
+    body footer {
+  background-color: var(--on-secondary-container);
+  height: auto;
+  margin-top: 5rem;
+  padding: 2rem 1rem;
+}
+body .card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+}
+body .card-footer .card {
+  width: 90%;
+  max-width: 300px;
+  height: auto;
+  background-color: rgb(219, 219, 219);
+  text-align: center;
+}
+body .card-footer .card-f .card-img {
+  background-color: rgb(236, 161, 211);
+  width: 100%;
+  height: auto;
+}
+body .skala-suscribe {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  text-align: center;
+  margin-top: 1rem;
+}
+body .skala-suscribe .skala-logo2 {
+  width: 12.5vw;
+  height: auto;
+}
+body .skala-suscribe .skala-form1 {
+  text-align: end;
+}
+
+.skala-logo {
+  width: 12.5vw;
+  height: auto;
+}
+
+
     
