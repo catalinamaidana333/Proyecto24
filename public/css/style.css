@@ -256,6 +256,66 @@ opacity: 1;
       color: var(--on-surface-var);
       margin-top: 0.25rem;
     }
+.terminos-container h2 {
+font-family: var(--font-headline);
+font-size: 1.3rem;
+font-weight: 900;
+text-transform: uppercase;
+color: var(--primary);
+
+margin-top: 2.5rem;
+margin-bottom: 0.5rem;
+position: relative;
+}
+
+/* línea decorativa */
+.terminos-container h2::after {
+content: "";
+display: block;
+width: 40px;
+height: 3px;
+background: var(--primary);
+margin-top: 6px;
+border-radius: 2px;
+opacity: 0.6;
+}
+
+/* primer título */
+.terminos-container h2:first-child {
+margin-top: 0;
+}
+
+
+    /* ── CARRUSEL ─────────────────────── */
+.carousel {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+
+  scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+.product-card {
+  min-width: 200px;
+  max-width: 200px;
+
+  border-radius: var(--radius-card);
+  overflow: hidden;
+
+  background: var(--surface-container);
+  scroll-snap-align: start;
+
+  transition: transform 0.3s, box-shadow 0.3s;
+}
     
 
     /* ── Product Card ──────────────────────────────────── */
