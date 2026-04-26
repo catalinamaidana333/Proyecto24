@@ -21,7 +21,7 @@
 
 <nav class="navbar navbar-expand-lg site-nav">
     <div class="container-fluid">
-        <a class="brand-name" href="/">TU MARCA</a>
+        <a class="brand-name" href="/">NEOGAUCHO</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
