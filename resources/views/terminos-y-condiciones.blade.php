@@ -127,32 +127,32 @@
 
     <div class="product-card">
       <div class="product-card__img-wrap">
-        <img src="{{ asset('imagen/producto1.jpg') }}" alt="Producto 1">
+        <img src="{{ asset('images/producto1.jpg') }}" alt="Producto 1">
       </div>
     </div>
 
     <div class="product-card">
       <div class="product-card__img-wrap">
-        <img src="{{ asset('imagen/producto2.jpg') }}" alt="Producto 2">
+        <img src="{{ asset('images/producto2.jpg') }}" alt="Producto 2">
       </div>
     </div>
 
     <div class="product-card">
       <div class="product-card__img-wrap">
-        <img src="{{ asset('imagen/producto3.jpg') }}" alt="Producto 3">
+        <img src="{{ asset('images/producto3.jpg') }}" alt="Producto 3">
       </div>
     </div>
 
 
     <div class="product-card">
       <div class="product-card__img-wrap">
-        <img src="{{ asset('imagen/producto4.jpg') }}" alt="Producto 4">
+        <img src="{{ asset('images/producto4.jpg') }}" alt="Producto 4">
       </div>
     </div>
 
     <div class="product-card">
       <div class="product-card__img-wrap">
-        <img src="{{ asset('imagen/producto5.jpg') }}" alt="Producto 5">
+        <img src="{{ asset('images/producto5.jpg') }}" alt="Producto 5">
       </div>
     </div>
 
