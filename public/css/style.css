@@ -154,107 +154,51 @@ p {
     }
       */
 
-/* --- NAVBAR DINÁMICO --- */
 .site-nav {
-    background: rgba(249, 246, 245, 0.80);
-    backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-pink);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-radius: var(--radius-pill);
-    padding: 0.8rem 2rem;
-    transition: all 0.3s ease;
+position: fixed;
+top: 1rem;
+left: 50%;
+transform: translateX(-50%);
+width: 95%;
+z-index: 1000;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+padding: 0.85rem 1.5rem;
+border-radius: var(--radius-pill);
+
+background: rgba(249,246,245,0.8);
+backdrop-filter: blur(20px);
+box-shadow: var(--shadow-pink);
 }
 
-.brand-name {
-    font-family: var(--font-headline);
-    font-weight: 900;
-    font-size: 1.6rem;
-    font-style: italic;
-    letter-spacing: -0.05em;
-    color: var(--primary) !important;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-/* --- ESTILOS DE LOS LINKS --- */
 .site-nav__links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+display: flex;
+gap: 1.5rem;
+list-style: none;
 }
 
 .site-nav__links a {
-    font-family: var(--font-headline);
-    font-size: 0.8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--on-surface);
-    opacity: 0.7;
-    text-decoration: none;
-    transition: 0.3s;
-    display: inline-block;
+font-family: var(--font-headline);
+font-size: 0.8rem;
+font-weight: 900;
+text-transform: uppercase;
+color: var(--on-surface);
+opacity: 0.7;
+transition: 0.2s;
 }
 
-.site-nav__links a:hover, 
+.site-nav__links a:hover {
+opacity: 1;
+transform: scale(1.05);
+}
+
 .site-nav__links a.active {
-    color: var(--primary);
-    opacity: 1;
-    border-bottom: 2px solid var(--primary);
-}
-
-/* --- MEDIA QUERIES (Lógica de visualización) --- */
-
-/* MÓVIL Y TABLET (Menos de 992px) */
-@media (max-width: 991px) {
-    .site-nav {
-        border-radius: 1.5rem; /* Ajuste estético al abrirse */
-        margin: 10px; /* Separación de los bordes */
-    }
-
-    .navbar-collapse {
-        flex-basis: 100%;
-    }
-
-    .site-nav__links {
-        flex-direction: column; /* Lista vertical */
-        align-items: flex-end;  /* Todo a la derecha */
-        gap: 1.2rem;
-        padding: 1.5rem 0 0.5rem 0;
-    }
-
-    .site-nav__links a {
-        margin-right: 0; /* Quitamos márgenes de escritorio */
-        font-size: 0.9rem;
-    }
-
-    /* Reset del borde inferior en móvil para que no ocupe todo el ancho */
-    .site-nav__links a.active {
-        border-bottom-width: 2px;
-        width: fit-content;
-    }
-}
-
-/* ESCRITORIO (992px en adelante) */
-@media (min-width: 992px) {
-    .site-nav {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .site-nav__links {
-        flex-direction: row; /* Lista horizontal */
-        gap: 2.5rem;
-    }
-
-    .navbar-collapse {
-        display: flex !important;
-        flex-basis: auto;
-    }
+color: var(--primary);
+border-bottom: 2px solid var(--primary);
+opacity: 1;
 }
     
     /* ── Hero ──────────────────────────────────────────── */
