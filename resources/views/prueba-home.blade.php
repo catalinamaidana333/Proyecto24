@@ -17,41 +17,27 @@
 <body>
 
 
-<!-- ═══ NAVBAR ════════════════════════════════════════════ --
-<nav class="site-nav navbar-expand-lg">
-  <div class="site-nav__left">
-    <span class="site-nav__logo">NEOGAUCHO</span>
-    <ul class="site-nav__links d-none d-md-flex">
-      <li><a href="{{ route('home')  }}" class="active">Shop</a></li>
-      <li><a href="{{ route('productos')  }}">Drops</a></li>
-      <li><a href="#">Editorial</a></li>
-      <li><a href="#">Curated</a></li>
-    </ul>
-  </div>
-  
-</nav>
-<!-- prueba-->
-<nav class="site-nav navbar navbar-expand-md navbar-light" data-bs-theme="light">
-  <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-    
-    <a href="{{ route('home') }}" class="site-nav__logo navbar-brand m-0">NEOGAUCHO</a>
-    
-    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuNeo" aria-controls="menuNeo" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" style="background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\");"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="menuNeo">
-      <ul class="site-nav__links navbar-nav ms-auto mt-3 mt-md-0">
-        <li class="nav-item"><a href="{{ route('home') }}" class="active nav-link p-0">Shop</a></li>
-        <li class="nav-item"><a href="{{ route('productos') }}" class="nav-link p-0">Drops</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
-        <li class="nav-item"><a href="{{ route('contacto') }}" class="nav-link p-0">Contacto</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
-      </ul>
+<!-- ═══ NAVBAR ════════════════════════════════════════════ -->
+
+<nav class="navbar navbar-expand-lg site-nav">
+    <div class="container-fluid">
+        <a class="brand-name" href="/">TU MARCA</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="site-nav__links ms-auto">
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="#">Drops</a></li>
+                <li><a href="#">Comercializacion</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Consulta</a></li>
+            </ul>
+        </div>
     </div>
-    
-  </div>
 </nav>
 
 
