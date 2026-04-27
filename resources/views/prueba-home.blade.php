@@ -17,58 +17,43 @@
 <body>
 
 
-<!-- ═══ NAVBAR ════════════════════════════════════════════ --
-<nav class="site-nav navbar-expand-lg">
-  <div class="site-nav__left">
-    <span class="site-nav__logo">NEOGAUCHO</span>
-    <ul class="site-nav__links d-none d-md-flex">
-      <li><a href="{{ route('home')  }}" class="active">Shop</a></li>
-      <li><a href="{{ route('productos')  }}">Drops</a></li>
-      <li><a href="#">Editorial</a></li>
-      <li><a href="#">Curated</a></li>
-    </ul>
-  </div>
-  
-</nav>
-<!-- prueba-->
- <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg site-nav flex-column">
-        <div class="container-fluid">
-            <a class="navbar-brand brand-name" href="/">NEOGAUCHO</a>
-            <button class="navbar-toggler" 
-                    type="button" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" 
-                    aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!-- ═══ NAVBAR ════════════════════════════════════════════ -->
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-0">
+    <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
  
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="site-nav__links navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/shop">Shop</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/comercializacion">Comercialización</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/quienes-somos">Quiénes somos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contactar">Contactar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/terminos">Términos</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Comercialización</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Quiénes Somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Términos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+
+
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">
@@ -269,6 +254,8 @@
 
     
 <!-- Bootstrap JS -->
- <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
