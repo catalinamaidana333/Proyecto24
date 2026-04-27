@@ -337,18 +337,7 @@ margin-top: 0;
   border-radius: 10px;
 }
 
-.product-card {
-  min-width: 200px;
-  max-width: 200px;
 
-  border-radius: var(--radius-card);
-  overflow: hidden;
-
-  background: var(--surface-container);
-  scroll-snap-align: start;
-
-  transition: transform 0.3s, box-shadow 0.3s;
-}
     
 
     /* ── Product Card ──────────────────────────────────── */
