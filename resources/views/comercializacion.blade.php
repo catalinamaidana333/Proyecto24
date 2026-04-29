@@ -46,10 +46,22 @@
   </div>
 </nav>
 
-<div class="container-terminos mt-5">  /* terminar */
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero__bg">
+    <img src="{{ asset('images/carrusel-byn.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="hero__badge"></div>
+  </div>
+</header>
 
-    <div class="card-terminos shadow"> /* terminar */
-        <h1 class="text-center mb-4">Términos</h1> /* terminar */
+
+<div class="container-comercializacion mt-5">  
+
+    <div class="card-comercializacion shadow"> 
+        <h1 class="text-center mb-4">Comercialización</h1> 
         
         <div class="terminos-text">
 

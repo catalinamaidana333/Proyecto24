@@ -492,6 +492,58 @@ margin-top: 0;
   color: white;
 }
 
+/* ═══ ESTILOS PARA PÁGINA COMERCIALIZACION ═══ */
+
+/* Card y contenedor */
+.container-comercializacion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card-comercializacion {
+  background: #f8f6f6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+/* Título h1 (principal) */
+.card-comercializacion h1 {
+  color: var(--primary);      /* ← Rosa/rojo */
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* Títulos h2 de secciones */
+.comercializacion-text h2 {
+  color: var(--primary);    
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+}
+
+/* Línea decorativa bajo h2 */
+.comercializacion-text h2::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  display: block;
+  margin-top: 6px;
+}
+
+/* Párrafos */
+.comercializacion-text p {
+  color: #333;                
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Botón */
+.btn-comercializacion-primary {
+  background: var(--primary);
+  color: white;
+}
+
     /*btn VIEW MORE*/
     .btn-view-more {
   display: inline-flex;
