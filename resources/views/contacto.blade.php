@@ -31,22 +31,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comercialización</a>
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quiénes Somos</a>
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Términos</a>
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
       </ul>
     </div>
@@ -57,7 +57,7 @@
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">
-    <img src="{{ asset('images/hero-portada.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+    <img src="{{ asset('images/carrusel-pasarela1.jpg') }}" class="img-fluid" alt="Hero editorial"/>
   </div>
   <div class="hero__overlay"></div>
 <!--maybe dejo solo el badge y quito todo el title O SEA hay q editar css(class hero__title y accent, hero__subtitle-->
@@ -87,12 +87,13 @@
       </div>
 
       <!-- Medium: FORM-->
-      <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
+       <form action="{{ url('/contacto') }}">
+        <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
     
         <div class="bento-card__overlay-pink"></div>
         <div class="bento-center">
           <div class="mb-3">
-           <label for="exampleFormControlInput1" class="form-label">Email address</label>
+           <label for="exampleFormControlInput1" class="form-label" >Email address</label>
            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
           </div>
           <div class="mb-3">
@@ -105,6 +106,9 @@
         </div>
       </div>
 
+
+       </form>
+      
       <!-- Medium: Archives of Galliano -->
       <div class="bento-card bento-medium bento-plain">
         <div>
@@ -125,52 +129,6 @@
 
 
 
-<form class="row g-3" action="{{ url('/contacto') }}" method="POST">
-  @csrf
-
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4" name="email">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4" name="password">
-  </div>
-  <div class="col-12">
-    <label for="inputNombre" class="form-label">Nombre</label>
-    <input type="nombre" class="form-control" id="inputNombre" name="nombre" >
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity" name="city">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select" name="state">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip" name="zip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="check">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-</form>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
@@ -181,7 +139,7 @@
       <div class="col-12 col-md-5">
         <span class="site-footer__logo">NEOGAUCHO</span>
         <p class="site-footer__tagline">
-          A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
+          Donde la pampa se vuelve píxel. Un horizonte de archivo para el nuevo siglo. El archivo nacional de la vanguardia global.
         </p>
         <!--sacarlos o cambiarlos-->
         
@@ -191,32 +149,24 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">Drops</a></li>
-          <li><a href="#">Editorial</a></li>
-          <li><a href="#">Curated</a></li>
+          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('terminos')}}" >Terminos</a></li>
+          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          
         </ul>
       </div>
 
       <!-- Service -->
       <div class="col-12 col-sm-6">
-        <h5 class="footer-col__heading">Service</h5>
-        <ul class="footer-col__links">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
+        <h5 class="footer-col__heading">Preservando la herencia estética de la era digital desde el norte</h5>
+        
       </div>
     </div>
 
     <!-- Bottom bar -->
     <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <span class="footer-copy">© 2024 The Digital Archive. All rights reserved.</span>
-      <div class="d-flex gap-4">
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Privacy Policy</a>
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Accessibility</a>
-      </div>
+      <span class="footer-copy">© 2026 CM2. All rights reserved.</span>
+      
     </div>
   </div>
 </footer>
