@@ -46,52 +46,57 @@
   </div>
 </nav>
 
-<div class="container-terminos mt-5">
+<div class="container-terminos mt-5">  /* terminar */
 
-    <div class="card-terminos shadow">
-        <h1 class="text-center mb-4">Términos <span style="color: var(--on-surface-var); font-weight: 300;">& Condiciones</span></h1>
+    <div class="card-terminos shadow"> /* terminar */
+        <h1 class="text-center mb-4">Términos</h1> /* terminar */
         
         <div class="terminos-text">
-            <h2> Aceptación de los términos</h2>
+
+            <h2> Productos y disponibilidad</h2>
             <p>
-                Al acceder y utilizar este sitio web, aceptás cumplir con los presentes Términos y Condiciones. 
-                Si no estás de acuerdo con alguna parte, te recomendamos no utilizar nuestros servicios.
+                Todas nuestras prendas son únicas y seleccionadas cuidadosamente. 
+                Esto significa que cada producto puede tener disponibilidad limitada (una sola unidad).
+                Nos reservamos el derecho de modificar precios, descripciones o disponibilidad sin previo aviso.
             </p>
 
-            <h2> Uso del sitio web</h2>
+            <h2> Proceso de compra</h2>
             <p>
-                Este sitio está destinado a la compra de prendas vintage seleccionadas. 
-                El usuario se compromete a hacer un uso adecuado del contenido, sin realizar actividades ilegales 
-                o que puedan dañar la imagen de la marca.
+                Para realizar una compra, el usuario deberá seleccionar el producto y completar los datos solicitados.
+                Una vez confirmada la compra, se enviará un comprobante por el medio de contacto indicado.
             </p>
 
-            <h2> Privacidad</h2>
+            <h2> Formas de pago</h2>
             <p>
-                Los datos personales proporcionados serán utilizados únicamente para procesar compras 
-                y mejorar la experiencia del usuario. No compartimos información con terceros.
+                Aceptamos diferentes medios de pago que serán informados al momento de la compra 
+                (transferencia, billeteras virtuales, entre otros).
             </p>
 
-            <h2> Propiedad intelectual</h2>
+            <h2> Envíos y tiempos de entrega</h2>
             <p>
-                Todo el contenido del sitio (imágenes, textos, diseño) es propiedad de la marca 
-                y no puede ser utilizado sin autorización previa.
+                Realizamos envíos a todo el país. Los tiempos de entrega pueden variar según la ubicación del cliente.
+                Una vez despachado el pedido, se informará el seguimiento correspondiente.
             </p>
 
-            <h2> Modificaciones</h2>
+            <h2> Cambios y devoluciones</h2>
             <p>
-                Nos reservamos el derecho de modificar estos términos en cualquier momento. 
-                Las modificaciones entrarán en vigencia desde su publicación en el sitio.
+                Debido a la naturaleza vintage de las prendas, no se aceptan devoluciones por uso o desgaste propio de la prenda.
+                Solo se aceptarán cambios en caso de fallas no informadas previamente.
+            </p>
+
+            <h2> Garantías</h2>
+            <p>
+                Nos comprometemos a describir cada producto con la mayor transparencia posible.
+                En caso de inconvenientes, podés contactarnos para encontrar una solución.
             </p>
 
         </div>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn-qs btn-terminos-primary">Volver al incio</a>
+            <a href="#" class="btn-qs btn-comercializacion-primary">Volver al incio</a>
         </div>
     </div>
 </div>
-
-
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
