@@ -108,12 +108,9 @@
       <!-- Medium: Archives of Galliano -->
       <div class="bento-card bento-medium bento-plain">
         <div>
-          <h3 class="bento-plain__title">Archives<br/>of<br/>Galliano</h3>
+          <h3 class="bento-plain__title">De placares argentinos salen las mejores historias. ¿Nos compartís la tuya?</h3>
           <div class="bento-plain__divider"></div>
         </div>
-        <a href="#" class="bento-plain__link">
-          View Story <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
-        </a>
       </div>
 
     </div>
@@ -172,7 +169,6 @@
   </div>
 </form>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
   <div class="container-xl px-4 px-md-5">

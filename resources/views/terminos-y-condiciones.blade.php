@@ -97,7 +97,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn-qs btn-terminos-primary">Volver al incio</a>
+            <a href="{{ route('home')}}" class="btn-qs btn-terminos-primary">Volver al incio</a>
         </div>
     </div>
 </div>
