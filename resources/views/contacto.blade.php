@@ -87,7 +87,7 @@
       </div>
 
       <!-- Medium: FORM-->
-       <form action="{{ url('/contacto') }}">
+       
         <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
     
         <div class="bento-card__overlay-pink"></div>
@@ -101,13 +101,13 @@
            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
           <div class="col-12">
-           <button type="submit" class="btn btn-primary">SEND</button>
+           <button type="submit" class="btn btn-primary">Send</button>
           </div>
         </div>
       </div>
 
 
-       </form>
+       
       
       <!-- Medium: Archives of Galliano -->
       <div class="bento-card bento-medium bento-plain">

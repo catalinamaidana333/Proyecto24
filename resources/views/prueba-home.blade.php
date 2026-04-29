@@ -168,10 +168,14 @@
         <img src="{{ asset('images/card-port-enter.jpg') }}" alt="Y2K Tech"/>
         <div class="bento-card__overlay"></div>
         <div class="bento-card__content">
-          <span class="bento-card__eyebrow">Exclusive Drop</span>
-          <h3 class="bento-card__title">Vintage<br/>Select</h3>
-          <p class="bento-card__body">Discover the gadgets and gear that defined a millennium. Transparent casing, neon lights, and raw power.</p>
-          <button class="btn-teal-pill">Explore Category</button>
+          <span class="bento-card__eyebrow">Exclusivo</span>
+          <h3 class="bento-card__title">Edición<br/>de Culto</h3>
+          <p class="bento-card__body">Piel de cristal, nervios de neón y una fuerza bruta que no conoce el cautiverio. El jaguareté de archivo: donde la estética de vanguardia se encuentra con el poder puro.</p>
+          
+          <a href="{{ route('productos') }}" class="btn-teal-pill">
+    <span class="btn-text">Seguir el rastro</span>
+    <span class="btn-icon">→</span>
+</a>
         </div>
       </div>
 
@@ -191,8 +195,8 @@
           <h3 class="bento-plain__title">Archives<br/>of<br/>Galliano</h3>
           <div class="bento-plain__divider"></div>
         </div>
-        <a href="#" class="bento-plain__link">
-          View Story <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
+        <a href="{{ route('productos') }}"  class="bento-plain__link">
+          View <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
         </a>
       </div>
 
