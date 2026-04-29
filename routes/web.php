@@ -33,7 +33,7 @@ Route::get('/quienes-somos', function () {
 
 Route::get('/comercializacion', function () {
     return view('comercializacion');
-});
+})->name('comercializacion');;
 
 
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
