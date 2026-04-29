@@ -211,7 +211,7 @@
       <div class="col-12 col-md-5">
         <span class="site-footer__logo">NEOGAUCHO</span>
         <p class="site-footer__tagline">
-          A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
+          Donde la pampa se vuelve píxel. Un horizonte de archivo para el nuevo siglo. El archivo nacional de la vanguardia global.
         </p>
         <!--sacarlos o cambiarlos-->
         
@@ -221,32 +221,24 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">Drops</a></li>
-          <li><a href="#">Editorial</a></li>
-          <li><a href="#">Curated</a></li>
+          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('terminos')}}" >Terminos</a></li>
+          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          
         </ul>
       </div>
 
       <!-- Service -->
       <div class="col-12 col-sm-6">
-        <h5 class="footer-col__heading">Service</h5>
-        <ul class="footer-col__links">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
+        <h5 class="footer-col__heading">Preservando la herencia estética de la era digital desde el norte</h5>
+        
       </div>
     </div>
 
     <!-- Bottom bar -->
     <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <span class="footer-copy">© 2024 The Digital Archive. All rights reserved.</span>
-      <div class="d-flex gap-4">
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Privacy Policy</a>
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Accessibility</a>
-      </div>
+      <span class="footer-copy">© 2026 CM2. All rights reserved.</span>
+      
     </div>
   </div>
 </footer>
