@@ -30,22 +30,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comercialización</a>
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quiénes Somos</a>
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Términos</a>
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
       </ul>
     </div>
