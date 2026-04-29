@@ -28,34 +28,44 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comercialización</a>
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quiénes Somos</a>
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Términos</a>
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
  
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero__bg">
+    <img src="{{ asset('images/hero-staff.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="hero__badge">Vintage no es viejo, es eterno</div>
+  </div>
+</header>
 
 <!-- CONTENIDO -->
 <div class="container-qs mt-5">
 
     <div class="card-qs p-4 shadow">
-        <h2 class="text-center mb-4">¿Quiénes somos?</h2>
+        <h2 class="text-center mb-4 product-card__name">¿Quiénes somos?</h2>
 
         <p>
             Somos Catalina y Camila, dos apasionadas por la moda con una visión clara: darle una nueva vida al estilo vintage. Nos encanta rescatar prendas de marca que tienen historia, personalidad y un encanto único que no pasa de moda.
@@ -73,7 +83,7 @@
             Nuestro emprendimiento nació como un proyecto pequeño, impulsado por nuestra pasión y curiosidad por la moda circular. Con el tiempo, fuimos creciendo gracias al compromiso, la dedicación y la conexión con quienes valoran un estilo único. Hoy seguimos evolucionando, incorporando nuevas ideas y seleccionando piezas cada vez más especiales para ofrecer una propuesta distinta dentro del mundo de la moda.
         </p>
 
-        <h2 class="text-center mb-4">Nuestros objetivos</h2>
+        <h2 class="text-center mb-4 product-card__name">Nuestros objetivos</h2>
 
         <p>
             Nuestro principal objetivo es promover una moda más consciente y sostenible, extendiendo la vida útil de prendas de calidad y reduciendo el impacto ambiental del consumo masivo. Buscamos que cada cliente encuentre una prenda que lo represente, que lo haga sentir seguro y auténtico.
@@ -83,7 +93,7 @@
             Además, queremos posicionarnos como una referencia en moda vintage, ofreciendo una curaduría cuidada de prendas de marca, con estilo y personalidad. Nos proponemos seguir creciendo, ampliar nuestra comunidad y brindar una experiencia de compra cercana, confiable y personalizada.
         </p>
 
-        <h2 class="text-center mb-4">Nuestro equipo(staff)</h2>
+        <h2 class="text-center mb-4 product-card__name">Nuestro equipo(staff)</h2>
 
         <p>
             Detrás de este proyecto estamos nosotras, Catalina y Camila, encargadas de la selección de prendas, la estética de la marca y la atención al cliente. Nos ocupamos de cada detalle: desde la búsqueda de piezas únicas hasta la presentación final de cada producto.
@@ -94,8 +104,8 @@
         </p>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn-qs btn-qs-primary">Ver productos</a>
-            <a href="#" class="btn-qs btn-qs-secondary">Contactar</a>
+            <a href="{{ route('productos')}}" class="btn-qs btn-qs-primary">Ver productos</a>
+            <a href="{{ route('contacto')}}" class="btn-qs btn-qs-secondary">Contactar</a>
         </div>
     </div>
 </div>
