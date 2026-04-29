@@ -13,6 +13,7 @@
 <body>
 
 <!-- ═══ NAVBAR ════════════════════════════════════════════ -->
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid px-0">
     <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
@@ -24,60 +25,70 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comercialización</a>
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quiénes Somos</a>
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Términos</a>
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero__bg">
+    <img src="{{ asset('images/carrusel-runway.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="hero__badge">Terminos</div>
+  </div>
+</header>
+
 <div class="container-terminos mt-5">
 
     <div class="card-terminos shadow">
-        <h1 class="text-center mb-4">Términos <span style="color: var(--on-surface-var); font-weight: 300;">& Condiciones</span></h1>
         
         <div class="terminos-text">
-            <h2> Aceptación de los términos</h2>
+            <h2 class="product-card__name"> Aceptación de los términos</h2>
             <p>
                 Al acceder y utilizar este sitio web, aceptás cumplir con los presentes Términos y Condiciones. 
                 Si no estás de acuerdo con alguna parte, te recomendamos no utilizar nuestros servicios.
             </p>
 
-            <h2> Uso del sitio web</h2>
+            <h2 class="product-card__name"> Uso del sitio web</h2>
             <p>
                 Este sitio está destinado a la compra de prendas vintage seleccionadas. 
                 El usuario se compromete a hacer un uso adecuado del contenido, sin realizar actividades ilegales 
                 o que puedan dañar la imagen de la marca.
             </p>
 
-            <h2> Privacidad</h2>
+            <h2 class="product-card__name"> Privacidad</h2>
             <p>
                 Los datos personales proporcionados serán utilizados únicamente para procesar compras 
                 y mejorar la experiencia del usuario. No compartimos información con terceros.
             </p>
 
-            <h2> Propiedad intelectual</h2>
+            <h2 class="product-card__name"> Propiedad intelectual</h2>
             <p>
                 Todo el contenido del sitio (imágenes, textos, diseño) es propiedad de la marca 
                 y no puede ser utilizado sin autorización previa.
             </p>
 
-            <h2> Modificaciones</h2>
+            <h2 class="product-card__name"> Modificaciones</h2>
             <p>
                 Nos reservamos el derecho de modificar estos términos en cualquier momento. 
                 Las modificaciones entrarán en vigencia desde su publicación en el sitio.
@@ -86,7 +97,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn-qs btn-terminos-primary">Volver al incio</a>
+            <a href="{{ route('home')}}" class="btn-qs btn-terminos-primary">Volver al incio</a>
         </div>
     </div>
 </div>

@@ -13,6 +13,7 @@
 <body>
 
 <!-- ═══ NAVBAR ════════════════════════════════════════════ -->
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid px-0">
     <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
@@ -24,22 +25,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comercialización</a>
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quiénes Somos</a>
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Términos</a>
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
       </ul>
     </div>
@@ -53,7 +54,7 @@
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    <div class="hero__badge"></div>
+    <div class="hero__badge">Del pasado a tu puerta</div>
   </div>
 </header>
 
@@ -61,42 +62,42 @@
 <div class="container-comercializacion mt-5">  
 
     <div class="card-comercializacion shadow"> 
-        <h1 class="text-center mb-4">Comercialización</h1> 
+        <h1 class="text-center mb-4 hero__badge" >Comercialización</h1> 
         
         <div class="terminos-text">
 
-            <h2> Productos y disponibilidad</h2>
+            <h2 class="product-card__name" > Productos y disponibilidad</h2>
             <p>
                 Todas nuestras prendas son únicas y seleccionadas cuidadosamente. 
                 Esto significa que cada producto puede tener disponibilidad limitada (una sola unidad).
                 Nos reservamos el derecho de modificar precios, descripciones o disponibilidad sin previo aviso.
             </p>
 
-            <h2> Proceso de compra</h2>
+            <h2 class="product-card__name"> Proceso de compra</h2>
             <p>
                 Para realizar una compra, el usuario deberá seleccionar el producto y completar los datos solicitados.
                 Una vez confirmada la compra, se enviará un comprobante por el medio de contacto indicado.
             </p>
 
-            <h2> Formas de pago</h2>
+            <h2 class="product-card__name"> Formas de pago</h2>
             <p>
                 Aceptamos diferentes medios de pago que serán informados al momento de la compra 
                 (transferencia, billeteras virtuales, entre otros).
             </p>
 
-            <h2> Envíos y tiempos de entrega</h2>
+            <h2 class="product-card__name"> Envíos y tiempos de entrega</h2>
             <p>
                 Realizamos envíos a todo el país. Los tiempos de entrega pueden variar según la ubicación del cliente.
                 Una vez despachado el pedido, se informará el seguimiento correspondiente.
             </p>
 
-            <h2> Cambios y devoluciones</h2>
+            <h2 class="product-card__name"> Cambios y devoluciones</h2>
             <p>
                 Debido a la naturaleza vintage de las prendas, no se aceptan devoluciones por uso o desgaste propio de la prenda.
                 Solo se aceptarán cambios en caso de fallas no informadas previamente.
             </p>
 
-            <h2> Garantías</h2>
+            <h2 class="product-card__name"> Garantías</h2>
             <p>
                 Nos comprometemos a describir cada producto con la mayor transparencia posible.
                 En caso de inconvenientes, podés contactarnos para encontrar una solución.
