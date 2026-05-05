@@ -15,21 +15,8 @@
   
 </head>
 <body>
-
-
-<!-- ═══ NAVBAR ════════════════════════════════════════════ --
-<nav class="site-nav navbar-expand-lg">
-  <div class="site-nav__left">
-    <span class="site-nav__logo">NEOGAUCHO</span>
-    <ul class="site-nav__links d-none d-md-flex">
-      <li><a href="{{ route('home')  }}" class="active">Shop</a></li>
-      <li><a href="{{ route('productos')  }}">Drops</a></li>
-      <li><a href="#">Editorial</a></li>
-      <li><a href="#">Curated</a></li>
-    </ul>
-  </div>
   
-<!-- ═══ NAVBAR ════════════════════════════════════════════ -->
+<-- ═══ NAVBAR ════════════════════════════════════════════ -->
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid px-0">
@@ -63,6 +50,7 @@
     </div>
   </div>
 </nav>
+ 
 
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
@@ -178,10 +166,14 @@
         <img src="{{ asset('images/card-port-enter.jpg') }}" alt="Y2K Tech"/>
         <div class="bento-card__overlay"></div>
         <div class="bento-card__content">
-          <span class="bento-card__eyebrow">Exclusive Drop</span>
-          <h3 class="bento-card__title">Vintage<br/>Select</h3>
-          <p class="bento-card__body">Discover the gadgets and gear that defined a millennium. Transparent casing, neon lights, and raw power.</p>
-          <button class="btn-teal-pill">Explore Category</button>
+          <span class="bento-card__eyebrow">Exclusivo</span>
+          <h3 class="bento-card__title">Edición<br/>de Culto</h3>
+          <p class="bento-card__body">Piel de cristal, nervios de neón y una fuerza bruta que no conoce el cautiverio. El jaguareté de archivo: donde la estética de vanguardia se encuentra con el poder puro.</p>
+          
+          <a href="{{ route('productos') }}" class="btn-teal-pill">
+    <span class="btn-text">Seguir el rastro</span>
+    <span class="btn-icon">→</span>
+</a>
         </div>
       </div>
 
@@ -201,8 +193,8 @@
           <h3 class="bento-plain__title">Archives<br/>of<br/>Galliano</h3>
           <div class="bento-plain__divider"></div>
         </div>
-        <a href="#" class="bento-plain__link">
-          View Story <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
+        <a href="{{ route('productos') }}"  class="bento-plain__link">
+          View <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
         </a>
       </div>
 
@@ -221,47 +213,40 @@
       <div class="col-12 col-md-5">
         <span class="site-footer__logo">NEOGAUCHO</span>
         <p class="site-footer__tagline">
-          A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
+          Donde la pampa se vuelve píxel. Un horizonte de archivo para el nuevo siglo. El archivo nacional de la vanguardia global.
         </p>
         <!--sacarlos o cambiarlos-->
         
       </div>
 
       <!-- Explore -->
-      <div class="col-6 col-md-2 offset-md-1">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">Drops</a></li>
-          <li><a href="#">Editorial</a></li>
-          <li><a href="#">Curated</a></li>
+          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('terminos')}}" >Terminos</a></li>
+          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          
         </ul>
       </div>
 
       <!-- Service -->
-      <div class="col-6 col-md-2">
-        <h5 class="footer-col__heading">Service</h5>
-        <ul class="footer-col__links">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Preservando la herencia estética de la era digital desde el norte</h5>
+        
       </div>
     </div>
 
     <!-- Bottom bar -->
     <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <span class="footer-copy">© 2024 The Digital Archive. All rights reserved.</span>
-      <div class="d-flex gap-4">
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Privacy Policy</a>
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Accessibility</a>
-      </div>
+      <span class="footer-copy">© 2026 CM2. All rights reserved.</span>
+      
     </div>
   </div>
 </footer>
 
 
+    
 <!-- Bootstrap JS -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

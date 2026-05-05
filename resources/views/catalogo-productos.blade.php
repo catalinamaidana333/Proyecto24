@@ -18,27 +18,37 @@
 
 
 <!-- ═══ NAVBAR ════════════════════════════════════════════ -->
-<!--navbar1-->
-<nav class="site-nav navbar navbar-expand-md navbar-light" data-bs-theme="light">
-  <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-0">
+    <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
     
-    <a href="{{ route('home') }}" class="site-nav__logo navbar-brand m-0">NEOGAUCHO</a>
-    
-    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuNeo" aria-controls="menuNeo" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" style="background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\");"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    
-    <div class="collapse navbar-collapse" id="menuNeo">
-      <ul class="site-nav__links navbar-nav ms-auto mt-3 mt-md-0">
-        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link p-0">Shop</a></li>
-        <li class="nav-item"><a href="{{ route('productos') }}" class="active nav-link p-0">Drops</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Comercializacion</a></li>
-        <li class="nav-item"><a href="{{ route('contacto') }}" class="nav-link p-0">Contacto</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Terminos</a></li>
-        <li class="nav-item"><a href="#" class="nav-link p-0">Consulta</a></li>
+ 
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
+        </li>
       </ul>
     </div>
-    
   </div>
 </nav>
 
@@ -216,7 +226,7 @@
     </div>
 
 
-  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+ <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
   <div class="container-xl px-4 px-md-5">
     <div class="row g-5">
@@ -224,52 +234,43 @@
       <div class="col-12 col-md-5">
         <span class="site-footer__logo">NEOGAUCHO</span>
         <p class="site-footer__tagline">
-          A destination for collectors and enthusiasts of archival luxury. Preserving the aesthetic history of the digital age.
+          Donde la pampa se vuelve píxel. Un horizonte de archivo para el nuevo siglo. El archivo nacional de la vanguardia global.
         </p>
-        <div class="d-flex gap-3">
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">share</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">camera</span></a>
-          <a href="#" class="social-btn"><span class="material-symbols-outlined" style="font-size:1.2rem;">mail</span></a>
-        </div>
+        <!--sacarlos o cambiarlos-->
+        
       </div>
 
       <!-- Explore -->
-      <div class="col-6 col-md-2 offset-md-1">
+      <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">Drops</a></li>
-          <li><a href="#">Editorial</a></li>
-          <li><a href="#">Curated</a></li>
+          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('terminos')}}" >Terminos</a></li>
+          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          
         </ul>
       </div>
 
       <!-- Service -->
-      <div class="col-6 col-md-2">
-        <h5 class="footer-col__heading">Service</h5>
-        <ul class="footer-col__links">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Preservando la herencia estética de la era digital desde el norte</h5>
+        
       </div>
     </div>
 
     <!-- Bottom bar -->
     <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <span class="footer-copy">© 2024 The Digital Archive. All rights reserved.</span>
-      <div class="d-flex gap-4">
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Privacy Policy</a>
-        <a href="#" class="footer-copy" style="transition: opacity 0.2s;">Accessibility</a>
-      </div>
+      <span class="footer-copy">© 2026 CM2. All rights reserved.</span>
+      
     </div>
   </div>
 </footer>
 
 
-<!-- Bootstrap JS -->
- <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+ <!-- Bootstrap JS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>NEOGAUCHO | VintagePRODUCTS contacto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - NEOGAUCHO</title>
 
-  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;0,900;1,900&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
-  <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-
-  
 </head>
-
 
 <body>
 
@@ -53,77 +47,60 @@
   </div>
 </nav>
 
-
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">
-    <img src="{{ asset('images/carrusel-pasarela1.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+    <img src="{{ asset('images/carrusel-runway.jpg') }}" class="img-fluid" alt="Hero editorial"/>
   </div>
   <div class="hero__overlay"></div>
-<!--maybe dejo solo el badge y quito todo el title O SEA hay q editar css(class hero__title y accent, hero__subtitle-->
   <div class="hero__content">
-    <div class="hero__badge">CONTACT US</div>
+    <div class="hero__badge">Terminos</div>
   </div>
 </header>
 
+<div class="container-terminos mt-5">
 
-<!-- ═══ CURATED COLLECTIONS ══════════════════════════════ -->
-<section class="py-section bento-section">
-  <div class="container-xl ">
-    <h2 class="section-title text-center mb-5">CONECTÁ <span class="accent">CON LA HISTORIA</span></h2>
-    <div class="bento-grid">
+    <div class="card-terminos shadow">
+        
+        <div class="terminos-text">
+            <h2 class="product-card__name"> Aceptación de los términos</h2>
+            <p>
+                Al acceder y utilizar este sitio web, aceptás cumplir con los presentes Términos y Condiciones. 
+                Si no estás de acuerdo con alguna parte, te recomendamos no utilizar nuestros servicios.
+            </p>
 
-      <!-- Large: IMG-->
-      <div class="bento-card bento-large" style="min-height: 400px; position= absolute">
-        <img src="{{ asset('images/card-port-contact.jpg') }}" alt="Y2K Tech"/>
-        <div class="bento-card__overlay"></div>
-        <div class="bento-card__content">
-          
-          <h3 class="bento-card__title">ESCRIBINOS<br/>CLIENT SERVICES</h3>
-          <p class="bento-card__body">Dedicadas a ofrecerte el mejor servicio en tu coleccion de piezas unicas, si tenes duda sobre algun producto o tenes piezas para vender dejanos tu mail y nombre del articulo.</p>
-          <p class="bento-card__body">Dedicadas a ofrecerte el mejor servicio en tu coleccion de piezas unicas, si tenes duda sobre algun producto o tenes piezas para vender dejanos tu mail y nombre del articulo.</p>
+            <h2 class="product-card__name"> Uso del sitio web</h2>
+            <p>
+                Este sitio está destinado a la compra de prendas vintage seleccionadas. 
+                El usuario se compromete a hacer un uso adecuado del contenido, sin realizar actividades ilegales 
+                o que puedan dañar la imagen de la marca.
+            </p>
+
+            <h2 class="product-card__name"> Privacidad</h2>
+            <p>
+                Los datos personales proporcionados serán utilizados únicamente para procesar compras 
+                y mejorar la experiencia del usuario. No compartimos información con terceros.
+            </p>
+
+            <h2 class="product-card__name"> Propiedad intelectual</h2>
+            <p>
+                Todo el contenido del sitio (imágenes, textos, diseño) es propiedad de la marca 
+                y no puede ser utilizado sin autorización previa.
+            </p>
+
+            <h2 class="product-card__name"> Modificaciones</h2>
+            <p>
+                Nos reservamos el derecho de modificar estos términos en cualquier momento. 
+                Las modificaciones entrarán en vigencia desde su publicación en el sitio.
+            </p>
 
         </div>
-      </div>
 
-      <!-- Medium: FORM-->
-       
-        <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
-    
-        <div class="bento-card__overlay-pink"></div>
-        <div class="bento-center">
-          <div class="mb-3">
-           <label for="exampleFormControlInput1" class="form-label" >Email address</label>
-           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-           <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <div class="col-12">
-           <button type="submit" class="btn btn-primary">Send</button>
-          </div>
+        <div class="text-center mt-4">
+            <a href="{{ route('home')}}" class="btn-qs btn-terminos-primary">Volver al incio</a>
         </div>
-      </div>
-
-
-       
-      
-      <!-- Medium: Archives of Galliano -->
-      <div class="bento-card bento-medium bento-plain">
-        <div>
-          <h3 class="bento-plain__title">De placares argentinos salen las mejores historias. ¿Nos compartís la tuya?</h3>
-          <div class="bento-plain__divider"></div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
-
-
-
-
+</div>
 
 
 
@@ -168,9 +145,10 @@
 </footer>
 
 
-    <!-- Bootstrap JS -->
+<!-- Bootstrap JS -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
