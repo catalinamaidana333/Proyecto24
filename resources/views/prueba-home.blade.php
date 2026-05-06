@@ -16,7 +16,6 @@
 </head>
 <body>
   
-<-- ═══ NAVBAR ════════════════════════════════════════════ -->
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid px-0">
