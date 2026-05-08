@@ -68,64 +68,69 @@
 
 
 <!-- ═══ CURATED COLLECTIONS ══════════════════════════════ -->
-<section class="py-section bento-section">
-  <div class="container-xl ">
-    <h2 class="section-title text-center mb-5">CONECTÁ <span class="accent">CON LA HISTORIA</span></h2>
-    <div class="bento-grid">
-
-      <!-- Large: IMG-->
-      <div class="bento-card bento-large" style="min-height: 400px; position= absolute">
-        <img src="{{ asset('images/card-port-contact.jpg') }}" alt="Y2K Tech"/>
-        <div class="bento-card__overlay"></div>
-        <div class="bento-card__content">
-          
-          <h3 class="bento-card__title">ESCRIBINOS<br/>CLIENT SERVICES</h3>
-          <p class="bento-card__body">Dedicadas a ofrecerte el mejor servicio en tu coleccion de piezas unicas, si tenes duda sobre algun producto o tenes piezas para vender dejanos tu mail y nombre del articulo.</p>
-          <p class="bento-card__body">Dedicadas a ofrecerte el mejor servicio en tu coleccion de piezas unicas, si tenes duda sobre algun producto o tenes piezas para vender dejanos tu mail y nombre del articulo.</p>
-
+<!-- SECCIÓN DE CONTACTO -->
+    <section class="contact-section">
+ 
+        <!-- LADO IZQUIERDO - FORMULARIO -->
+        <div class="contact-form-wrapper">
+            <div class="contact-form-container">
+                <div class="contact-form-header">
+                    <h2>Escribinos</h2>
+                    <p>Client Services</p>
+                    <div class="contact-form-header-divider"></div>
+                </div>
+ 
+                <form class="contact-form" method="POST" action="/contacto">
+                    
+                    @csrf 
+ 
+                    <!-- CAMPO EMAIL -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            class="form-input" 
+                            id="email" 
+                            name="email"
+                            placeholder="tu@email.com"
+                            required
+                        >
+                        <span class="form-error">Por favor ingresa un email válido</span>
+                    </div>
+ 
+                    <!-- CAMPO MENSAJE -->
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensaje</label>
+                        <textarea 
+                            class="form-textarea" 
+                            id="message" 
+                            name="message"
+                            placeholder="Cuéntanos tu consulta..."
+                            required
+                        ></textarea>
+                        <span class="form-error">El mensaje es requerido</span>
+                    </div>
+ 
+                    <!-- BOTÓN ENVIAR -->
+                    <div class="form-submit-wrapper">
+                        <button type="submit" class="btn-submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-
-      <!-- Medium: FORM-->
-       
-        <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
-    
-        <div class="bento-card__overlay-pink"></div>
-        <div class="bento-center">
-          <div class="mb-3">
-           <label for="exampleFormControlInput1" class="form-label" >Email address</label>
-           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-           <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <div class="col-12">
-           <button type="submit" class="btn btn-primary">Send</button>
-          </div>
+ 
+        <!-- LADO DERECHO - IMAGEN + FRASE -->
+        <div class="contact-image-wrapper">
+            <div class="contact-image-content">
+                <div class="contact-image-placeholder">
+                  <img src="{{ asset('images/card-port-contact.jpg') }}" >
+                </div>
+                
+                <p class="contact-image-author">— NEOGAUCHO</p>
+            </div>
         </div>
-      </div>
-
-
-       
-      
-      <!-- Medium: Archives of Galliano -->
-      <div class="bento-card bento-medium bento-plain">
-        <div>
-          <h3 class="bento-plain__title">De placares argentinos salen las mejores historias. ¿Nos compartís la tuya?</h3>
-          <div class="bento-plain__divider"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
+ 
+    </section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
