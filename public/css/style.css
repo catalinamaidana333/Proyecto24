@@ -1,9 +1,5 @@
 
-.log-img{
-    max-width: 250px;
-    height: auto;
-    
-}
+
 .row {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -472,12 +468,12 @@ h3 {
     }
     .hero__badge {
       display: inline-block;
-      padding: 0.25rem 1rem;
+      padding: 0.25rem 0.85rem;
       border-radius: var(--radius-pill);
       background: var(--tertiary-container);
       color: var(--on-tertiary-container);
       font-family: var(--font-label);
-      font-size: 2rem;
+      font-size: 1.5rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -729,7 +725,7 @@ margin-top: 0;
 /* Título h1 (principal) */
 .card-comercializacion h1 {
   color: var(--primary);      /* ← Rosa/rojo */
-  font-size: 2.2rem;
+  
   text-align: center;
 }
 
@@ -1197,6 +1193,6 @@ margin-top: 0;
   .footer-copy {
     color: #b0b0b0;
   }
-}
+
 
     
