@@ -604,9 +604,9 @@ margin-top: 0;
       background: var(--surface-container);
     }
     .product-card__img-wrap img {
-      width: auto; 
-    height: auto;
-    max-height: 300px;
+      width: 100%; 
+    height: 100%;
+    
     
       object-fit: cover;
       transition: transform 0.7s;
@@ -649,6 +649,12 @@ margin-top: 0;
       transition: opacity 0.2s;
     }
     .product-card:hover .product-card__btn { opacity: 1; }
+    /* ── Mobile: mejora visual de la imagen ──────────────── */
+@media (max-width: 768px) {
+  .product-card__img-wrap {
+    aspect-ratio: 1 / 1.2;
+  }
+}
 
 
 /* ═══ ESTILOS PARA PÁGINA QUIÉNES SOMOS ═══ */
