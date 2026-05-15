@@ -54,9 +54,9 @@
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
   <div class="hero__bg">
-    <img src="{{ asset('images/hero-portada.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+    <img src="{{ asset('images/card-port-contact.jpg') }}"  class="img-fluid" alt="Hero editorial"/>
   </div>
-  <div class="hero__overlay"></div>
+  
 <!--maybe dejo solo el badge y quito todo el title O SEA hay q editar css(class hero__title y accent, hero__subtitle-->
   <div class="hero__content">
     <div class="hero__badge">New Drop Live Now</div>

@@ -54,7 +54,7 @@
 
 <header class="hero">
   <div class="hero__bg">
-    <img src="{{ asset('images/carrusel-bottega.jpg') }}" class="img-fluid" alt="Hero editorial"/>
+    <img src="{{ asset('images/carrusel-bottega.jpg') }}"  alt="Hero editorial"/>
   </div>
 </header>
 
