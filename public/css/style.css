@@ -977,6 +977,21 @@ margin-top: 0;
    FOOTER RESPONSIVE - NEOGAUCHO
    ═══════════════════════════════════════════════════════════ */
 
+
+   .footer__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.footer-col__links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 /* ───── FOOTER CONTAINER ───── */
 .site-footer {
   background-color: #0a0a0a;
