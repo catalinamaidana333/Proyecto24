@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -23,6 +24,7 @@ class AuthController extends Controller
         ]);
     }
 
+
     public function autenticar(Request $request){
         $credenciales = $request->validate([ 
             'email' => 'required|email', 
@@ -31,7 +33,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credenciales)){
             $request->session()->regenerate();
-        if(Auth::user()->rol === 'admin'){
+        if(Auth::user()->rol_id === 1){
            return redirect('/admin');
         }
      return redirect('/cliente');
