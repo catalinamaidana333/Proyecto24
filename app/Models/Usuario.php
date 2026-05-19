@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Rol;  // ← Asegúrate de esto
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
