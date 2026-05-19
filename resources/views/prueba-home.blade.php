@@ -45,6 +45,28 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
+        @guest
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('login') }}">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('register') }}">Registro</a>
+  </li>
+@endguest
+
+@auth
+  @if(auth()->user()->role === 'admin')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('admin.dashboard') }}">Panel Admin</a>
+    </li>
+  @endif
+  <li class="nav-item">
+    <form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <button type="submit" class="nav-link" style="background:none;border:none;">Logout</button>
+    </form>
+  </li>
+@endauth
       </ul>
     </div>
   </div>

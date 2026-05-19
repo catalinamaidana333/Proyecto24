@@ -22,6 +22,397 @@ h3 {
 
 
 
+:root {
+        --primary: #b50058;
+        --primary-light: #ff709e;
+        --surface: #f9f6f5;
+        --surface-container: #eae7e7;
+        --text-primary: #2f2f2e;
+        --text-secondary: #5c5b5b;
+        --border: #dfdcdc;
+        --shadow: 0 4px 12px rgba(181, 0, 88, 0.08);
+        --shadow-lg: 20px 40px 40px rgba(181, 0, 88, 0.15);
+    }
+ 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+ 
+    body {
+        background-color: var(--surface);
+        color: var(--text-primary);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+ 
+    .login-container {
+        display: flex;
+        min-height: 100vh;
+        background: var(--surface);
+    }
+ 
+    /* LEFT SIDE - FORM */
+    .login-form-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        padding-top: 1.5rem;
+    }
+ 
+    @media (min-width: 768px) {
+        .login-form-section {
+            width: 50%;
+            padding: 4rem;
+        }
+    }
+ 
+    @media (min-width: 1024px) {
+        .login-form-section {
+            padding: 6rem;
+        }
+    }
+ 
+    /* Brand Header */
+    .brand-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+    }
+ 
+    .brand-text {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        color: var(--primary);
+        font-style: italic;
+        text-transform: uppercase;
+    }
+ 
+    /* Login Content */
+    .login-content {
+        max-width: 28rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+ 
+    .login-header {
+        margin-bottom: 3rem;
+    }
+ 
+    .login-header h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+ 
+    @media (min-width: 768px) {
+        .login-header h1 {
+            font-size: 3.5rem;
+        }
+    }
+ 
+    .login-header p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        opacity: 0.85;
+    }
+ 
+    /* Form Styles */
+    .login-form {
+        margin-bottom: 3rem;
+    }
+ 
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+ 
+    .form-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        margin-left: 0.5rem;
+    }
+ 
+    .form-label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 0.5rem;
+    }
+ 
+    .forgot-link {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+ 
+    .forgot-link:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+    }
+ 
+    .form-control {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border: 1px solid var(--border);
+        background-color: var(--surface-container);
+        border-radius: 1rem;
+        font-size: 1rem;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+ 
+    .form-control:focus {
+        outline: none;
+        background-color: white;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(181, 0, 88, 0.1);
+    }
+ 
+    .form-control::placeholder {
+        color: var(--text-secondary);
+        opacity: 0.6;
+    }
+ 
+    /* Password Input Wrapper */
+    .password-wrapper {
+        position: relative;
+    }
+ 
+    .password-toggle {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+        opacity: 0.5;
+    }
+ 
+    .password-toggle:hover {
+        opacity: 1;
+        color: var(--primary);
+    }
+ 
+    /* Submit Button */
+    .btn-submit {
+        width: 100%;
+        padding: 1.25rem;
+        margin-top: 1.5rem;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        font-weight: 900;
+        font-size: 0.875rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        font-family: inherit;
+    }
+ 
+    .btn-submit:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 50px rgba(181, 0, 88, 0.25);
+    }
+ 
+    .btn-submit:active {
+        transform: scale(0.95);
+    }
+ 
+    /* Divider */
+    .divider-section {
+        margin: 2rem 0;
+    }
+ 
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+ 
+    .divider-line {
+        flex: 1;
+        height: 1px;
+        background-color: var(--surface-container);
+    }
+ 
+    .divider-text {
+        font-size: 0.625rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        flex-shrink: 0;
+    }
+ 
+    /* Sign Up Link */
+    .signup-link-text {
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+    }
+ 
+    .signup-link-text a {
+        color: var(--primary);
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+ 
+    .signup-link-text a:hover {
+        text-decoration: underline;
+    }
+ 
+    /* Footer */
+    .login-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        opacity: 0.5;
+        margin-top: 3rem;
+        padding-top: 3rem;
+    }
+ 
+    .footer-links {
+        display: flex;
+        gap: 2rem;
+    }
+ 
+    .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+ 
+    .footer-links a:hover {
+        color: var(--primary);
+    }
+ 
+    /* RIGHT SIDE - IMAGE */
+    .login-image-section {
+        display: none;
+        width: 50%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(135deg, #f0e6eb 0%, #e8d4e2 100%);
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    @media (min-width: 768px) {
+        .login-image-section {
+            display: flex;
+        }
+    }
+ 
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+ 
+    .image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e8d4e2 0%, #d4b5d4 50%, #c09ec9 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: rgba(181, 0, 88, 0.3);
+        font-weight: 600;
+        text-align: center;
+        padding: 2rem;
+    }
+ 
+    
+    }
+ 
+    
+ 
+    /* Error Messages */
+    .alert {
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.875rem;
+        animation: slideDown 0.3s ease;
+    }
+ 
+    
+ 
+    .alert-danger {
+        background-color: #ffebee;
+        color: #c62828;
+        border: 1px solid #ef5350;
+    }
+ 
+    .alert-success {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #66bb6a;
+    }
+ 
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .login-form-section {
+            padding: 1.5rem;
+        }
+ 
+        .login-header h1 {
+            font-size: 1.875rem;
+        }
+ 
+        .brand-text {
+            font-size: 1.125rem;
+        }
+ 
+        .login-footer {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+ 
+        .footer-links {
+            gap: 1.5rem;
+        }
+    }
+
+
+
     /* ── Var ─────────────────────────────────────── */
     :root {
       --primary:            #75063c;
