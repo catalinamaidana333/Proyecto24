@@ -58,7 +58,8 @@
   </div>
 </header>
 
-<div class="row g-4" style="margin-top: 5rem;">
+<div class="container-xl px-3 px-md-4">
+  <div class="row g-4" style="margin-top: 5rem;">
       <!-- Card 1 -->
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <div class="product-card">
