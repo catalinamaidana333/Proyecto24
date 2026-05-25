@@ -54,24 +54,37 @@
   </li>
 @endguest
 
-@auth
-  @if(auth()->user()->role === 'admin')
-    <li class="nav-item">
-      <a class="nav-link" href="{{ route('admin.dashboard') }}">Panel Admin</a>
-    </li>
-  @endif
-  <li class="nav-item">
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <button type="submit" class="nav-link" style="background:none;border:none;">Logout</button>
-    </form>
-  </li>
-@endauth
+<!-- Usuario autenticado -->
+        @auth
+          <!-- Solo si es admin (rol_id = 1) -->
+          @if(auth()->user()->rol_id === 1)
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.dashboard') }}">Panel Admin</a>
+            </li>
+          @endif
+          
+          <!-- Mostrar nombre del usuario y logout -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ auth()->user()->nombre }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        @endauth
       </ul>
     </div>
   </div>
 </nav>
- 
+
+
+
 
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <header class="hero">
