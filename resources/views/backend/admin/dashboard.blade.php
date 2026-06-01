@@ -447,6 +447,23 @@
         </div>
     </div>
 
+    <div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>📦 Productos</h5>
+                <p class="text-muted">Crear, editar y eliminar productos</p>
+                <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm">
+                    ➕ Crear Producto
+                </a>
+                <a href="{{ route('productos.index') }}" class="btn btn-info btn-sm">
+                    📋 Ver Catálogo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="dashboard-content">
         <!-- ═══ STATS CARDS ═══ -->
