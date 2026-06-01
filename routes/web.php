@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 //para que no lance que ContactoController es clase indefinida
 use App\Http\Controllers\ContactoController;
@@ -67,3 +68,4 @@ Route::middleware('auth')->group(function () {
         return "Bienvenido Cliente: " . Auth::user()->nombre;
     })->name('cliente');
 });
+Route::resource('productos', ProductoController::class);
