@@ -31,7 +31,7 @@
           <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
+          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
@@ -81,11 +81,12 @@
 
         @auth
             @php
-                // Consultamos directamente el carrito de base de datos del usuario logueado
+                
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
-                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : [];
-            @php
+                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+                
+            @endphp
 
             <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
                 <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
@@ -238,7 +239,7 @@
     </div>
     <!-- View More Button -->
   <div class="d-flex justify-content-center mt-5">
-  <a href="{{ route('productos') }}" class="btn-view-more">
+  <a href="{{ route('productos.index') }}" class="btn-view-more">
     View More
   </a>
 </div>
@@ -263,7 +264,7 @@
           <h3 class="bento-card__title">Edición<br/>de Culto</h3>
           <p class="bento-card__body">Piel de cristal, nervios de neón y una fuerza bruta que no conoce el cautiverio. El jaguareté de archivo: donde la estética de vanguardia se encuentra con el poder puro.</p>
           
-          <a href="{{ route('productos') }}" class="btn-teal-pill">
+          <a href="{{ route('productos.index') }}" class="btn-teal-pill">
     <span class="btn-text">Seguir el rastro</span>
     <span class="btn-icon">→</span>
 </a>
@@ -286,7 +287,7 @@
           <h3 class="bento-plain__title">Archives<br/>of<br/>Galliano</h3>
           <div class="bento-plain__divider"></div>
         </div>
-        <a href="{{ route('productos') }}"  class="bento-plain__link">
+        <a href="{{ route('productos.index') }}"  class="bento-plain__link">
           View <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
         </a>
       </div>
@@ -316,7 +317,7 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
           <li><a href="{{ route('terminos')}}">Contacto</a></li>
           
