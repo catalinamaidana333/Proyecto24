@@ -33,7 +33,7 @@
           <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
+          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
@@ -51,11 +51,12 @@
 
         @auth
             @php
-                // Consultamos directamente el carrito de base de datos del usuario logueado
+                
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
-                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : [];
-            @php
+                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+                
+            @endphp
 
             <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
                 <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
@@ -120,172 +121,27 @@
 
 <div class="container-xl px-3 px-md-4">
   <div class="row g-4" style="margin-top: 5rem;">
-      <!-- Card 1 -->
+    @foreach($productos as $producto)
+      <!-- Card -->
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <a href="{{ route('productos.show', $producto->id) }}" class="product-card-link">
         <div class="product-card">
           <div class="product-card__img-wrap">
-            <img src="{{ asset('images/givenchy-bag1.jpg') }}" alt="Galliano Era Blazer"/>
+            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
           </div>
           <div class="product-card__body">
             <div class="product-card__header">
-              <span class="product-card__name">Givenchy Antigona Tote</span>
-              <span class="product-card__price">$1,240</span>
+              <span class="product-card__name">{{ $producto->nombre }}</span>
+              <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
             </div>
-            <p class="product-card__sub mb-0">Archival Runway 2002</p>
+            <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
             <button class="product-card__btn">Add to Bag</button>
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/marcjacobs-tshirt1.jpg') }}" alt="Cyber-Tech Stilettos"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Devon Lee Bad Girl</span>
-              <span class="product-card__price">$890</span>
-            </div>
-            <p class="product-card__sub mb-0">Collection Heaven by Marc Jacobs </p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/cityofgod-tshirt.jpg') }}" alt="Deconstructed Denim"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Ciudad de Dios</span>
-              <span class="product-card__price">$550</span>
-            </div>
-            <p class="product-card__sub mb-0">si te quedas el bicho te come</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/chanel-bag1.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Chanel Metiers d'Art</span>
-              <span class="product-card__price">$2,100</span>
-            </div>
-            <p class="product-card__sub mb-0">Archival</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 5 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/diesel-furry.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Diesel Fur Coat</span>
-              <span class="product-card__price">$3,490</span>
-            </div>
-            <p class="product-card__sub mb-0">Luxurious faux fur in a rich beige hue</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 6 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/dior-sunglasses.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name"> Christian Dior Your Dior 2 </span>
-              <span class="product-card__price">$390</span>
-            </div>
-            <p class="product-card__sub mb-0">Ombre Logo Sunglasses</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 7 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/area-bra.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Area miniBra</span>
-              <span class="product-card__price">$1,250</span>
-            </div>
-            <p class="product-card__sub mb-0">Archival 2018</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 8 no se pq se ve de distinto tamaño y rompe la card-->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/puma-speedcat.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">DUPE Bekett leather</span>
-              <span class="product-card__price">$1,590</span>
-            </div>
-            <p class="product-card__sub mb-0">Suede wedge sneakers</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 9 no se pq se ve de distinto tamaño y rompe la card MAS CHICA-->
-      
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/dior-corset1.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">ISABEL MARANT</span>
-              <span class="product-card__price">$2,100</span>
-            </div>
-            <p class="product-card__sub mb-0">Suede wedge sneakers</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/miss-sixty-belt.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">ISABEL MARANT</span>
-              <span class="product-card__price">$2,100</span>
-            </div>
-            <p class="product-card__sub mb-0">Suede wedge sneakers</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-    
-
-
-    </div>
-
+    @endforeach
+  </div>
+</div>
 
  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer class="site-footer pb-5">
@@ -305,7 +161,7 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
           <li><a href="{{ route('terminos')}}">Contacto</a></li>
           
