@@ -21,10 +21,7 @@ Route::get('/prueba-home', function () {
 return view('prueba-home');
 })->name('home');
 
-//no se si esta forma de rutear esta bien(? ANDUVO
-Route::get('/catalogo-productos', function (){
-    return view('catalogo-productos');
-})->name('productos');
+
 
 Route::get('/terminos-y-condiciones', function () {
     return view('terminos-y-condiciones');
