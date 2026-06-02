@@ -67,3 +67,25 @@ Route::middleware('auth')->group(function () {
         return "Bienvenido Cliente: " . Auth::user()->nombre;
     })->name('cliente');
 });
+
+use App\Http\Controllers\CarritoController;
+
+// Todas las rutas dentro de este grupo exigen inicio de sesión obligatorio
+Route::middleware(['auth'])->group(function () {
+    
+    // Ver pantalla del carrito
+    Route::get('/carrito', [CarritoController::class, 'index'])->name('cliente.carrito');
+    
+    // Operaciones del carrito
+    Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+    Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+    Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
+
+    // Pantalla de Éxito posterior a la compra
+    Route::get('/compra-confirmada', function () {
+        if (!session('total')) {
+            return redirect()->route('home');
+        }
+        return view('backend.usuarios.compra-confirmada');
+    })->name('compra.confirmada');
+});
