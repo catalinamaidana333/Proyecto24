@@ -29,6 +29,32 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
+
+    <div class="container-xl px-3 px-md-4">
+  <div class="row g-4" style="margin-top: 5rem;">
+    @foreach($productos as $producto)
+      <!-- Card -->
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="product-card-link">
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__header">
+              <span class="product-card__name">{{ $producto->nombre }}</span>
+              <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
+            </div>
+            <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
+            <button class="product-card__btn">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+</div>
+
+
  
     <!-- TABLA DE PRODUCTOS -->
     <div class="card">

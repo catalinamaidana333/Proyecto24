@@ -20,6 +20,16 @@ class ProductoController extends Controller
             return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
         }
     }
+    public function indexAdmin()
+    {
+        try {
+            $productos = Producto::orderBy('created_at', 'desc')->paginate(10);
+            //cambiar nombre catalogo ---> index
+            return view('backend.admin.productos.index', compact('productos'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
+        }
+    }
 
     // Mostrar formulario para crear
     public function create()
@@ -67,10 +77,11 @@ class ProductoController extends Controller
 }
 
     // Mostrar formulario para editar
-    public function edit(Producto $producto)
-    {
-        return view('productos.edit', compact('producto'));
-    }
+    public function edit($id)
+{
+    $producto = Producto::findOrFail($id);
+    return view('backend.admin.productos.editar', compact('producto'));
+}
 
     // Actualizar en BD
     public function update(UpdateProductoRequest $request, Producto $producto)
