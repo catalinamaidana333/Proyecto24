@@ -42,12 +42,18 @@ Route::get('/register', [AuthController::class, 'formularioRegistro'])->name('re
 Route::post('/register', [AuthController::class, 'registrar'])->name('registrar');
 
 // Logout - necesita auth
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin - necesita auth + middleware admin
-Route::middleware(['auth', 'rol:admin'])->group(function () {
+Route::middleware(['auth', 'rol:1'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-});
+    //crud (admin)probar
+    Route::get('/admin/productos', [ProductoController::class, 'indexAdmin'])->name('admin.productos.index');
+    Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
+    Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
+
+    });
 
 
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
