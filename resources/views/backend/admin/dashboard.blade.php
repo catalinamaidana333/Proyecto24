@@ -456,7 +456,8 @@
                 <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm">
                     ➕ Crear Producto
                 </a>
-                <a href="{{ route('productos.index') }}" class="btn btn-info btn-sm">
+                 
+                <a href="{{ route('admin.productos.index') }}" class="btn btn-info btn-sm">
                     📋 Ver Catálogo
                 </a>
             </div>
