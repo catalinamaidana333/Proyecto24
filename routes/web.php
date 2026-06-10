@@ -2,6 +2,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 //para que no lance que ContactoController es clase indefinida
 use App\Http\Controllers\ContactoController;
@@ -72,7 +73,6 @@ Route::middleware('auth')->group(function () {
     })->name('cliente');
 });
 
-use App\Http\Controllers\CarritoController;
 
 // Todas las rutas dentro de este grupo exigen inicio de sesión obligatorio
 Route::middleware(['auth'])->group(function () {
