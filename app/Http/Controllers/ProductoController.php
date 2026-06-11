@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\ProductoTalle;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   
-    // Listar todos los productos
+   // Listar todos los productos (VISTA CLIENTE - SOLO ACTIVOS)
     public function index()
     {
         try {
-            $productos = Producto::orderBy('created_at', 'desc')->paginate(10);
+            // Agregamos el filtro where antes del ordenamiento y la paginación
+            $productos = Producto::where('estado', 'activo')
+                                 ->orderBy('created_at', 'desc')
+                                 ->paginate(10);
+                                 
             return view('productos.index', compact('productos'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
         }
     }
+
+    // Listar todos los productos (VISTA ADMIN - TOTALES)
     public function indexAdmin()
     {
         try {
+            // Este queda exactamente igual porque el admin SI tiene que ver los inactivos
             $productos = Producto::orderBy('created_at', 'desc')->paginate(10);
-            //cambiar nombre catalogo ---> index
+            
             return view('backend.admin.productos.index', compact('productos'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
@@ -34,45 +41,78 @@ class ProductoController extends Controller
     // Mostrar formulario para crear
     public function create()
     {
-        return view('backend.admin.productos.crear');    }
-
-    // Guardar en BD
-    public function store(StoreProductoRequest $request)
-    {
-    try {
-        // Obtenemos los datos ya validados por tu FormRequest
-        $validated = $request->validated();
-
-        // Laravel se encarga de generar un nombre único y seguro automáticamente
-        //Verifica si el campo "imagen" existe.
-        //Verifica si lo que enviaron es realmente un archivo (y no un texto raro que alguien inyectó).
-        //Verifica si el archivo terminó de subirse correctamente al servidor sin corromperse por un fallo de internet del usuario.
-        if ($request->hasFile('imagen')) {
-            // Guardamos en 'storage/app/public/productos'
-            // store() devuelve la ruta relativa automáticamente
-            $rutaImagen = $request->file('imagen')->store('productos', 'public');
-            
-            // Asignamos la ruta al array que se guardará en la BD
-            $validated['imagen'] = $rutaImagen;
+        $categorias = \App\Models\Categoria::all();
+    
+    return view('backend.admin.productos.crear', compact('categorias'));
         }
 
-        Producto::create($validated);
- // hay q cambiar la ruta segun lo q definamos en web.php
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto creado correctamente');
-            
-    } catch (\Exception $e) {
-        return redirect()->back()
-            ->with('error', 'Error al crear producto: ' . $e->getMessage())
-            // agarra todos los textos, números y opciones que el usuario
-            //  había llenado en el formulario y se los lleva de vuelta a la vista
-            ->withInput();
+    // Guardar en BD
+    public function store(Request $request)
+{
+    // 1. Validaciones básicas de los campos
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'categoria_id' => 'required|exists:categorias,id',
+        'descripcion' => 'nullable|string',
+        'descripcion_drop' => 'nullable|string',
+        'diseñador' => 'nullable|string|max:255',
+        'año' => 'nullable|integer|min:1900|max:'.date('Y'),
+        'material' => 'nullable|string|max:255',
+        'precio' => 'required|numeric|min:0',
+        'estado' => 'required|in:activo,inactivo',
+        'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'talles' => 'required|array', 
+    ]);
+
+    // 2. Filtramos cuáles talles vinieron tildados en el formulario
+    $tallesActivos = array_filter($request->talles, function($item) {
+        return isset($item['activo']) && ($item['activo'] == '1' || $item['activo'] == 1);
+    });
+
+    // 3. Control básico: Que al menos hayan elegido UN talle para tener stock
+    if (count($tallesActivos) < 1) {
+        return back()->withInput()->withErrors([
+            'talles' => 'Debes seleccionar al menos un talle y asignarle stock.'
+        ]);
     }
+
+    // 4. Manejo de la subida de imagen
+    $rutaImagen = null;
+    if ($request->hasFile('imagen')) {
+        $rutaImagen = $request->file('imagen')->store('productos', 'public');
+    }
+
+    // 5. Creamos el Producto principal en la tabla 'productos'
+    $producto = Producto::create([
+        'nombre' => $request->nombre,
+        'categoria_id' => $request->categoria_id,
+        'descripcion' => $request->descripcion,
+        'descripcion_drop' => $request->descripcion_drop,
+        'diseñador' => $request->diseñador,
+        'año' => $request->año,
+        'material' => $request->material,
+        'precio' => $request->precio,
+        'estado' => $request->estado,
+        'imagen' => $rutaImagen
+    ]);
+
+    // 6. Guardamos los talles seleccionados en la tabla 'producto_talles'
+    foreach ($tallesActivos as $nombreTalle => $datos) {
+        $talleLimpio = trim($nombreTalle, "'\"");
+        
+        \App\Models\ProductoTalle::create([
+            'producto_id' => $producto->id,
+            'talle' => $talleLimpio,
+            'stock' => $datos['stock'] ?? 1
+        ]);
+    }
+
+    return redirect()->route('productos.index')->with('success', '¡Producto creado con éxito!');
 }
 
     // Mostrar un producto específico
     public function show($id) {
-    $producto = Producto::findOrFail($id);
+    $producto = Producto::with('talles')->findOrFail($id);
     return view('productos.show', compact('producto'));
 }
 
@@ -113,14 +153,11 @@ class ProductoController extends Controller
         }
     }
 
-    // Eliminar de BD
+    // BAJA LOGICA  de BD (probando)
     public function destroy(Producto $producto)
     {
         try {
-            // Eliminar imagen si existe
-            if ($producto->imagen && file_exists(public_path($producto->imagen))) {
-                unlink(public_path($producto->imagen));
-            }
+            
 
             $producto->delete();
 
