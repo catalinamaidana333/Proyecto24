@@ -13,6 +13,11 @@
     
     <!-- Material Symbols Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+   <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
     
     <style>
         /* ============================================
@@ -838,27 +843,100 @@
     <!-- =============================================
          NAVBAR
          ============================================ -->
-    <nav class="navbar-custom">
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div class="navbar-brand-text">THE ARCHIVE</div>
-            
-            <div class="navbar-nav" style="display: flex; gap: 0; align-items: center;">
-                <a href="#" class="navbar-nav-link active">Shop</a>
-                <a href="#" class="navbar-nav-link">Drops</a>
-                <a href="#" class="navbar-nav-link">Editorial</a>
-                <a href="#" class="navbar-nav-link">Curated</a>
-            </div>
+    <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-0">
+    <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('home')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
+        </li>
+        
 
-            <div class="navbar-icons">
-                <button class="navbar-icon-btn">
-                    <span class="material-symbols-outlined">shopping_bag</span>
-                </button>
-                <button class="menu-toggle">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+        @auth
+            @php
+                
+                $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
+                $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
+                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+                
+            @endphp
+
+            <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
+                <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
+                   href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--text-primary); border: none;">
+                    <span class="material-symbols-outlined me-1" style="font-size: 1.4rem; vertical-align: middle;">shopping_bag</span>
+                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">Bag</span>
+                    
+                    @if($total_prendas > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
+                              style="font-size: 0.65rem; background-color: var(--primary); padding: 0.35em 0.5em;">
+                            {{ $total_prendas }}
+                        </span>
+                    @endif
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end p-3 border-0 shadow" aria-labelledby="cartDropdown" style="width: 320px; border-radius: 12px; background-color: #ffffff;">
+                    <h6 class="dropdown-header px-0 fw-bold border-bottom pb-2 mb-3" style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary);">
+                        TU CARTERA
+                    </h6>
+                    
+                    @if($items_flotantes->isEmpty())
+                        <div class="text-center py-3 text-muted">
+                            <p class="mb-0 small" style="font-family: 'Manrope', sans-serif;">Tu bolsa está vacía.</p>
+                        </div>
+                    @else
+                        <div style="max-height: 200px; overflow-y: auto;">
+                            @foreach($items_flotantes as $item)
+                                <div class="d-flex align-items-center mb-2 pb-2 border-bottom">
+                                    <div class="flex-grow-1">
+                                        <h6 class="my-0 small fw-bold text-truncate" style="max-width: 150px;">{{ $item->producto->nombre }}</h6>
+                                        <small class="text-muted">{{ $item->cantidad }} x ${{ number_format($item->precio_unitario, 0, ',', '.') }}</small>
+                                    </div>
+                                    <form action="{{ route('carrito.eliminar', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-link text-danger p-0 shadow-none">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="pt-2">
+                            <a href="{{ route('cliente.carrito') }}" class="btn text-white w-100 btn-sm text-uppercase fw-bold" style="background-color: var(--primary);">
+                                Ver Cartera Completa
+                            </a>
+                        </div>
+                    @endif
+                </div>
+            </li>
+        @endauth
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
     <!-- =============================================
          MAIN CONTENT
@@ -936,30 +1014,55 @@
                         </div>
 
                         <!-- SELECTOR DE CANTIDAD -->
-                        <form method="POST" action="/agregar-carrito">
-                            <div class="quantity-section">
-                                <label for="quantity" class="quantity-label">Cantidad</label>
-                                <div class="quantity-selector">
-                                    <button type="button" class="quantity-btn" onclick="decreaseQuantity()">−</button>
-                                    <input 
-                                        type="number" 
-                                        id="quantity" 
-                                        name="cantidad" 
-                                        class="quantity-input" 
-                                        value="1" 
-                                        min="1" 
-                                        max="10"
-                                        step="1"
-                                        required
-                                    >
-                                    <button type="button" class="quantity-btn" onclick="increaseQuantity()">+</button>
-                                </div>
-                                <small style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.75rem;">Stock disponible: 3 unidades</small>
-                            </div>
+                        <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST">
+                            @csrf 
+    
 
-                            <!-- Botones de acción -->
-                            <button type="submit" class="btn-add-to-bag">Add to Bag</button>
-                        </form>
+    <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+
+    <div class="quantity-section">
+        <label for="quantity" class="quantity-label">Cantidad</label>
+        <div class="quantity-selector">
+            <button type="button" class="quantity-btn" onclick="decreaseQuantity()">−</button>
+            <input 
+                type="number" 
+                id="quantity" 
+                name="cantidad" 
+                class="quantity-input" 
+                value="1" 
+                min="1" 
+                max="{{ $producto->stock }}" step="1"
+                required
+            >
+            <button type="button" class="quantity-btn" onclick="increaseQuantity()">+</button>
+        </div>
+        <div class="size-section" style="margin-bottom: 1.5rem;">
+    <label for="talle" class="size-label" style="display:block; margin-bottom:0.5rem; font-weight:bold;">Seleccionar Talle / Medida</label>
+    <select name="talle" id="talle" class="size-select" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--color-pink-primary); bg-color: black; color: white;" required>
+        <option value="" disabled selected>Elegí tu opción</option>
+        
+        @if($producto->talles && $producto->talles->count() > 0)
+            @foreach($producto->talles as $itemTalle)
+                @if($itemTalle->stock > 0)
+                    <option value="{{ $itemTalle->talle }}">
+                        {{ strtoupper($itemTalle->talle) }} 
+                        @if($itemTalle->talle === 'único' || $itemTalle->talle === 'unico')
+                            (Pieza Única de Colección)
+                        @else
+                            (Stock: {{ $itemTalle->stock }} u.)
+                        @endif
+                    </option>
+                @endif
+            @endforeach
+        @else
+            <option value="único">ÚNICO (Disponible)</option>
+        @endif
+    </select>
+</div>
+    </div>
+
+    <button type="submit" class="btn-add-to-bag">Add to Bag</button>
+</form>
 
                         <button class="btn-waitlist">Join the Waitlist</button>
 

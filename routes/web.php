@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/carrito', [CarritoController::class, 'index'])->name('cliente.carrito');
     
     // Operaciones del carrito
-    Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+    Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
     Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
 
@@ -94,3 +94,5 @@ Route::middleware(['auth'])->group(function () {
     })->name('compra.confirmada');
 });
 Route::resource('productos', ProductoController::class);
+
+
