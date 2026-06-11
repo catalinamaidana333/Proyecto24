@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http/Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\VentaCabecera;
 use App\Models\VentaDetalle;
+use App\Models\ProductoTalle;
 use App\Models\Producto; // Tu modelo de productos
 use Illuminate\Support\Facades\DB;
 
@@ -32,46 +33,66 @@ class CarritoController extends Controller
     }
 
     // Agregar producto al carrito con validación de Stock
-    public function agregar(Request $request)
-    {
-        $request->validate([
-            'producto_id' => 'required|exists:productos,id',
-            'cantidad' => 'required|integer|min:1',
-        ]);
+public function agregar(Request $request, $id)
+{
+    // 1. Validamos que el talle y la cantidad viajen correctamente
+    $request->validate([
+        'talle' => 'required|string',
+        'cantidad' => 'required|integer|min:1'
+    ]);
 
-        $producto = Producto::findOrFail($request->producto_id);
+    $talleElegido = $request->talle;
+    $cantidadPedida = $request->cantidad;
 
-        // Buscar si el producto ya está en el carrito para evaluar la cantidad acumulada
-        $carrito = $this->obtenerCarrito();
-        $itemExistente = $carrito->detalles()->where('producto_id', $producto->id)->first();
-        
-        $cantidadTotalALlevar = $request->cantidad;
-        if ($itemExistente) {
-            $cantidadTotalALlevar += $itemExistente->cantidad;
-        }
+    // 2. Buscamos el producto en la tabla principal
+    $producto = \App\Models\Producto::findOrFail($id);
 
-        // CONTROL DE STOCK CONTRA NEGATIVOS
-        if ($producto->stock < $cantidadTotalALlevar) {
-            return back()->with('error', "No hay suficiente stock. Disponible: {$producto->stock} unidades.");
-        }
+    // 3. Buscamos el stock exacto en la tabla producto_talles
+    $registroTalle = \App\Models\ProductoTalle::where('producto_id', $id)
+                                              ->where('talle', $talleElegido)
+                                              ->first();
 
-        if ($itemExistente) {
-            $itemExistente->cantidad = $cantidadTotalALlevar;
-            $itemExistente->subtotal = $itemExistente->cantidad * $itemExistente->precio_unitario;
-            $itemExistente->save();
-        } else {
-            $carrito->detalles()->create([
-                'producto_id' => $producto->id,
-                'cantidad' => $request->cantidad,
-                'precio_unitario' => $producto->precio,
-                'subtotal' => $producto->precio * $request->cantidad,
-            ]);
-        }
-
-        $this->recalcularTotal($carrito);
-
-        return back()->with('success', 'Producto agregado al carrito con éxito.');
+    // 💡 SALVADO DE ACENTOS EXTREMO: 
+    // Si no lo encuentra con acento (ej: 'único'), probamos buscarlo sin acento (ej: 'unico') o viceversa
+    if (!$registroTalle) {
+        $talleAlternativo = str_contains($talleElegido, 'único') ? 'unico' : 'único';
+        $registroTalle = \App\Models\ProductoTalle::where('producto_id', $id)
+                                                  ->where('talle', $talleAlternativo)
+                                                  ->first();
     }
+
+    // 4. Si la base de datos de verdad no tiene ese talle o no alcanza el stock, rebotamos
+    if (!$registroTalle || $registroTalle->stock < $cantidadPedida) {
+        return back()->with('error', 'Lo sentimos, no hay stock disponible para este talle.');
+    }
+
+    // 5. LÓGICA DE LA SESIÓN: Guardamos el artículo en el carrito
+    $carrito = session()->get('carrito', []);
+
+    // Creamos una clave única (ID-Talle) para que no se pisen si agregan talles distintos de un mismo producto
+    $itemKey = $id . '-' . $registroTalle->talle;
+
+    if (isset($carrito[$itemKey])) {
+        $carrito[$itemKey]['cantidad'] += $cantidadPedida;
+    } else {
+        $carrito[$itemKey] = [
+            "id" => $producto->id,
+            "nombre" => $producto->nombre,
+            "cantidad" => $cantidadPedida,
+            "precio" => $producto->precio,
+            "talle" => $registroTalle->talle,
+            "imagen" => $producto->imagen
+        ];
+    }
+
+    // Guardamos los cambios en la sesión de Laravel
+    session()->put('carrito', $carrito);
+
+    session()->save();
+
+    // 6. Volvemos a la pantalla con un mensaje explícito de éxito
+    return back()->with('success', '¡El producto se añadió correctamente a tu bolsa!');
+}
 
     // Eliminar un producto del carrito
     public function eliminar($id)
