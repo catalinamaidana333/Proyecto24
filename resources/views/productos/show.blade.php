@@ -879,6 +879,8 @@
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
                 $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+
+                $precio_total = $mi_carrito ? $mi_carrito->detalles()->sum('subtotal') : 0;
                 
             @endphp
 
@@ -922,6 +924,12 @@
                                     </form>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 my-2 border-bottom">
+                            <span class="fw-bold small text-uppercase" style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary);">Total:</span>
+                            <span class="fw-bold" style="color: var(--primary); font-family: 'Space Grotesk', sans-serif;">
+                                ${{ number_format($precio_total, 0, ',', '.') }}
+                            </span>
                         </div>
                         <div class="pt-2">
                             <a href="{{ route('cliente.carrito') }}" class="btn text-white w-100 btn-sm text-uppercase fw-bold" style="background-color: var(--primary);">
