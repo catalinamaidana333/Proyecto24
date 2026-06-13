@@ -8,6 +8,8 @@ use App\Models\VentaDetalle;
 use App\Models\ProductoTalle;
 use App\Models\Producto; // Tu modelo de productos
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class CarritoController extends Controller
 {
@@ -33,9 +35,11 @@ class CarritoController extends Controller
     }
 
     // Agregar producto al carrito con validación de Stock
+
+
 public function agregar(Request $request, $id)
 {
-    // 1. Validamos que el talle y la cantidad viajen correctamente
+    // 1. Validar la petición
     $request->validate([
         'talle' => 'required|string',
         'cantidad' => 'required|integer|min:1'
@@ -44,54 +48,71 @@ public function agregar(Request $request, $id)
     $talleElegido = $request->talle;
     $cantidadPedida = $request->cantidad;
 
-    // 2. Buscamos el producto en la tabla principal
-    $producto = \App\Models\Producto::findOrFail($id);
+    // 2. Buscar el producto y validar stock real en la tabla intermedia
+    $producto = Producto::findOrFail($id);
+    $registroTalle = ProductoTalle::where('producto_id', $id)
+                                  ->where('talle', $talleElegido)
+                                  ->first();
 
-    // 3. Buscamos el stock exacto en la tabla producto_talles
-    $registroTalle = \App\Models\ProductoTalle::where('producto_id', $id)
-                                              ->where('talle', $talleElegido)
-                                              ->first();
-
-    // 💡 SALVADO DE ACENTOS EXTREMO: 
-    // Si no lo encuentra con acento (ej: 'único'), probamos buscarlo sin acento (ej: 'unico') o viceversa
+    // Salvado por si viene con/sin acento el talle único
     if (!$registroTalle) {
         $talleAlternativo = str_contains($talleElegido, 'único') ? 'unico' : 'único';
-        $registroTalle = \App\Models\ProductoTalle::where('producto_id', $id)
-                                                  ->where('talle', $talleAlternativo)
-                                                  ->first();
+        $registroTalle = ProductoTalle::where('producto_id', $id)
+                                      ->where('talle', $talleAlternativo)
+                                      ->first();
     }
 
-    // 4. Si la base de datos de verdad no tiene ese talle o no alcanza el stock, rebotamos
     if (!$registroTalle || $registroTalle->stock < $cantidadPedida) {
-        return back()->with('error', 'Lo sentimos, no hay stock disponible para este talle.');
+        return back()->with('error', 'Lo sentimos, no hay stock disponible.');
     }
 
-    // 5. LÓGICA DE LA SESIÓN: Guardamos el artículo en el carrito
-    $carrito = session()->get('carrito', []);
+    // 3. 🎯 LÓGICA DE BASE DE DATOS (Mismo puente que lee tu Navbar)
+    // Buscamos si el usuario ya tiene un carrito abierto en la base de datos
+    $mi_carrito = VentaCabecera::where('user_id', Auth::id())
+                                ->where('estado', 'carrito')
+                                ->first();
 
-    // Creamos una clave única (ID-Talle) para que no se pisen si agregan talles distintos de un mismo producto
-    $itemKey = $id . '-' . $registroTalle->talle;
+    // Si no tiene ninguno abierto, se lo creamos de cero
+    if (!$mi_carrito) {
+        $mi_carrito = VentaCabecera::create([
+            'user_id' => Auth::id(),
+            'fecha' => now(), // O los campos obligatorios que tenga tu tabla cabecera
+            'estado' => 'carrito',
+            'total' => 0
+        ]);
+    }
 
-    if (isset($carrito[$itemKey])) {
-        $carrito[$itemKey]['cantidad'] += $cantidadPedida;
+    // 4. Buscamos si este mismo producto con este mismo talle ya estaba metido en el detalle
+    // (Ajustá los nombres de las columnas si en tu tabla se llaman diferente)
+    $detalleExistente = $mi_carrito->detalles()
+                                   ->where('producto_id', $producto->id)
+                                   ->where('talle', $registroTalle->talle) 
+                                   ->first();
+
+// 4. 🎯 GUARDADO TOTAL: Creamos o actualizamos el detalle con subtotales
+    if ($detalleExistente) {
+        // Si ya existía el mismo producto y talle, sumamos cantidad y recalculamos subtotal
+        $detalleExistente->cantidad += $cantidadPedida;
+        $detalleExistente->subtotal = $detalleExistente->cantidad * $detalleExistente->precio_unitario;
+        $detalleExistente->save();
     } else {
-        $carrito[$itemKey] = [
-            "id" => $producto->id,
-            "nombre" => $producto->nombre,
-            "cantidad" => $cantidadPedida,
-            "precio" => $producto->precio,
-            "talle" => $registroTalle->talle,
-            "imagen" => $producto->imagen
-        ];
+        // Si es nuevo, creamos la fila pasándole TODAS las columnas obligatorias
+        $mi_carrito->detalles()->create([
+            'producto_id' => $producto->id,
+            'cantidad' => $cantidadPedida,
+            'precio_unitario' => $producto->precio,
+            'talle' => $registroTalle->talle,
+            'subtotal' => $cantidadPedida * $producto->precio // 👈 ¡Acá mandamos el subtotal calculado!
+        ]);
     }
 
-    // Guardamos los cambios en la sesión de Laravel
-    session()->put('carrito', $carrito);
+    // (Opcional) Recalcular el total general de la cabecera si tu tabla lo requiere
+    $nuevoTotal = $mi_carrito->detalles->sum(function($d) {
+        return $d->cantidad * $d->precio_unitario;
+    });
+    $mi_carrito->update(['total' => $nuevoTotal]);
 
-    session()->save();
-
-    // 6. Volvemos a la pantalla con un mensaje explícito de éxito
-    return back()->with('success', '¡El producto se añadió correctamente a tu bolsa!');
+    return back()->with('success', '¡Pieza añadida a tu cartera con éxito!');
 }
 
     // Eliminar un producto del carrito
@@ -105,52 +126,58 @@ public function agregar(Request $request, $id)
         return back()->with('success', 'Producto removido de tu cartera.');
     }
 
-    // Confirmar la compra y Descontar el Stock definitivamente
-    public function confirmar()
-    {
-        $carrito = $this->obtenerCarrito();
-        $items = $carrito->detalles()->with('producto')->get();
+   public function confirmar()
+{
+    $carrito = $this->obtenerCarrito();
+    $items = $carrito->detalles()->with('producto')->get();
 
-        if ($items->count() === 0) {
-            return back()->with('error', 'Tu cartera está vacía.');
-        }
-
-        // Transacción segura: si un producto se quedó sin stock en el proceso, se cancela todo
-        DB::beginTransaction();
-        try {
-            foreach ($items as $item) {
-                $producto = Producto::lockForUpdate()->find($item->producto_id);
-
-                if ($producto->stock < $item->cantidad) {
-                    DB::rollBack();
-                    return redirect()->route('cliente.carrito')->with('error', "El producto {$producto->nombre} ya no cuenta con stock suficiente.");
-                }
-
-                // Descontamos el stock de la base de datos
-                $producto->stock -= $item->cantidad;
-                $producto->save();
-            }
-
-            $total = $carrito->total;
-
-            // Cambiamos el estado finalizado
-            $carrito->update([
-                'estado' => 'confirmado',
-                'fecha_venta' => now(),
-            ]);
-
-            DB::commit();
-
-            return redirect()->route('compra.confirmada')
-                ->with('items', $items)
-                ->with('total', $total);
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->with('error', 'Hubo un inconveniente al procesar tu orden.');
-        }
+    if ($items->count() === 0) {
+        return back()->with('error', 'Tu cartera está vacía.');
     }
 
+    // Transacción segura: si un producto se quedó sin stock en el proceso, se cancela todo
+    DB::beginTransaction();
+    try {
+        foreach ($items as $item) {
+            // 1. 🧠 CRÍTICO: Buscamos el stock REAL en la tabla intermedia 'producto_talles'
+            // Bloqueamos la fila con lockForUpdate() para evitar que compren la misma prenda a la vez
+            $registroTalle = ProductoTalle::lockForUpdate()
+                ->where('producto_id', $item->producto_id)
+                ->where('talle', $item->talle)
+                ->first();
+
+            // 2. Si no se encuentra el talle registrado o el stock es insuficiente, rebotamos
+            if (!$registroTalle || $registroTalle->stock < $item->cantidad) {
+                DB::rollBack();
+                return redirect()->route('cliente.carrito')
+                    ->with('error', "El producto {$item->producto->nombre} en Talle " . strtoupper($item->talle) . " ya no cuenta con stock suficiente.");
+            }
+
+            // 3. Descontamos el stock de la tabla intermedia y guardamos
+            $registroTalle->stock -= $item->cantidad;
+            $registroTalle->save();
+        }
+
+        $total = $carrito->total;
+
+        // Cambiamos el estado finalizado de la cabecera
+        $carrito->update([
+            'estado' => 'confirmado',
+            'fecha_venta' => now(), // Asegurate de que esta columna exista o cambiala por tu campo real (ej: 'fecha')
+        ]);
+
+        DB::commit();
+
+        return redirect()->route('compra.confirmada')
+            ->with('items', $items)
+            ->with('total', $total);
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        // Agregamos un log temporal o podés dejar el mensaje clásico por si explota otra cosa
+        return back()->with('error', 'Hubo un inconveniente al procesar tu orden: ' . $e->getMessage());
+    }
+}
     private function recalcularTotal(VentaCabecera $carrito)
     {
         $total = $carrito->detalles()->sum('subtotal');
