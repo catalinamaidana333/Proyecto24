@@ -431,21 +431,7 @@
     </style>
 </head>
 <body>
-    <!-- ═══ HEADER ═══ -->
-    <div class="dashboard-header">
-        <div class="header-top">
-            <div class="header-title">
-                <div>
-                    <h1>Dashboard</h1>
-                    <p>Bienvenido a tu panel de administración</p>
-                </div>
-            </div>
-            <div class="user-badge">
-                <i class="fas fa-user-circle"></i>
-                <span>{{ auth()->user()->name ?? 'Usuario' }}</span>
-            </div>
-        </div>
-    </div>
+    @include('backend.admin.navbar')
 
     <div class="row">
     <div class="col-md-6">

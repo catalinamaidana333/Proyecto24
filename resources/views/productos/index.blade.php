@@ -138,6 +138,7 @@
             <button class="product-card__btn">Add to Bag</button>
           </div>
         </div>
+      </a>
       </div>
     @endforeach
   </div>
