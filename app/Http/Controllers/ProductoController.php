@@ -107,12 +107,14 @@ class ProductoController extends Controller
         ]);
     }
 
-    return redirect()->route('productos.index')->with('success', '¡Producto creado con éxito!');
+    return redirect()->route('admin.productos.index')->with('success', '¡Producto creado con éxito!');
 }
 
     // Mostrar un producto específico
     public function show($id) {
-    $producto = Producto::with('talles')->findOrFail($id);
+    $producto = Producto::with('talles')
+                        ->where('estado', 'activo')
+                        ->findOrFail($id);
     return view('productos.show', compact('producto'));
 }
 
@@ -144,8 +146,8 @@ class ProductoController extends Controller
 
             $producto->update($validated);
 
-            return redirect()->route('productos.index')
-                ->with('success', 'Producto actualizado correctamente');
+            return redirect()->route('admin.productos.index')
+    ->with('success', 'Producto actualizado correctamente');
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Error al actualizar producto: ' . $e->getMessage())
@@ -161,7 +163,7 @@ class ProductoController extends Controller
 
             $producto->delete();
 
-            return redirect()->route('productos.index')
+            return redirect()->route('admin.productos.index')
                 ->with('success', 'Producto eliminado correctamente');
         } catch (\Exception $e) {
             return redirect()->back()
