@@ -971,7 +971,7 @@
                             {{ $producto->descripcion }}
                         </p>
                         <p class="story-text">
-                            This was the era when the Saddle Bag moved from a fashion accessory to a cultural phenomenon, seen on every major runway and editorial of the early aughts. It remains the most requested silhouette in the archival market.
+                            {{ $producto->descripcion_drop }}
                         </p>
                         <div class="story-tags">
                             <div class="story-tag">Collection: SS 2003</div>
@@ -986,7 +986,7 @@
                     <div class="product-sidebar">
                         <!-- Etiqueta de marca -->
                         <div>
-                            <div class="product-label">Christian Dior by John Galliano</div>
+                            <div class="product-label">{{ $producto->diseñador }}</div>
                         </div>
 
                         <!-- Título del producto -->
@@ -1074,7 +1074,11 @@
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Material</span>
-                                <span class="info-value">Jacquard & Calfskin</span>
+                                <span class="info-value">{{ $producto->material }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Año</span>
+                                <span class="info-value">{{ $producto->año }}</span>
                             </div>
                         </div>
                     </div>
