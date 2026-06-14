@@ -59,7 +59,7 @@
           <!-- Solo si es admin (rol_id = 1) -->
           @if(auth()->user()->rol_id === 1)
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('admin.dashboard') }}">Panel Admin</a>
+              <a class="nav-link" href="{{ route('admin') }}">Panel Admin</a>
             </li>
           @endif
           
