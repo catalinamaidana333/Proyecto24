@@ -126,17 +126,18 @@ class ProductoController extends Controller
 }
 
     // Actualizar en BD
-    public function update(UpdateProductoRequest $request, Producto $producto)
-    {
-        try {
-            $validated = $request->validated();
+public function update(Request $request, $id)
+{
+    // 1. Validaciones (Igual al store)
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'categoria_id' => 'required|exists:categorias,id',
+        'precio' => 'required|numeric|min:0',
+        'estado' => 'required|in:activo,inactivo',
+        'talles' => 'required|array',
+    ]);
 
-            // Manejo de imagen si existe
-            if ($request->hasFile('imagen')) {
-                // Eliminar imagen anterior si existe
-                if ($producto->imagen && file_exists(public_path($producto->imagen))) {
-                    unlink(public_path($producto->imagen));
-                }
+    $producto = Producto::findOrFail($id);
 
                 $imagen = $request->file('imagen');
                 $nombreImagen = time() . '.' . $imagen->getClientOriginalExtension();
@@ -153,7 +154,45 @@ class ProductoController extends Controller
                 ->with('error', 'Error al actualizar producto: ' . $e->getMessage())
                 ->withInput();
         }
+    // 2. Manejo de la imagen si subieron una nueva
+    $rutaImagen = $producto->imagen;
+    if ($request->hasFile('imagen')) {
+        $rutaImagen = $request->file('imagen')->store('productos', 'public');
     }
+
+    // 3. Actualizamos los campos en la tabla principal
+    $producto->update([
+        'nombre' => $request->nombre,
+        'categoria_id' => $request->categoria_id,
+        'descripcion' => $request->descripcion,
+        'descripcion_drop' => $request->descripcion_drop,
+        'diseñador' => $request->diseñador,
+        'año' => $request->año,
+        'material' => $request->material,
+        'precio' => $request->precio,
+        'estado' => $request->estado,
+        'imagen' => $rutaImagen
+    ]);
+
+    // 4. Sincronizar los talles en 'producto_talles'
+    $tallesActivos = array_filter($request->talles, function($item) {
+        return isset($item['activo']) && ($item['activo'] == '1' || $item['activo'] == 1);
+    });
+
+    // Vaciamos los talles viejos de este producto para no duplicar datos
+    \App\Models\ProductoTalle::where('producto_id', $producto->id)->delete();
+
+    // Insertamos la configuración de stock actualizada
+    foreach ($tallesActivos as $nombreTalle => $datos) {
+        \App\Models\ProductoTalle::create([
+            'producto_id' => $producto->id,
+            'talle' => trim($nombreTalle, "'\""),
+            'stock' => $datos['stock'] ?? 1
+        ]);
+    }
+
+    return redirect()->route('productos.index')->with('success', '¡Pieza de archivo modificada con éxito!');
+}
 
     // BAJA LOGICA  de BD (probando)
     public function destroy(Producto $producto)

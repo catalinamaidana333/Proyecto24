@@ -8,7 +8,14 @@ class VentaDetalle extends Model
 {
     protected $table = 'ventas_detalle';
 
-    protected $fillable = ['venta_id', 'producto_id', 'cantidad', 'precio_unitario', 'subtotal'];
+    protected $fillable = [
+        'venta_id', 
+        'producto_id', 
+        'cantidad', 
+        'precio_unitario', 
+        'subtotal',
+        'talle'
+    ];
     
     protected $casts = [
         'cantidad' => 'integer',

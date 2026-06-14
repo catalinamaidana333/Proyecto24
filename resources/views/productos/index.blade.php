@@ -55,6 +55,8 @@
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
                 $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+
+                $precio_total = $mi_carrito ? $mi_carrito->detalles()->sum('subtotal') : 0;
                 
             @endphp
 
@@ -99,6 +101,12 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 my-2 border-bottom">
+                            <span class="fw-bold small text-uppercase" style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary);">Total:</span>
+                            <span class="fw-bold" style="color: var(--primary); font-family: 'Space Grotesk', sans-serif;">
+                                ${{ number_format($precio_total, 0, ',', '.') }}
+                            </span>
+                        </div>
                         <div class="pt-2">
                             <a href="{{ route('cliente.carrito') }}" class="btn text-white w-100 btn-sm text-uppercase fw-bold" style="background-color: var(--primary);">
                                 Ver Cartera Completa
@@ -122,20 +130,20 @@
 <div class="container-xl px-3 px-md-4">
   <div class="row g-4" style="margin-top: 5rem;">
     @foreach($productos as $producto)
-      <!-- Card -->
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <a href="{{ route('productos.show', $producto->id) }}" class="product-card-link">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">{{ $producto->nombre }}</span>
-              <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
             </div>
-            <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
-            <button class="product-card__btn">Add to Bag</button>
+            <div class="product-card__body">
+              <div class="product-card__header">
+                <span class="product-card__name">{{ $producto->nombre }}</span>
+                <span class="product-card__price">${{ number_format($producto->precio, 0, ',', '.') }}</span>
+              </div>
+              <p class="product-card__sub mb-0 text-truncate">{{ $producto->descripcion }}</p>
+              <button class="product-card__btn">Add to Bag</button>
+            </div>
           </div>
         </div>
       </a>
