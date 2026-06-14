@@ -1032,10 +1032,22 @@ margin-top: 0;
       font-weight: 700;
       color: var(--primary);
     }
-    .product-card__sub {
-      font-size: 0.8rem;
-      color: var(--on-surface-var);
-    }
+    /* Quita el formato de enlace genérico para que la tarjeta mantenga su diseño */
+.product-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block; /* Hace que todo el bloque de la tarjeta sea clickeable */
+}
+
+/* Evita que descripciones extra largas rompan la altura simétrica de las tarjetas en la fila */
+.product-card__sub {
+  font-size: 0.8rem;
+  color: var(--on-surface-var);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita el texto a máximo 2 líneas en desktop */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
     .product-card__btn {
       display: block; width: 100%;
       margin-top: 1rem;

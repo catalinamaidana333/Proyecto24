@@ -130,23 +130,22 @@
 <div class="container-xl px-3 px-md-4">
   <div class="row g-4" style="margin-top: 5rem;">
     @foreach($productos as $producto)
-      <!-- Card -->
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <a href="{{ route('productos.show', $producto->id) }}" class="product-card-link">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">{{ $producto->nombre }}</span>
-              <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
             </div>
-            <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
-            <button class="product-card__btn">Add to Bag</button>
+            <div class="product-card__body">
+              <div class="product-card__header">
+                <span class="product-card__name">{{ $producto->nombre }}</span>
+                <span class="product-card__price">${{ number_format($producto->precio, 0, ',', '.') }}</span>
+              </div>
+              <p class="product-card__sub mb-0 text-truncate">{{ $producto->descripcion }}</p>
+              <button class="product-card__btn">Add to Bag</button>
+            </div>
           </div>
-        </div>
-      </div>
+        </a> </div>
     @endforeach
   </div>
 </div>
