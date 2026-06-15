@@ -132,7 +132,7 @@
     @foreach($productos as $producto)
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <a href="{{ route('productos.show', $producto->id) }}" class="product-card-link">
-          <div class="product-card">
+<div class="product-card">
             <div class="product-card__img-wrap">
               <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
             </div>
@@ -144,7 +144,6 @@
               <p class="product-card__sub mb-0 text-truncate">{{ $producto->descripcion }}</p>
               <button class="product-card__btn">Add to Bag</button>
             </div>
-          </div>
         </div>
       </a>
       </div>
