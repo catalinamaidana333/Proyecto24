@@ -962,15 +962,7 @@
                         <span class="badge-rare">Extremely Rare</span>
                     </div>
 
-                    <!-- Galería de detalles QUITAR-->
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQHXFatXHfk0QJXxrKzPZSiVTPCrLO3qI3TLBmh1O9M0Oy6kQCmXNhN_jmCuQtkyK06P5bPHZRdUvjorIByl8-CguAxEEQYiSf4n3jh5NHY9Ry6M5Ww5eSrgNMSy72MYoc8sy71rS40_ncfrwZK47-Jj9xIVeQsseVDkN5hisV0Pce6a4tfJBhn-fikDowg_sEd2xKE1PGAqmxjEud_JyKFOMeLtAtUcKSwnNSg7YWEfmPFUj-z3Imz8CXkiz6OuNwAj2whDh5bmw" alt="Detail view">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkY_bOI4Nw9enzBP5TEE2o1IVrl6Dn8wYkT5JvoleNG5HcP9zc78ED2uqqh6q56pKFI1IZdh54NAZ28VUITgx_IYChva0rnrPl4IHGbPwqzfYTvWkpchCtCmIWArpV1-vVD564i7rb9gURKUrmWQ6Ef0seY5Ikb4xVlOG5ArbqJ_vqcaQeftjdFGuoP0UTfSZspfov8B-rmfyganGyy_qA7iTXQCIzFjqwSuBDplIi1566UaLPQSyvF-BrckazFR3mT2BpRsCbKr0" alt="Interior view">
-                        </div>
-                    </div>
+                    
 
                     <!-- Sección de Historia -->
                     <div class="story-section">
@@ -982,8 +974,8 @@
                             {{ $producto->descripcion_drop }}
                         </p>
                         <div class="story-tags">
-                            <div class="story-tag">Collection: SS 2003</div>
-                            <div class="story-tag">Condition: Grade A (Mint)</div>
+                            <div class="story-tag">Collection: SS  {{ $producto->año }}</div>
+                        
                             <div class="story-tag">Provenance: Paris, France</div>
                         </div>
                     </div>
