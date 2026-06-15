@@ -84,6 +84,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
     Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
+    // Ruta para descargar la factura pasando el ID de la venta
+Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura'])
+    ->name('factura.descargar');
 
     // Pantalla de Éxito posterior a la compra
     Route::get('/compra-confirmada', function () {

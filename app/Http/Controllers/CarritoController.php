@@ -9,6 +9,7 @@ use App\Models\ProductoTalle;
 use App\Models\Producto; // Tu modelo de productos
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class CarritoController extends Controller
@@ -183,4 +184,18 @@ public function agregar(Request $request, $id)
         $total = $carrito->detalles()->sum('subtotal');
         $carrito->update(['total' => $total]);
     }
+    public function descargarFactura($id)
+{
+    // 1. Buscamos la venta cargando sus relaciones (detalles, productos y usuario)
+    $venta = VentaCabecera::with(['detalles.producto', 'usuario'])->findOrFail($id);
+
+    // 2. Cargamos la vista de blade pasándole la variable $venta
+    $pdf = Pdf::loadView('show.factura', compact('venta'));
+
+    // 3. (Opcional) Configuramos propiedades del papel (A4 vertical)
+    $pdf->setPaper('a4', 'portrait');
+
+    // 4. Retornamos el PDF para que se descargue automáticamente en el navegador
+    return $pdf->download('factura-neogaucho-' . $venta->id . '.pdf');
+}
 }
