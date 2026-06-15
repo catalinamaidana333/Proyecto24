@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('producto_talles', function (Blueprint $table) {
+    if (!Schema::hasTable('producto_talles')) {
+        Schema::create('producto_talles', function (Blueprint $table) {
         $table->id();
         // Conectamos con tu tabla productos
         $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
