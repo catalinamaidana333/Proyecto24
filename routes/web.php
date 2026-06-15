@@ -54,12 +54,21 @@ Route::middleware(['auth', 'rol:1'])->group(function () {
     Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
     Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
 
+    Route::get('/consultas', [AdminController::class, 'verConsultas'])->name('admin.consultas');
+    
+    // 2. Ruta AJAX para marcar como leído sin recargar la página
+    Route::post('/consultas/{id}/marcar-leido', function($id) {
+        $consulta = \App\Models\Consulta::findOrFail($id);
+        $consulta->update(['estado' => 'visto']);
+        return response()->json(['success' => true]);
+    })->name('admin.consultas.marcar');
+
     });
 
 
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
 //controlador ContactoController 
-Route::post('/contacto', [ContactoController::class, 'procesar']);
+Route::post('/contacto', [ContactoController::class, 'procesar'])->name('contacto.enviar');
 
 
 

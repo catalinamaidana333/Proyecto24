@@ -47,5 +47,6 @@
         <a href="{{ route('admin') }}">🏠 Dashboard</a>
         <a href="{{ route('productos.create') }}">➕ Crear Producto</a>
         <a href="{{ route('admin.productos.index') }}">📋 Ver Catálogo</a>
+        <a href="{{ route('admin.consultas') }}">✉️ Ver Consultas</a>
     </div>
 </nav>

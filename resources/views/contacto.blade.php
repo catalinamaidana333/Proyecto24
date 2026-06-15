@@ -34,7 +34,7 @@
           <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
+          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
@@ -52,11 +52,14 @@
 
         @auth
             @php
-                // Consultamos directamente el carrito de base de datos del usuario logueado
-                $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
-                $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
-                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : [];
-            @php
+        // Consultamos directamente el carrito de base de datos del usuario logueado
+        $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
+        $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
+        $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
+        
+        // Sumamos también el total acumulado para el flotante
+        $precio_total = $mi_carrito ? $mi_carrito->detalles()->sum('subtotal') : 0;
+    @endphp
 
             <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
                 <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
@@ -139,8 +142,37 @@
                     <p>Client Services</p>
                     <div class="contact-form-header-divider"></div>
                 </div>
+
+                @if (session('success'))
+    <div class="alert alert-dismissible fade show text-white mb-4 p-3 d-flex align-items-center shadow-sm" 
+         style="background-color: var(--primary); border: none; border-radius: 8px;">
+        <i class="fa-solid fa-circle-check me-2" style="font-size: 1.2rem;"></i>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; letter-spacing: 0.3px;">
+            {{ session('success') }}
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show mb-4 p-3 shadow-sm" 
+         style="border-radius: 8px; background-color: #f8d7da; border: 1px solid #f5c2c7; color: #842029;">
+        <div class="d-flex align-items-center mb-2 fw-bold small text-uppercase" style="letter-spacing: 0.5px; font-family: 'Space Grotesk', sans-serif;">
+            <i class="fa-solid fa-circle-exclamation me-2" style="font-size: 1.2rem;"></i>
+            No se pudo enviar la consulta:
+        </div>
+        <ul class="mb-0 small ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+                
  
-                <form class="contact-form" method="POST" action="/contacto">
+                <form class="contact-form" method="POST" action="{{ route('contacto.enviar') }}">
                     
                     @csrf 
  
@@ -164,7 +196,7 @@
                         <textarea 
                             class="form-textarea" 
                             id="message" 
-                            name="message"
+                            name="mensaje"
                             placeholder="Cuéntanos tu consulta..."
                             required
                         ></textarea>
@@ -210,7 +242,7 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a class="nav-link" href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
           <li><a href="{{ route('terminos')}}">Contacto</a></li>
           

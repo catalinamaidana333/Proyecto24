@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Consulta;
 
 class ContactoController extends Controller
 {
-    public function procesar(Request $request){
-        $nombre = $request->input('nombre');
-        $email = $request->input('email');
-        
-        return view('exito', [
-        'nombre' => $nombre,
-        'email' => $email
+    
+    public function procesar(Request $request) 
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'mensaje' => 'required|min:5',
         ]);
+
+        Consulta::create([
+            'email' => $request->email,
+            'mensaje' => $request->mensaje,
+        ]);
+
+        return redirect()->back()->with('success', '¡Tu consulta fue enviada con éxito!');
     }
 }
