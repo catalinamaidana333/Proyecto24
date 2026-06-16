@@ -46,7 +46,7 @@
                                     <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
                                 </div>
                                 <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
-                                <button class="product-card__btn">Add to Bag</button>
+                                <button class="product-card__btn">EDIT</button>
                             </div>
                         </div>
                     </a> </div>

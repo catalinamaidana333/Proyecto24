@@ -10,33 +10,31 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   // Listar todos los productos (VISTA CLIENTE - SOLO ACTIVOS)
-    
-
+   // (VISTA CLIENTE)
 public function index(Request $request)
 {
-    // Iniciamos la consulta base
+    // consulta base
     $query = Producto::query();
 
-    // Si la URL viene con el parámetro ?category=...
+    //  URL viene con el parámetro ?category=
     if ($request->has('category')) {
         $categoryUrl = $request->get('category');
 
-        // Mapeamos los nombres en inglés de la URL con los IDs reales de tu BD
+        // mapeo
         $mapeoCategorias = [
-            'shoes'       => 1, // Zapatos
-            'tops'        => 2, // Partes de arriba
-            'bottoms'     => 3, // Partes de abajo
-            'accessories' => 4, // Accesorios
+            'shoes'       => 1, // zapatos
+            'tops'        => 2, // partes de arriba
+            'bottoms'     => 3, // partes de abajo
+            'accessories' => 4, // accesorios
         ];
 
-        // Si la categoría existe en nuestro mapa, filtramos por ese ID
+        
         if (array_key_exists($categoryUrl, $mapeoCategorias)) {
             $query->where('categoria_id', $mapeoCategorias[$categoryUrl]);
         }
     }
 
-    // Traemos los productos filtrados (¡y respetando la baja lógica si la tienen!)
+    // Traemos los productos filtrados 
     $productos = $query->get(); 
 
     return view('productos.index', compact('productos'));

@@ -16,10 +16,10 @@ class Producto extends Model
      'precio', 
      'stock' , 
      'imagen', 
-     'categoria_id',      // <-- Asegúrate de que este esté aquí
-    'descripcion_drop',  // <-- Asegúrate de que este esté aquí
-    'diseñador',         // <-- Asegúrate de que este esté aquí
-    'año',               // <-- Asegúrate de que este esté aquí
+     'categoria_id',      
+    'descripcion_drop',  
+    'diseñador',         
+    'año',               
     'material',];
     
     protected $casts = [

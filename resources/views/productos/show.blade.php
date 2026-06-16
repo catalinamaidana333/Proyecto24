@@ -946,9 +946,7 @@
 </nav>
 
 
-    <!-- =============================================
-         MAIN CONTENT
-         ============================================ -->
+    
     <main>
         <div class="container-custom">
             <div class="row">
@@ -964,9 +962,9 @@
 
                     
 
-                    <!-- Sección de Historia -->
+                    
                     <div class="story-section">
-                        <h2 class="story-title">THE STORY</h2>
+                        <h2 class="story-title">LA HISTORIA</h2>
                         <p class="story-text">
                             {{ $producto->descripcion }}
                         </p>
@@ -1064,8 +1062,7 @@
     <button type="submit" class="btn-add-to-bag">Add to Bag</button>
 </form>
 
-                        <button class="btn-waitlist">Join the Waitlist</button>
-
+                        
                         <!-- Información adicional -->
                         <div class="product-info">
                             <div class="info-item">

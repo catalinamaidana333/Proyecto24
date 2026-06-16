@@ -119,7 +119,7 @@
             <td class="info-col" style="padding-left: 20px;">
                 <div class="info-label">Detalle de Facturación</div>
                 <strong>Fecha:</strong> {{ $venta->created_at->format('d/m/Y H:i') }} hs<br>
-                <strong>Cliente:</strong> {{ $venta->user->name ?? 'Invitado' }}<br>
+                <strong>Cliente:</strong> {{ $venta->usuario->name ?? 'Invitado' }}<br>
                 <strong>Email:</strong> {{ $venta->user->email ?? $venta->email_invitado }}
             </td>
         </tr>
