@@ -4,214 +4,243 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEOGAUCHO | Mi Cartera</title>
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #0f0f11;
-            --surface-card: #16161a;
-            --border-muted: #2a2a32;
-            --accent-pink: #ffc0cb;
-            --text-muted: #8e8e93;
+            --primary: #b50058;
+            --primary-light: #ff709e;
+            --surface: #f9f6f5;
+            --surface-container: #eae7e7;
+            --text-primary: #2f2f2e;
+            --text-secondary: #5c5b5b;
+            --border: #dfdcdc;
+            --shadow: 0 4px 12px rgba(181, 0, 88, 0.08);
+            --shadow-lg: 20px 40px 40px rgba(181, 0, 88, 0.15);
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--surface) !important;
             font-family: 'Manrope', sans-serif;
-            color: #ffffff;
+            color: var(--text-primary) !important;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.1px;
         }
 
         .heading-luxury {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: 3px;
             font-weight: 700;
+            color: var(--text-primary);
         }
 
-        .cart-card {
-            background-color: var(--surface-card);
-            border: 1px solid var(--border-muted);
-            border-radius: 14px;
+        /* Contenedor de ítems minimalista sobre fondo claro */
+        .cart-item-row {
+            background-color: transparent;
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            transition: background-color 0.2s ease;
         }
-
-        /* Tabla estilizada para pantallas grandes */
-        .custom-table {
-            color: #ffffff;
-            margin-bottom: 0;
-        }
-        .custom-table thead th {
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-muted);
-            padding: 15px 10px;
-        }
-        .custom-table tbody td {
-            padding: 24px 10px;
-            border-bottom: 1px solid rgba(42, 42, 50, 0.5);
-            font-size: 0.95rem;
+        
+        .cart-item-row:hover {
+            background-color: rgba(181, 0, 88, 0.01);
         }
 
         .tag-talle {
-            background-color: rgba(255, 192, 203, 0.1);
-            color: var(--accent-pink);
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 192, 203, 0.2);
+            font-size: 0.7rem;
+            letter-spacing: 0.8px;
+            color: var(--primary);
+            text-transform: uppercase;
+            border: 1px solid var(--primary-light);
+            padding: 3px 10px;
+            border-radius: 4px;
+            background-color: rgba(255, 112, 158, 0.08);
             display: inline-block;
+            font-weight: 600;
         }
 
-        /* Botón de acción minimalista */
-        .btn-trash {
-            color: var(--text-muted);
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-        .btn-trash:hover {
-            color: #ff4d4d;
-            transform: scale(1.05);
-        }
-
-        /* Resumen de compra */
-        .summary-box {
-            background-color: rgba(22, 22, 26, 0.7);
-            border-top: 1px solid var(--border-muted);
-            padding-top: 30px;
+        /* Resumen Lateral Estilizado */
+        .summary-sticky-box {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            position: sticky;
+            top: 40px;
+            box-shadow: var(--shadow-lg);
         }
 
+        /* Botón de Confirmación con el color identitario de NEOGAUCHO */
         .btn-confirm {
-            background-color: var(--accent-pink) !important;
-            color: #000000 !important;
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
             font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: 700;
-            border-radius: 8px;
+            border-radius: 6px;
+            padding: 16px;
+            border: none;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
         .btn-confirm:hover {
-            background-color: #ffffff !important;
-            box-shadow: 0 4px 15px rgba(255, 192, 203, 0.3);
+            background-color: var(--primary-light) !important;
+            box-shadow: var(--shadow);
             transform: translateY(-1px);
         }
 
-        /* Ajustes de alertas */
+        .btn-trash {
+            color: var(--text-secondary);
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-trash:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .font-editorial {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .text-muted-custom {
+            color: var(--text-secondary);
+        }
+
+        /* Alertas adaptadas */
         .alert-custom {
-            background-color: var(--surface-card);
-            border: 1px solid var(--border-muted);
-            color: #ffffff;
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
             border-radius: 8px;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
 <div class="container py-5 my-md-4">
-    <div class="cart-card p-4 p-md-5 shadow-lg">
-        
-        <div class="d-flex align-items-center justify-content-between mb-5 border-bottom pb-3 border-secondary border-opacity-10">
-            <h2 class="heading-luxury text-uppercase m-0 fs-3">Tu Cartera de Compras</h2>
-            <span class="text-muted small font-monospace">NEOGAUCHO // ARCHIVE</span>
+    
+    <div class="d-flex align-items-baseline justify-content-between mb-5 border-bottom pb-3" style="border-color: var(--border) !important;">
+        <h1 class="heading-luxury text-uppercase m-0 fs-4">Bolsa de Selección</h1>
+        <span class="text-muted-custom small font-editorial" style="letter-spacing: 2px; font-weight: 600;">NEOGAUCHO // CURADURÍA</span>
+    </div>
+    
+    @if(session('error'))
+        <div class="alert alert-danger alert-custom border-danger border-opacity-30 text-danger mb-4">{{ session('error') }}</div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success alert-custom border-success border-opacity-30 text-success mb-4">{{ session('success') }}</div>
+    @endif
+
+    @if($items->isEmpty())
+        <div class="text-center py-5 my-5">
+            <span class="material-symbols-outlined text-muted-custom mb-3" style="font-size: 3rem; font-weight: 300;">shopping_bag</span>
+            <p class="text-muted-custom mb-4 font-editorial" style="letter-spacing: 0.5px;">No tenés piezas de archivo seleccionadas actualmente.</p>
+            <a href="{{ route('productos.index') }}" class="btn btn-outline-dark px-4 py-2 text-uppercase fw-bold btn-sm font-editorial" style="letter-spacing: 1px; font-size: 0.75rem; border-radius: 4px;">
+                Volver al Shop
+            </a>
         </div>
-        
-        @if(session('error'))
-            <div class="alert alert-danger alert-custom border-danger border-opacity-20 text-danger mb-4">{{ session('error') }}</div>
-        @endif
-        @if(session('success'))
-            <div class="alert alert-success alert-custom border-success border-opacity-20 text-success mb-4">{{ session('success') }}</div>
-        @endif
-
-        @if($items->isEmpty())
-            <div class="text-center py-5">
-                <span class="material-symbols-outlined text-muted mb-3" style="font-size: 3.5rem;">shopping_bag</span>
-                <p class="text-muted mb-4" style="font-size: 1.05rem;">No tienes piezas seleccionadas actualmente en tu bolsa.</p>
-                <a href="{{ route('productos.index') }}" class="btn btn-outline-light px-4 py-2 text-uppercase fw-bold btn-sm" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 1px;">
-                    Volver al Shop
-                </a>
-            </div>
-        @else
-            <div class="table-responsive">
-                <table class="table custom-table align-middle">
-                    <thead>
-                        <tr>
-                            <th>Pieza de Archivo</th>
-                            <th class="text-center">Cantidad</th>
-                            <th class="text-end">Precio</th>
-                            <th class="text-end">Subtotal</th>
-                            <th class="text-center">Remover</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($items as $item)
-                        <tr>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <span class="fw-bold text-white mb-2" style="letter-spacing: 0.3px;">
-                                        {{ $item->producto->nombre }}
-                                    </span>
-                                    <div>
-                                        <span class="tag-talle text-uppercase">
-                                            Talle: {{ $item->talle ?? 'Único' }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-                            
-                            <td class="text-center font-monospace">{{ $item->cantidad }}</td>
-                            
-                            <td class="text-end font-monospace text-muted">
-                                ${{ number_format($item->precio_unitario, 0, ',', '.') }}
-                            </td>
-                            
-                            <td class="text-end font-monospace fw-semibold" style="color: var(--accent-pink);">
-                                ${{ number_format($item->subtotal, 0, ',', '.') }}
-                            </td>
-                            
-                            <td class="text-center">
-                                <form method="POST" action="{{ route('carrito.eliminar', $item->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-link btn-trash p-0 shadow-none align-middle">
-                                        <span class="material-symbols-outlined" style="font-size: 1.3rem;">delete</span>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="summary-box mt-5">
-                <div class="row g-4 align-items-center">
-                    <div class="col-12 col-md-6 text-md-start text-center">
-                        <div class="d-inline-flex flex-column">
-                            <span class="text-muted small text-uppercase mb-1" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 1px;">Monto Neto Estimado</span>
-                            <h3 class="fw-bold m-0 font-monospace" style="font-size: 1.8rem; letter-spacing: -0.5px;">
-                                Total: ${{ number_format($carrito->total, 0, ',', '.') }}
-                            </h3>
-                        </div>
+    @else
+        <div class="row g-5">
+            
+            <div class="col-12 col-lg-7">
+                <div class="d-flex flex-column">
+                    <div class="d-flex justify-content-between text-uppercase small font-editorial text-muted-custom pb-2 border-bottom" style="border-color: var(--border) !important; letter-spacing: 1px; font-size: 0.7rem; font-weight: 600;">
+                        <span>Pieza Seleccionada</span>
+                        <span>Subtotal</span>
                     </div>
+
+                    @foreach($items as $item)
+                    <div class="cart-item-row d-flex justify-content-between align-items-start">
+                        
+                        <div class="d-flex flex-column align-items-start">
+                            <span class="fw-bold mb-1" style="font-size: 1.05rem; color: var(--text-primary); letter-spacing: 0.1px;">
+                                {{ $item->producto->nombre }}
+                            </span>
+                            <span class="text-muted-custom small mb-2 font-editorial" style="font-size: 0.8rem; font-weight: 500;">
+                                {{ $item->producto->diseñador ?? 'Colección de Archivo' }}
+                            </span>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="tag-talle">
+                                    {{ $item->talle ?? 'Único' }}
+                                </span>
+                                <span class="text-muted-custom small">
+                                    Cantidad: <span class="font-editorial fw-bold text-dark">{{ $item->cantidad }}</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="text-end">
+                                <span class="font-editorial fw-bold d-block" style="font-size: 1.05rem; color: var(--text-primary);">
+                                    ${{ number_format($item->subtotal, 0, ',', '.') }}
+                                </span>
+                                @if($item->cantidad > 1)
+                                <small class="text-muted-custom font-editorial" style="font-size: 0.75rem;">
+                                    ${{ number_format($item->precio_unitario, 0, ',', '.') }} c/u
+                                </small>
+                                @endif
+                            </div>
+                            
+                            <form method="POST" action="{{ route('carrito.eliminar', $item->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-link btn-trash p-0 shadow-none align-middle">
+                                    <span class="material-symbols-outlined" style="font-size: 1.3rem; font-weight: 300;">close</span>
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-5">
+                <div class="summary-sticky-box">
+                    <h3 class="font-editorial text-uppercase fw-bold mb-4" style="font-size: 1rem; letter-spacing: 2px; color: var(--text-primary);">Resumen de Selección</h3>
                     
-                    <div class="col-12 col-md-6 text-md-end text-center">
-                        <form method="POST" action="{{ route('carrito.confirmar') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-confirm px-5 py-3 text-uppercase fw-bold w-100 w-md-auto">
-                                Confirmar Compra
-                            </button>
-                        </form>
+                    <div class="d-flex justify-content-between small text-muted-custom mb-2 font-editorial">
+                        <span>Valor de las Piezas</span>
+                        <span>${{ number_format($carrito->total, 0, ',', '.') }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted-custom mb-3 font-editorial pb-3 border-bottom" style="border-color: var(--border) !important;">
+                        <span>Envío Asegurado</span>
+                        <span class="text-uppercase" style="font-size: 0.75rem; color: var(--primary); font-weight: 700; letter-spacing: 0.5px;">Bonificado</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-baseline mb-4">
+                        <span class="font-editorial text-uppercase small text-muted-custom" style="letter-spacing: 1px; font-weight: 600;">Total Final</span>
+                        <span class="font-editorial fw-bold" style="font-size: 1.7rem; color: var(--primary);">
+                            ${{ number_format($carrito->total, 0, ',', '.') }}
+                        </span>
+                    </div>
+
+                    <form method="POST" action="{{ route('carrito.confirmar') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-confirm w-100 py-3 shadow-sm">
+                            Confirmar Compra
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <small class="text-muted-custom small font-editorial" style="font-size: 0.7rem; letter-spacing: 0.3px; display: block;">
+                            Al confirmar la orden, las piezas se reservarán y se generará tu comprobante de archivo.
+                        </small>
                     </div>
                 </div>
             </div>
-        @endif
-    </div>
+
+        </div>
+    @endif
 </div>
+
 
 </body>
 </html>
