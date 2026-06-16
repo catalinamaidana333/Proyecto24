@@ -48,5 +48,6 @@
         <a href="{{ route('productos.create') }}">➕ Crear Producto</a>
         <a href="{{ route('admin.productos.index') }}">📋 Ver Catálogo</a>
         <a href="{{ route('admin.consultas') }}">✉️ Ver Consultas</a>
+        <a href="{{ route('admin.pedidos') }}">📦 Ver Pedidos</a>
     </div>
 </nav>

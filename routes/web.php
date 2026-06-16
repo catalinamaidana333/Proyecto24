@@ -107,4 +107,5 @@ Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura
 });
 Route::resource('productos', ProductoController::class);
 
-
+//Para poder ver los pedidos
+Route::get('/admin/pedidos', [AdminController::class, 'verPedidos'])->name('admin.pedidos');
