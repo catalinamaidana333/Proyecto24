@@ -7,8 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-<body>
+</head> <body>
     @include('backend.admin.navbar')
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -18,7 +17,6 @@
         </a>
     </div>
  
-    <!-- ALERTAS -->
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show">
             {{ session('success') }}
@@ -34,34 +32,29 @@
     @endif
 
     <div class="container-xl px-3 px-md-4">
-  <div class="row g-4" style="margin-top: 5rem;">
-    @foreach($productos as $producto)
-      <!-- Card -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="product-card-link">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">{{ $producto->nombre }}</span>
-              <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
-            </div>
-            <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
+        <div class="row g-4" style="margin-top: 5rem;">
+            @foreach($productos as $producto)
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    <a href="{{ route('admin.productos.edit', $producto->id) }}" class="product-card-link">
+                        <div class="product-card">
+                            <div class="product-card__img-wrap">
+                                <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
+                            </div>
+                            <div class="product-card__body">
+                                <div class="product-card__header">
+                                    <span class="product-card__name">{{ $producto->nombre }}</span>
+                                    <span class="product-card__price">${{ number_format($producto->precio, 2, ',', '.') }}</span>
+                                </div>
+                                <p class="product-card__sub mb-0">{{ $producto->descripcion }}</p>
+                                <button class="product-card__btn">Add to Bag</button>
+                            </div>
+                        </div>
+                    </a> </div>
+            @endforeach
         </div>
-      </div>
-    @endforeach
-  </div>
-</div>
+    </div>
 
-
- 
-    <!-- TABLA DE PRODUCTOS -->
-    <div class="card">
-        <div class="table-responsive">
+    <div class="card mt-5"> <div class="table-responsive">
             <table class="table table-hover mb-0">
                 <thead class="table-light">
                     <tr>
@@ -77,7 +70,6 @@
                 <tbody>
                     @forelse ($productos as $producto)
                         <tr>
-                            <!-- IMAGEN -->
                             <td style="width: 80px;">
                                 @if ($producto->imagen && file_exists(public_path($producto->imagen)))
                                     <img src="{{ asset($producto->imagen) }}" 
@@ -87,7 +79,6 @@
                                 @endif
                             </td>
  
-                            <!-- NOMBRE -->
                             <td>
                                 <strong>{{ $producto->nombre }}</strong>
                                 @if ($producto->descripcion)
@@ -96,12 +87,10 @@
                                 @endif
                             </td>
  
-                            <!-- PRECIO -->
                             <td>
                                 <strong>${{ number_format($producto->precio, 2) }}</strong>
                             </td>
  
-                            <!-- STOCK -->
                             <td>
                                 @if ($producto->stock > 0)
                                     <span class="badge bg-success">{{ $producto->stock }} u.</span>
@@ -110,7 +99,6 @@
                                 @endif
                             </td>
  
-                            <!-- ESTADO -->
                             <td>
                                 @if ($producto->estado == 'activo')
                                     <span class="badge bg-info">Activo</span>
@@ -119,14 +107,12 @@
                                 @endif
                             </td>
  
-                            <!-- CREADO -->
                             <td>
                                 <small class="text-muted">
                                     {{ $producto->created_at->format('d/m/Y H:i') }}
                                 </small>
                             </td>
  
-                            <!-- ACCIONES -->
                             <td>
                                 <a href="{{ route('productos.edit', $producto) }}" 
                                    class="btn btn-sm btn-warning" title="Editar">
