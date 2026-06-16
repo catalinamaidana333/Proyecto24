@@ -20,7 +20,8 @@ class Producto extends Model
     'descripcion_drop',  
     'diseñador',         
     'año',               
-    'material',];
+    'material',
+    'estado',];
     
     protected $casts = [
         'precio' => 'decimal:2',
@@ -32,4 +33,10 @@ public function talles()
 {
     return $this->hasMany(ProductoTalle::class, 'producto_id');
 }
-}
+/**
+ * Scope local para filtrar solo los productos que están activos para la tienda
+ */
+public function scopeActivo($query)
+{
+    return $query->where('estado', 'activo');
+}}
