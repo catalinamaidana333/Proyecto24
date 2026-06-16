@@ -178,7 +178,7 @@ public function update(Request $request, $id)
             }
 
             // Redirección al index del admin con mensaje de éxito
-            return redirect()->route('productos.index')
+            return redirect()->route('admin.productos.index')
                 ->with('success', '¡Pieza de archivo modificada con éxito!');
 
         } catch (\Exception $e) {

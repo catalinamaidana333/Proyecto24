@@ -19,22 +19,39 @@ return new class extends Migration
 
         // 2. Ahora que la tabla existe sí o sí, modificamos productos
         Schema::table('productos', function (Blueprint $table) {
-            
-            $table->string('material')->nullable()->after('nombre');
-            $table->integer('año')->nullable()->after('material');
-            $table->string('diseñador')->nullable()->after('año');
-            $table->text('descripcion_drop')->nullable()->after('diseñador');
-            $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null')->after('descripcion_drop');
+            if (!Schema::hasColumn('productos', 'material')) {
+                $table->string('material')->nullable()->after('nombre');
+            }
+            if (!Schema::hasColumn('productos', 'año')) {
+                $table->integer('año')->nullable()->after('material');
+            }
+            if (!Schema::hasColumn('productos', 'diseñador')) {
+                $table->string('diseñador')->nullable()->after('año');
+            }
+            if (!Schema::hasColumn('productos', 'descripcion_drop')) {
+                $table->text('descripcion_drop')->nullable()->after('diseñador');
+            }
+            if (!Schema::hasColumn('productos', 'categoria_id')) {
+                $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null')->after('descripcion_drop');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('productos', function (Blueprint $table) {
-            $table->dropForeign(['categoria_id']);
-            $table->dropColumn(['descripcion', 'material', 'año', 'diseñador', 'descripcion_drop', 'categoria_id']);
+            if (Schema::hasColumn('productos', 'categoria_id')) {
+                $table->dropForeign(['categoria_id']);
+            }
+            $table->dropColumn(array_filter([
+                Schema::hasColumn('productos', 'material') ? 'material' : null,
+                Schema::hasColumn('productos', 'año') ? 'año' : null,
+                Schema::hasColumn('productos', 'diseñador') ? 'diseñador' : null,
+                Schema::hasColumn('productos', 'descripcion_drop') ? 'descripcion_drop' : null,
+                Schema::hasColumn('productos', 'categoria_id') ? 'categoria_id' : null,
+            ]));
         });
-        
+
         Schema::dropIfExists('categorias');
     }
 };
