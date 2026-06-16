@@ -49,6 +49,21 @@
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
         
+        <!-- Mostrar nombre del usuario y logout -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ auth()->user()->nombre }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        @endauth
 
         @auth
             @php
