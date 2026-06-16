@@ -273,15 +273,15 @@
                                         </div>
                                     @endforeach
 
-                                    <div class="col-md-4 col-6 mb-3 grupo-talle grupo-unico">
-                                        <div class="p-2 border border-secondary rounded bg-secondary-subtle">
-                                            <div class="form-check mb-1">
-                                                <input class="form-check-input talle-checkbox" type="checkbox" name="talles[único]['activo']" id="talle_unico" value="1" onchange="toggleStockInput('unico')">
-                                                <label class="form-check-label fw-bold" for="talle_unico">Talle ÚNICO</label>
-                                            </div>
-                                            <input type="number" name="talles[único][stock]" id="stock_unico" class="form-control form-control-sm input-stock" placeholder="Stock" min="1" value="0" disabled required>
-                                        </div>
-                                    </div>
+                                   <div class="col-md-4 col-6 mb-3 grupo-talle grupo-unico">
+    <div class="p-2 border border-secondary rounded bg-secondary-subtle">
+        <div class="form-check mb-1">
+            <input class="form-check-input talle-checkbox" type="checkbox" name="talles[unico][activo]" id="talle_unico" value="1" onchange="toggleStockInput('unico')">
+            <label class="form-check-label fw-bold" for="talle_unico">Talle ÚNICO</label>
+        </div>
+        <input type="number" name="talles[unico][stock]" id="stock_unico" class="form-control form-control-sm input-stock" placeholder="Stock" min="1" value="0" disabled required>
+    </div>
+</div>
                                 </div>
                             </div>
      
