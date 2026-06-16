@@ -11,19 +11,37 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
    // Listar todos los productos (VISTA CLIENTE - SOLO ACTIVOS)
-    public function index()
-    {
-        try {
-            // Agregamos el filtro where antes del ordenamiento y la paginación
-            $productos = Producto::where('estado', 'activo')
-                                 ->orderBy('created_at', 'desc')
-                                 ->paginate(10);
-                                 
-            return view('productos.index', compact('productos'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
+    
+
+public function index(Request $request)
+{
+    // Iniciamos la consulta base
+    $query = Producto::query();
+
+    // Si la URL viene con el parámetro ?category=...
+    if ($request->has('category')) {
+        $categoryUrl = $request->get('category');
+
+        // Mapeamos los nombres en inglés de la URL con los IDs reales de tu BD
+        $mapeoCategorias = [
+            'shoes'       => 1, // Zapatos
+            'tops'        => 2, // Partes de arriba
+            'bottoms'     => 3, // Partes de abajo
+            'accessories' => 4, // Accesorios
+        ];
+
+        // Si la categoría existe en nuestro mapa, filtramos por ese ID
+        if (array_key_exists($categoryUrl, $mapeoCategorias)) {
+            $query->where('categoria_id', $mapeoCategorias[$categoryUrl]);
         }
     }
+
+    // Traemos los productos filtrados (¡y respetando la baja lógica si la tienen!)
+    $productos = $query->get(); 
+
+    return view('productos.index', compact('productos'));
+}
+    
 
     // Listar todos los productos (VISTA ADMIN - TOTALES)
     public function indexAdmin()
@@ -187,7 +205,6 @@ public function update(Request $request, $id)
                 ->withInput();
         }
     }
- // 👈 ESTA LLAVE CIERRA TODA LA CLASE (PRODUCTOCONTROLLER). ASEGURATE DE QUE SEA LA ÚLTIMA DEL ARCHIVO.
 
     // BAJA LOGICA  de BD (probando)
     public function destroy(Producto $producto)
@@ -198,7 +215,7 @@ public function update(Request $request, $id)
             $producto->delete();
 
             return redirect()->route('admin.productos.index')
-                ->with('success', 'Producto eliminado correctamente');
+                ->with('success', 'Producto dado de baja correctamente');
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Error al eliminar producto: ' . $e->getMessage());

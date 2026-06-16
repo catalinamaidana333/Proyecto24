@@ -32,8 +32,38 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop
+          </a>
+          <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="shopDropdown" style="border-radius: 8px; background-color: #ffffff;">
+            <li>
+              <a class="dropdown-item small text-uppercase fw-bold" href="{{ route('productos.index') }}" style="font-family: 'Space Grotesk', sans-serif;">
+                Shop All
+              </a>
+            </li>
+            <li><hr class="dropdown-divider opacity-24"></li>
+            <li>
+              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'tops']) }}" style="font-family: 'Manrope', sans-serif;">
+                Tops
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'bottoms']) }}" style="font-family: 'Manrope', sans-serif;">
+                Bottoms
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'shoes']) }}" style="font-family: 'Manrope', sans-serif;">
+                Shoes
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'accessories']) }}" style="font-family: 'Manrope', sans-serif;">
+                Accessories
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>

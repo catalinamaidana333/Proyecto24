@@ -995,7 +995,7 @@
                         <!-- Precio -->
                         <div class="product-price">
                             <span class="current-price">{{ number_format($producto->precio, 2, ',', '.') }}</span>
-                            <span class="original-price">$6,200.00</span>
+                            
                         </div>
 
                         <!-- Detalles -->
@@ -1069,64 +1069,20 @@
                         <!-- Información adicional -->
                         <div class="product-info">
                             <div class="info-item">
-                                <span class="info-label">Archive ID</span>
-                                <span class="info-value">#CD-2003-GAL-001</span>
+                                <span class="info-label">Año</span>
+                                <span class="info-value">{{ $producto->año }}</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Material</span>
                                 <span class="info-value">{{ $producto->material }}</span>
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Año</span>
-                                <span class="info-value">{{ $producto->año }}</span>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- =============================================
-                 SECCIÓN "COMPLETE THE LOOK"
-                 ============================================ -->
-            <section class="complete-look-section">
-                <div class="section-header">
-                    <h3 class="section-title">Complete the Look</h3>
-                    <a href="#" class="view-all-link">View All Curations</a>
-                </div>
-
-                <div class="curation-grid">
-                    <!-- Item 1 -->
-                    <div class="curation-item">
-                        <div class="curation-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-WB3jU48TklFibWqngL2M7deeQHQUVJeq2cxWybemY4uyWpkFCUtbaRYq8jhSG5OQluv-CVCEbIjK95ipwhKzbhFYnPz3Eh_8VeJvjqrDjMXR4v16H4UvArpjUyn2ib_Jrg2kcWKcqF6V_EqJ407MDOCN3GHHWcFs3HlRtOpa3D02q9ze1C0Wne4b10RynujKRM7QGMTOXOm6awZ6SSHpyfRxcFF8cL1HHxwsVcFlXzWAeFIofOdHuNWrRkxHN4EF1fzFkHtjp9w" alt="Galliano Dress">
-                        </div>
-                        <div class="curation-label">Dior Archives</div>
-                        <h4 class="curation-title">2003 Newspaper Slip Dress</h4>
-                        <div class="curation-price">$3,200.00</div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="curation-item">
-                        <div class="curation-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-J8RG6yGJ4OUddVu9FBxWAPsiWMOX7RvXaG3S_f5KO-F8h6zGmcYtPwDw0HCnHY3-CLVWbmFUuYwZ3Zqj2FeG88qlL8VhCCOJN9ZPbw8WKbAFgqOZ8Q-O_NwBSw1VgrwT3K-aX6YhW4N7S0sODz5CmQLqlyH9D0X7JYEpXg0WUQB6O0gM82g77Dk4KzcBlET58Ok6v3UZbGsRVe32dkiDslcpzoJEapn7kRcCTFKZSQHI7_o4F8IG0TDvzN2GcsceyFy_me-w6Mo" alt="Luxury Sandals">
-                        </div>
-                        <div class="curation-label">Gucci Tom Ford Era</div>
-                        <h4 class="curation-title">Metallic Gladiator Heels</h4>
-                        <div class="curation-price">$1,150.00</div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="curation-item">
-                        <div class="curation-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuARxc_mh34k25C9sfJj1uPfylfAqMywswP1aXEyy8e0zql59UPC7d8aovVRGjiUciIZp8KhiCjfDfldaT2Btq6SD3tE5hG2vLbsAsaS5_Pro-8aAlkbC4ZErsvkHCGSCqBg0SpjbAwcFynWKw3O5-gcllkng0GC-x1t4-M-QHS0o4PSN6NlNHVrmRCLjNp2v1EWtLXCBM0bmQD6Mz0A2BSQdjyA01Drp0SkwJXAyAWZtlc-L4wFfSfPqwHPSUGur9S7Z9adhfS5uJg" alt="Designer Sunglasses">
-                        </div>
-                        <div class="curation-label">Chanel Archival</div>
-                        <h4 class="curation-title">1998 Pearl Shield Shades</h4>
-                        <div class="curation-price">$890.00</div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            
     </main>
 
     <!-- =============================================
