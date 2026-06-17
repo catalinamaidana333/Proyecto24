@@ -28,7 +28,7 @@
           <a class="nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos')}}">Shop</a>
+          <a class="nav-link" href="{{ route('productos.index')}}">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
@@ -57,7 +57,6 @@
               </li>
             </ul>
           </li>
-        @endauth
 
         @auth
             @php

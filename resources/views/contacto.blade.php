@@ -63,7 +63,6 @@
               </li>
             </ul>
           </li>
-        @endauth
 
         @auth
             @php
