@@ -15,7 +15,8 @@ public function index(Request $request)
 {
     // consulta base
     $query = Producto::query();
-
+ 
+    $query->where('estado', 'activo');
     //  URL viene con el parámetro ?category=
     if ($request->has('category')) {
         $categoryUrl = $request->get('category');
