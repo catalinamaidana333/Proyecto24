@@ -148,6 +148,36 @@
                 padding: 0.6rem 0.5rem;
             }
         }
+
+        <style>
+        /* ESTILOS PARA OBLIGAR AL FOOTER A QUEDAR ABAJO */
+        html, body {
+            height: 100% !important;
+            margin: 0;
+        }
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .content-wrapper {
+            flex: 1 0 auto !important; /* Esto estira el contenido para empujar el footer */
+        }
+        
+        /* ESTILOS DE TU FOOTER */
+        .admin-footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 0;
+            margin-top: auto !important;
+            border-top: 3px solid var(--primary, #b50058);
+            font-size: 0.85rem;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .admin-footer a { color: white; text-decoration: none; transition: color 0.2s ease; }
+        .admin-footer a:hover { color: var(--primary-light, #ff3399); }
+        .admin-footer__brand { font-weight: 900; letter-spacing: -0.5px; text-transform: uppercase; color: white !important; }
+        .admin-footer__tech-badge { background: rgba(255, 255, 255, 0.1); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -260,5 +290,36 @@
             });
         });
     </script>
+
+
+<footer class="admin-footer">
+    <div class="container">
+        <div class="row align-items-center gy-3">
+            <div class="col-12 col-md-4 text-center text-md-start">
+                <span class="admin-footer__brand">NEOGAUCHO</span>
+                <span class="mx-2">·</span>
+                <span>&copy; {{ date('Y') }} Panel de Control</span>
+            </div>
+            
+            <div class="col-12 col-md-4 text-center">
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ route('admin') }}">Dashboard</a>
+                    <a href="{{ route('admin.consultas') }}">Consultas</a>
+                    <a href="{{ route('admin.pedidos') }}">Pedidos</a>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-4 text-center text-md-end">
+                <span class="admin-footer__tech-badge">
+                    <i class="fa-solid fa-code-branch me-1"></i> v2.1.0
+                </span>
+                <span class="ms-2">Ambiente: <strong class="text-success">Producción</strong></span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </body>
 </html>

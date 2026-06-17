@@ -22,9 +22,6 @@ Route::get('/prueba-home', function () {
 return view('prueba-home');
 })->name('home');
 
-Route::get('/index', function () {
-return view('index');
-})->name('index');
 
 Route::get('/terminos-y-condiciones', function () {
     return view('terminos-y-condiciones');
