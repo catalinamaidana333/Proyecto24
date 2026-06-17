@@ -96,7 +96,7 @@
             <div class="col-12 col-md-4 text-center text-md-start">
                 <span class="admin-footer__brand">NEOGAUCHO</span>
                 <span class="mx-2">·</span>
-                <span>&copy; {{ date('Y') }} Panel de Control</span>
+                <span>&copy; {{ date('Y') }} CM2 - Panel de Control</span>
             </div>
             
             <div class="col-12 col-md-4 text-center">
