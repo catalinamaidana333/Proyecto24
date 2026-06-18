@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/', function () {
-    return view('prueba-home');
-});
+// Cambiamos la raíz para que use tu controlador
+Route::get('/', [ProductoController::class, 'index'])->name('home');
+
+// Cambiamos /prueba-home para que use el mismo controlador
+Route::get('/prueba-home', [ProductoController::class, 'index']);
+
+// Cuando entrás a /prueba-home, se ejecuta 'indexHome' que es quien genera la variable
 
 Route::get('/contacto', function () {
 return view('contacto');
 })->name('contacto');
 
-Route::get('/prueba-home', function () {
-return view('prueba-home');
-})->name('home');
+
 
 Route::get('/index', function () {
 return view('index');

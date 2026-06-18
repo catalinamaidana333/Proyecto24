@@ -48,8 +48,16 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
-        
+        @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">Registro</a>
+          </li>
+        @endguest
         <!-- Mostrar nombre del usuario y logout -->
+        @auth
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ auth()->user()->nombre }}
@@ -63,7 +71,7 @@
               </li>
             </ul>
           </li>
-
+@endauth
         @auth
             @php
         // Consultamos directamente el carrito de base de datos del usuario logueado

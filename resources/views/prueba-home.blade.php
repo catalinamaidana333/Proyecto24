@@ -15,7 +15,7 @@
   
 </head>
 <body>
-  
+
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid px-0">
@@ -167,86 +167,50 @@
         <h2 class="section-title mb-0">New <span class="accent">Drops</span></h2>
         <p class="section-label mb-0">Updated every thursday</p>
       </div>
-      <!--quite btn-link-primary-->
-      
     </div>
 
     <div class="row g-4">
-      <!-- Card 1 -->
+      
+      @foreach($ultimosDrops as $producto)
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <div class="product-card">
+          
           <div class="product-card__img-wrap">
-            <img src="{{ asset('images/givenchy-bag1.jpg') }}" alt="Galliano Era Blazer"/>
+            @if($producto->imagen)
+              <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"/>
+            @else
+              <img src="{{ asset('images/placeholder.jpg') }}" alt="No image available"/>
+            @endif
           </div>
+          
           <div class="product-card__body">
             <div class="product-card__header">
-              <span class="product-card__name">Givenchy Antigona Tote</span>
-              <span class="product-card__price">$1,240</span>
+              <span class="product-card__name">{{ $producto->nombre }}</span>
+              <span class="product-card__price">${{ number_format($producto->precio, 0, ',', '.') }}</span>
             </div>
-            <p class="product-card__sub mb-0">Archival Runway 2002</p>
-            <button class="product-card__btn">Add to Bag</button>
+            
+            <p class="product-card__sub mb-0">
+              {{ $producto->diseñador ?? 'Archival' }} {{ $producto->año ? ' - ' . $producto->año : '' }}
+            </p>
+            
+            <a href="{{ route('productos.show', $producto->id) }}" class="btn product-card__btn d-block text-center text-decoration-none mt-3">
+              View Piece
+            </a>
           </div>
+
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/marcjacobs-tshirt1.jpg') }}" alt="Cyber-Tech Stilettos"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Devon Lee Bad Girl</span>
-              <span class="product-card__price">$890</span>
-            </div>
-            <p class="product-card__sub mb-0">Collection Heaven by Marc Jacobs </p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/cityofgod-tshirt.jpg') }}" alt="Deconstructed Denim"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Ciudad de Dios</span>
-              <span class="product-card__price">$550</span>
-            </div>
-            <p class="product-card__sub mb-0">si te quedas el bicho te come</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="product-card">
-          <div class="product-card__img-wrap">
-            <img src="{{ asset('images/chanel-bag1.jpg') }}" alt="Glossy Patent Mini"/>
-          </div>
-          <div class="product-card__body">
-            <div class="product-card__header">
-              <span class="product-card__name">Chanel Metiers d'Art</span>
-              <span class="product-card__price">$2,100</span>
-            </div>
-            <p class="product-card__sub mb-0">Archival</p>
-            <button class="product-card__btn">Add to Bag</button>
-          </div>
-        </div>
-      </div>
+      @endforeach
+
     </div>
-    <!-- View More Button -->
-  <div class="d-flex justify-content-center mt-5">
-  <a href="{{ route('productos.index') }}" class="btn-view-more">
-    View More
-  </a>
-</div>
+
+    <div class="d-flex justify-content-center mt-5">
+      <a href="{{ route('productos.index') }}" class="btn-view-more">
+        View More
+      </a>
+    </div>
   </div>
 </section>
-
-
 
 
 <!-- ═══ CURATED COLLECTIONS class="container-xl px-4 px-md-5"══════════════════════════════ -->

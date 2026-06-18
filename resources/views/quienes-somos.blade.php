@@ -45,6 +45,15 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
+        @guest
+        <li class="nav-item">
+    <a class="nav-link" href="{{ route('login') }}">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('register') }}">Registro</a>
+  </li>
+@endguest
+@auth
        
         <!-- Mostrar nombre del usuario y logout -->
           <li class="nav-item dropdown">
@@ -179,7 +188,7 @@
         </p>
 
         <div class="text-center mt-4">
-            <a href="{{ route('productos')}}" class="btn-qs btn-qs-primary">Ver productos</a>
+            <a href="{{ route('productos.index')}}" class="btn-qs btn-qs-primary">Ver productos</a>
             <a href="{{ route('contacto')}}" class="btn-qs btn-qs-secondary">Contactar</a>
         </div>
     </div>
@@ -235,7 +244,7 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('productos.index')}}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
           <li><a href="{{ route('terminos')}}">Contacto</a></li>
           

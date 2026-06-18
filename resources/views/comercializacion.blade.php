@@ -43,6 +43,15 @@
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
         
+         @guest
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('login') }}">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('register') }}">Registro</a>
+  </li>
+@endguest
+@auth
        <!-- Mostrar nombre del usuario y logout -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,6 +66,7 @@
               </li>
             </ul>
           </li> 
+          @endauth
 
         @auth
             @php
@@ -204,7 +214,7 @@
       <div class="col-12 col-sm-6">
         <h5 class="footer-col__heading">Explore</h5>
         <ul class="footer-col__links">
-          <li><a href="{{ route('productos')}}">Shop All</a></li>
+          <li><a href="{{ route('productos.index')}}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
           <li><a href="{{ route('terminos')}}">Contacto</a></li>
           
