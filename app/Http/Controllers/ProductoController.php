@@ -17,6 +17,10 @@ public function index(Request $request)
     $query = Producto::query();
  
     $query->where('estado', 'activo');
+    if ($request->is('/') || $request->is('prueba-home')) {
+        $ultimosDrops = $query->latest()->take(4)->get();
+        return view('prueba-home', compact('ultimosDrops'));
+    }
     //  URL viene con el parámetro ?category=
     if ($request->has('category')) {
         $categoryUrl = $request->get('category');
@@ -54,6 +58,10 @@ public function index(Request $request)
             return redirect()->back()->with('error', 'Error al cargar productos: ' . $e->getMessage());
         }
     }
+
+    
+
+
 
     // Mostrar formulario para crear
     public function create()

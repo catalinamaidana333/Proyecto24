@@ -77,7 +77,30 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
         </li>
-        
+        @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">Registro</a>
+          </li>
+        @endguest
+        <!-- Mostrar nombre del usuario y logout -->
+        @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ auth()->user()->nombre }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+@endauth
 
         @auth
             @php
@@ -153,7 +176,7 @@
 
 <header class="hero">
   <div class="hero__bg">
-    <img src="{{ asset('images/carrusel-bottega.jpg') }}"  alt="Hero editorial"/>
+    <img src="{{ asset('images/7de01779e2064250cd49fc6436b1b543.jpg') }}"  alt="Hero editorial"/>
   </div>
 </header>
 
