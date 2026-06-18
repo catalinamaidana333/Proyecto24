@@ -24,9 +24,6 @@ return view('contacto');
 
 
 
-Route::get('/index', function () {
-return view('index');
-})->name('index');
 
 Route::get('/terminos-y-condiciones', function () {
     return view('terminos-y-condiciones');
