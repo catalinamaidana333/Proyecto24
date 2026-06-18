@@ -781,9 +781,7 @@
                 margin-top: 0.5rem;
             }
 
-            .navbar-nav {
-                display: none !important;
-            }
+            
 
             .menu-toggle {
                 display: block;
@@ -800,6 +798,13 @@
             .view-all-link {
                 display: none;
             }
+            /* Detalle estético para que se lea bien desplegado en móvil */
+            .navbar-collapse {
+                background: rgba(249, 246, 245, 0.98);
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 0.5rem;
+            }
 
             main {
                 margin-top: 6rem;
@@ -811,10 +816,7 @@
         }
 
         @media (max-width: 991px) {
-            .navbar-nav {
-                display: none;
-            }
-
+            
             .menu-toggle {
                 display: block;
             }
@@ -843,35 +845,36 @@
     <!-- =============================================
          NAVBAR
          ============================================ -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
   <div class="container-fluid px-0">
-    <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
+    <a class="navbar-brand navbar-brand-text" href="{{ route('home') }}">NEOGAUCHO</a>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <!-- Botón Hamburguesa que Bootstrap controla -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined" style="color: var(--primary-color); font-size: 2rem;">menu</span>
     </button>
  
+    <!-- Contenedor colapsable -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('home')}}">Home</a>
+          <a class="nav-link navbar-nav-link" href="{{ route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('productos.index') }}">Shop</a>
+          <a class="nav-link navbar-nav-link" href="{{ route('productos.index') }}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
+          <a class="nav-link navbar-nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
+          <a class="nav-link navbar-nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
+          <a class="nav-link navbar-nav-link" href="{{ route('contacto')}}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
-        </li>
-        
+          <a class="nav-link navbar-nav-link" href="{{ route('terminos')}}" >Términos</a>
+        </li>    
 
         @auth
             @php
