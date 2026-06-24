@@ -80,7 +80,7 @@
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
                 $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : [];
-            @php
+            @endphp
 
             <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
                 <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
