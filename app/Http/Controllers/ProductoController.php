@@ -104,7 +104,7 @@ public function index(Request $request)
     // 4. Manejo de la subida de imagen
     $rutaImagen = null;
     if ($request->hasFile('imagen')) {
-        $rutaImagen = $request->file('imagen')->store('productos', 'public');
+        $rutaImagen = $request->file('imagen')->store('images', 'public');
     }
 
     // 5. Creamos el Producto principal en la tabla 'productos'
