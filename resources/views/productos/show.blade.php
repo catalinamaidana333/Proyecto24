@@ -1113,48 +1113,79 @@
 
             
     </main>
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer class="site-footer pb-5">
+  <div class="container-xl px-4 px-md-5">
+    <div class="row g-5">
+      <!-- Brand -->
+      <div class="col-12 col-md-5">
+        <span class="site-footer__logo">NEOGAUCHO</span>
+        <p class="site-footer__tagline">
+          Donde la pampa se vuelve píxel. Un horizonte de archivo para el nuevo siglo. El archivo nacional de la vanguardia global.
+        </p>
+        <!--sacarlos o cambiarlos-->
+        
+      </div>
 
-    <!-- =============================================
-         FOOTER
-         ============================================ -->
-    <footer>
-        <div class="footer-content">
-            <!-- Sección de marca -->
-            <div class="footer-brand">
-                <h2 class="footer-title">THE ARCHIVE</h2>
-                <p class="footer-description">
-                    The digital time capsule for the world's rarest fashion artifacts. Curated by the visionaries, for the obsessed.
-                </p>
-            </div>
+      <!-- Explore -->
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Explore</h5>
+        <ul class="footer-col__links">
+          <li><a href="{{ route('productos.index') }}">Shop All</a></li>
+          <li><a href="{{ route('terminos')}}" >Terminos</a></li>
+          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          
+        </ul>
+      </div>
 
-            <!-- Enlaces -->
-            <div class="footer-links">
-                <div>
-                    <h4 class="footer-section-title">Support</h4>
-                    <a href="#" class="footer-section-link">Shipping</a>
-                    <a href="#" class="footer-section-link">Returns</a>
-                    <a href="#" class="footer-section-link">Authentication</a>
-                </div>
-                <div>
-                    <h4 class="footer-section-title">Company</h4>
-                    <a href="#" class="footer-section-link">Newsletter</a>
-                    <a href="#" class="footer-section-link">Contact</a>
-                    <a href="#" class="footer-section-link">Terms</a>
-                </div>
-                <div>
-                    <h4 class="footer-section-title">Social</h4>
-                    <a href="#" class="footer-section-link">Instagram</a>
-                    <a href="#" class="footer-section-link">TikTok</a>
-                    <a href="#" class="footer-section-link">Youtube</a>
-                </div>
-            </div>
+      <!-- Service -->
+      <div class="col-12 col-sm-6">
+        <h5 class="footer-col__heading">Preservando la herencia estética de la era digital desde el norte</h5>
+        
+      </div>
 
-            <!-- Copyright -->
-            <div style="width: 100%; text-align: left; padding-top: 3rem; border-top: 1px solid var(--outline-variant);">
-                <p class="footer-bottom">© 2024 THE DIGITAL ARCHIVE. ALL RIGHTS RESERVED.</p>
-            </div>
-        </div>
-    </footer>
+      <!-- Service -->
+<div class="col-12 col-sm-6">
+  <h5 class="footer-col__heading">Contacto</h5>
+  <ul class="footer-col__links">
+    <li>
+      <a href="https://instagram.com/neogaucho" target="_blank">
+        <svg class="footer__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+          <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+          <path d="M16.5 7.5l0 .01" />
+        </svg>
+        <span>@neogaucho</span>
+      </a>
+    </li>
+    <li>
+      <a href="tel:+543764123456">
+        <svg class="footer__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        <span>+54 (376) 412-3456</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://maps.google.com/?q=Resistencia,Chaco,Argentina" target="_blank">
+        <svg class="footer__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span>Resistencia, Chaco</span>
+      </a>
+    </li>
+  </ul>
+</div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <span class="footer-copy">© 2026 CM2. All rights reserved.</span>
+      
+    </div>
+  </div>
+</footer>
 
     <!-- =============================================
          SCRIPT - SELECTOR DE CANTIDAD
@@ -1190,33 +1221,7 @@
             if (value > max) this.value = max;
         });
     </script>
-    <footer class="admin-footer">
-    <div class="container">
-        <div class="row align-items-center gy-3">
-            <div class="col-12 col-md-4 text-center text-md-start">
-                <span class="admin-footer__brand">NEOGAUCHO</span>
-                <span class="mx-2">·</span>
-                <span>&copy; {{ date('Y') }} CM2 - Panel de Control</span>
-            </div>
-            
-            <div class="col-12 col-md-4 text-center">
-                <div class="d-flex justify-content-center gap-3">
-                    <a href="{{ route('admin') }}">Dashboard</a>
-                    <a href="{{ route('admin.consultas') }}">Consultas</a>
-                    <a href="{{ route('admin.pedidos') }}">Pedidos</a>
-                </div>
-            </div>
-            
-            <div class="col-12 col-md-4 text-center text-md-end">
-                <span class="admin-footer__tech-badge">
-                    <i class="fa-solid fa-code-branch me-1"></i> v2.1.0
-                </span>
-                <span class="ms-2">Ambiente: <strong class="text-success">Producción</strong></span>
-            </div>
-        </div>
-    </div>
-</footer>
-
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

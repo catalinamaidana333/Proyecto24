@@ -79,7 +79,7 @@
                 // Consultamos directamente el carrito de base de datos del usuario logueado
                 $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
                 $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
-                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : [];
+                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
             @endphp
 
             <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
