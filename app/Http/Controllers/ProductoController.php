@@ -168,7 +168,7 @@ public function update(Request $request, $id)
             // 2. Manejo de la imagen si subieron una nueva
             $rutaImagen = $producto->imagen;
             if ($request->hasFile('imagen')) {
-                $rutaImagen = $request->file('imagen')->store('productos', 'public');
+                $rutaImagen = $request->file('imagen')->store('images', 'public');
             }
 
             // 3. Actualizamos los campos en la tabla principal
