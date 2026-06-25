@@ -462,7 +462,6 @@
 <body>
     @include('backend.admin.navbar')
 
-   
 
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="dashboard-content">

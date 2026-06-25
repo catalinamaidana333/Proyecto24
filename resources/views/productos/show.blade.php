@@ -1068,7 +1068,7 @@
         </div>
         <div class="size-section" style="margin-bottom: 1.5rem;">
     <label for="talle" class="size-label" style="display:block; margin-bottom:0.5rem; font-weight:bold;">Seleccionar Talle / Medida</label>
-    <select name="talle" id="talle" class="size-select" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--color-pink-primary); bg-color: black; color: white;" required>
+    <select name="talle" id="talle" class="size-select" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--color-pink-primary); background-color: #f19fd2ff ; color: #252424ff;" required>
         <option value="" disabled selected>Elegí tu opción</option>
         
         @if($producto->talles && $producto->talles->count() > 0)
