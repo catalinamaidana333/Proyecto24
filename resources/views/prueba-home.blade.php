@@ -75,8 +75,11 @@
                   <button type="submit" class="dropdown-item">Logout</button>
                 </form>
               </li>
-            </ul>
-          </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('backend.usuarios.historial-compras') }}">Mis compras</a>
+              </li>
+              </ul>
+            </li>
         @endauth
 
         @auth

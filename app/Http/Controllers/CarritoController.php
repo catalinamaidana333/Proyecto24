@@ -77,7 +77,7 @@ public function agregar(Request $request, $id)
     if (!$mi_carrito) {
         $mi_carrito = VentaCabecera::create([
             'user_id' => Auth::id(),
-            'fecha' => now(), // O los campos obligatorios que tenga tu tabla cabecera
+            'fecha_venta' => now(), // O los campos obligatorios que tenga tu tabla cabecera
             'estado' => 'carrito',
             'total' => 0
         ]);

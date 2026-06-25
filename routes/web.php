@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 //para que no lance que ContactoController es clase indefinida
 use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ClienteController;
+
+
 
 
 
@@ -61,6 +64,7 @@ Route::middleware(['auth', 'rol:1'])->group(function () {
     Route::post('/consultas/{id}/marcar-leido', [ContactoController::class, 'marcarLeido'])
     ->name('admin.consultas.marcar');
 
+    Route::get('/mis-compras', [ClienteController::class, 'historial'])->name('backend.usuarios.historial-compras');
     
     });
 
@@ -92,6 +96,9 @@ Route::middleware(['auth'])->group(function () {
     // Ruta para descargar la factura pasando el ID de la venta
 Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura'])
     ->name('factura.descargar');
+
+    //ver compras
+    Route::get('/mis-compras', [ClienteController::class, 'historial'])->name('backend.usuarios.historial-compras');
 
     // Pantalla de Éxito posterior a la compra
     Route::get('/compra-confirmada', function () {
