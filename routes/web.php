@@ -49,7 +49,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin - necesita auth + middleware admin
 Route::middleware(['auth', 'rol:1'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+   
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     //crud (admin)probar
     Route::get('/admin/productos', [ProductoController::class, 'indexAdmin'])->name('admin.productos.index');
     Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
@@ -71,10 +72,7 @@ Route::post('/contacto', [ContactoController::class, 'procesar'])->name('contact
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin', function () {
-        return view('backend.admin.dashboard');
-    })->name('admin');
-
+    
     Route::get('/cliente', function () {
         return "Bienvenido Cliente: " . Auth::user()->nombre;
     })->name('cliente');

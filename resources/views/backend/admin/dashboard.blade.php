@@ -462,23 +462,7 @@
 <body>
     @include('backend.admin.navbar')
 
-    <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5>📦 Productos</h5>
-                <p class="text-muted">Crear, editar y eliminar productos</p>
-                <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm">
-                    ➕ Crear Producto
-                </a>
-                 
-                <a href="{{ route('admin.productos.index') }}" class="btn btn-info btn-sm">
-                    📋 Ver Catálogo
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+   
 
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="dashboard-content">
@@ -566,95 +550,35 @@
         </div>
 
         <!-- ═══ PEDIDOS RECIENTES ═══ -->
-        <div class="orders-section">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Pedidos Recientes</h2>
-                    <p class="section-subtitle">Últimas transacciones</p>
-                </div>
-                <a href="#" class="view-all-link">
-                    Ver todos
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+        @forelse($pedidosRecientes as $pedido)
+    <div class="order-item">
+        <div class="order-avatar avatar-primary">
+            {{ strtoupper(substr($pedido->usuario?->email ?? 'U', 0, 2)) }}
+        </div>
+        <div class="order-info">
+            <div class="order-name">{{ $pedido->usuario?->email ?? 'Cliente' }}</div>
+            <div class="order-product">
+                {{ $pedido->detalles->first()->producto->nombre ?? 'Producto' }}
+                @if($pedido->detalles->count() > 1)
+                    y {{ $pedido->detalles->count() - 1 }} más
+                @endif
             </div>
-
-            <!-- Order 1 -->
-            <div class="order-item">
-                <div class="order-avatar avatar-primary">MG</div>
-                <div class="order-info">
-                    <div class="order-name">María González</div>
-                    <div class="order-product">Vintage Band Tee</div>
-                    <div class="order-time">
-                        <i class="fas fa-clock"></i>
-                        Hace 2 horas
-                    </div>
-                </div>
-                <div class="order-price">$890</div>
-                <span class="order-status status-completado">Completado</span>
-            </div>
-
-            <!-- Order 2 -->
-            <div class="order-item">
-                <div class="order-avatar avatar-warning">CR</div>
-                <div class="order-info">
-                    <div class="order-name">Carlos Ruiz</div>
-                    <div class="order-product">Denim Jacket</div>
-                    <div class="order-time">
-                        <i class="fas fa-clock"></i>
-                        Hace 4 horas
-                    </div>
-                </div>
-                <div class="order-price">$2,100</div>
-                <span class="order-status status-procesando">Procesando</span>
-            </div>
-
-            <!-- Order 3 -->
-            <div class="order-item">
-                <div class="order-avatar avatar-success">AM</div>
-                <div class="order-info">
-                    <div class="order-name">Ana Martínez</div>
-                    <div class="order-product">Retro Tote Bag</div>
-                    <div class="order-time">
-                        <i class="fas fa-clock"></i>
-                        Hace 6 horas
-                    </div>
-                </div>
-                <div class="order-price">$1,240</div>
-                <span class="order-status status-completado">Completado</span>
-            </div>
-
-            <!-- Order 4 -->
-            <div class="order-item">
-                <div class="order-avatar avatar-secondary">LT</div>
-                <div class="order-info">
-                    <div class="order-name">Luis Torres</div>
-                    <div class="order-product">Vintage Accessories Set</div>
-                    <div class="order-time">
-                        <i class="fas fa-clock"></i>
-                        Hace 8 horas
-                    </div>
-                </div>
-                <div class="order-price">$550</div>
-                <span class="order-status status-pendiente">Pendiente</span>
-            </div>
-
-            <!-- Order 5 -->
-            <div class="order-item">
-                <div class="order-avatar avatar-primary">JM</div>
-                <div class="order-info">
-                    <div class="order-name">Juan Moreno</div>
-                    <div class="order-product">Classic Leather Belt</div>
-                    <div class="order-time">
-                        <i class="fas fa-clock"></i>
-                        Hace 10 horas
-                    </div>
-                </div>
-                <div class="order-price">$380</div>
-                <span class="order-status status-completado">Completado</span>
+            <div class="order-time">
+                <i class="fas fa-clock"></i>
+                {{ $pedido->created_at->diffForHumans() }}
             </div>
         </div>
+        <div class="order-price">${{ number_format($pedido->total, 2, ',', '.') }}</div>
+        <span class="order-status status-{{ $pedido->estado }}">
+            {{ ucfirst($pedido->estado) }}
+        </span>
     </div>
-
+@empty
+    <div class="empty-state">
+        <i class="fas fa-box-open"></i>
+        <p>No hay pedidos recientes.</p>
+    </div>
+@endforelse
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
