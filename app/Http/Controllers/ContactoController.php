@@ -22,4 +22,11 @@ class ContactoController extends Controller
 
         return redirect()->back()->with('success', '¡Tu consulta fue enviada con éxito!');
     }
+    public function marcarLeido($id)
+    {
+        $consulta = Consulta::findOrFail($id);
+        $consulta->update(['estado' => 'visto']);
+
+        return response()->json(['success' => true]);
+    }
 }

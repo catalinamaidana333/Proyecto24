@@ -57,13 +57,10 @@ Route::middleware(['auth', 'rol:1'])->group(function () {
 
     Route::get('/consultas', [AdminController::class, 'verConsultas'])->name('admin.consultas');
     
-    // 2. Ruta AJAX para marcar como leído sin recargar la página
-    Route::post('/consultas/{id}/marcar-leido', function($id) {
-        $consulta = \App\Models\Consulta::findOrFail($id);
-        $consulta->update(['estado' => 'visto']);
-        return response()->json(['success' => true]);
-    })->name('admin.consultas.marcar');
+    Route::post('/consultas/{id}/marcar-leido', [ContactoController::class, 'marcarLeido'])
+    ->name('admin.consultas.marcar');
 
+    
     });
 
 
