@@ -326,7 +326,7 @@
                         <tbody>
                             @foreach($pedidos as $pedido)
                                 @php
-                                    $nombre = $pedido->usuario->name ?? 'Sin usuario';
+                                    $nombre = $pedido->usuario->nombre ?? 'Sin usuario';
                                     $iniciales = collect(explode(' ', $nombre))->take(2)->map(fn($w) => strtoupper($w[0]))->join('');
                                 @endphp
                                 <tr>
