@@ -464,38 +464,57 @@
 
 
    
-        <!-- ═══ PEDIDOS RECIENTES ═══ -->
-        @forelse($pedidosRecientes as $pedido)
-    <div class="order-item">
-        <div class="order-avatar avatar-primary">
-            {{ strtoupper(substr($pedido->usuario?->email ?? 'U', 0, 2)) }}
+       <!-- ═══ RESUMEN VENTAS ═══ -->
+<div class="orders-section">
+    <div class="section-header">
+        <div>
+            <h2 class="section-title"> RESUMEN VENTAS</h2>
+            <p class="section-subtitle">Últimos pedidos realizados</p>
         </div>
-        <div class="order-info">
-            <div class="order-name">{{ $pedido->usuario?->email ?? 'Cliente' }}</div>
-            <div class="order-product">
-                {{ $pedido->detalles->first()->producto->nombre ?? 'Producto' }}
-                @if($pedido->detalles->count() > 1)
-                    y {{ $pedido->detalles->count() - 1 }} más
-                @endif
-            </div>
-            <div class="order-time">
-                <i class="fas fa-clock"></i>
-                {{ $pedido->created_at->diffForHumans() }}
-            </div>
-        </div>
-        <div class="order-price">${{ number_format($pedido->total, 2, ',', '.') }}</div>
-        <span class="order-status status-{{ $pedido->estado }}">
-            {{ ucfirst($pedido->estado) }}
-        </span>
+        <a href="{{ route('admin.pedidos') }}" class="view-all-link">
+            Ver todos
+            <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
-@empty
-    <div class="empty-state">
-        <i class="fas fa-box-open"></i>
-        <p>No hay pedidos recientes.</p>
-    </div>
-@endforelse
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    @forelse($pedidosRecientes as $pedido)
+        <div class="order-item">
+            <div class="order-avatar avatar-primary">
+                {{ strtoupper(substr($pedido->usuario?->email ?? 'U', 0, 2)) }}
+            </div>
+            <div class="order-info">
+                <div class="order-name">{{ $pedido->usuario?->email ?? 'Cliente' }}</div>
+                <div class="order-product">
+                    {{ $pedido->detalles->first()->producto->nombre ?? 'Producto' }}
+                    @if($pedido->detalles->count() > 1)
+                        y {{ $pedido->detalles->count() - 1 }} más
+                    @endif
+                </div>
+                <div class="order-time">
+                    <i class="fas fa-clock"></i>
+                    {{ $pedido->created_at->diffForHumans() }}
+                </div>
+            </div>
+            <div class="order-price">${{ number_format($pedido->total, 2, ',', '.') }}</div>
+            <span class="order-status status-{{ $pedido->estado }}">
+                {{ ucfirst($pedido->estado) }}
+            </span>
+        </div>
+    @empty
+        <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>No hay pedidos recientes.</p>
+        </div>
+    @endforelse
+
+    {{-- Botón "Ver todas las ventas" --}}
+    <div class="text-center mt-4">
+        <a href="{{ route('admin.pedidos') }}" class="btn" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.75rem 2.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-block; border: none; box-shadow: var(--shadow);">
+            <i class="fas fa-shopping-bag me-2"></i>
+            Ver todas las ventas
+        </a>
+    </div>
+</div>
 
 <footer class="admin-footer">
     <div class="container">
