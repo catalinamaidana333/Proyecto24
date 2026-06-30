@@ -1034,7 +1034,7 @@
                                 <span class="detail-label">Authentication</span>
                                 <div class="detail-box">
                                     <span class="material-symbols-outlined">verified</span>
-                                    <span class="detail-text">100% Certified Original by The Archive Lab</span>
+                                    <span class="detail-text">100% Certified Original by Neogaucho Lab</span>
                                 </div>
                             </div>
                             <div class="detail-item">

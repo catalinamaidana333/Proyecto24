@@ -88,6 +88,7 @@
     }
 </style>
 
+
 <nav class="admin-navbar">
     <a href="{{ route('admin') }}" class="admin-navbar__brand">NEOGAUCHO · Admin</a>
     
@@ -105,6 +106,21 @@
         <a href="{{ route('admin.consultas') }}">✉️ Ver Consultas</a>
         <a href="{{ route('admin.pedidos') }}">📦 Ver Pedidos</a>
     </div>
+    @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ auth()->user()->nombre }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+@endauth
 </nav>
 
 <script>
