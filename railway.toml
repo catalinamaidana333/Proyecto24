@@ -1,0 +1,3 @@
+[build]
+  builder = "php"
+  phpVersion = "8.4"
