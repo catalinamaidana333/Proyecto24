@@ -32,4 +32,5 @@ RUN mkdir -p storage/framework/cache \
 
 # Exponer puerto y arrancar servidor
 EXPOSE 8000
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Forzamos un enlace simbólico de la carpeta pública 'storage' hacia 'images'
+CMD php artisan migrate --force && ln -sfn /app/public/images /app/public/storage && php artisan serve --host=0.0.0.0 --port=8000
