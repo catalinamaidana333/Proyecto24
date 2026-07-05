@@ -33,5 +33,5 @@ RUN mkdir -p storage/framework/cache \
 
 # Exponer puerto y arrancar servidor de forma limpia
 EXPOSE 8000
-# Ejecuta migraciones, crea el enlace de storage oficial y enciende el servidor
-CMD php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
+# Borramos public/storage si existe, recreamos el enlace limpio y encendemos el servidor
+CMD php artisan migrate --force && rm -rf public/storage && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
