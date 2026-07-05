@@ -30,7 +30,8 @@ RUN mkdir -p storage/framework/cache \
 # EXPLICACIÓN: Eliminamos las líneas de "php artisan config:cache" 
 # para que Laravel lea correctamente las variables de Railway en vivo.
 
-# Exponer puerto y arrancar servidor
+
+# Exponer puerto y arrancar servidor de forma limpia
 EXPOSE 8000
-# Forzamos un enlace simbólico de la carpeta pública 'storage' hacia 'images'
-CMD php artisan migrate --force && ln -sfn /app/public/images /app/public/storage && php artisan serve --host=0.0.0.0 --port=8000
+# Ejecuta migraciones, crea el enlace de storage oficial y enciende el servidor
+CMD php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
