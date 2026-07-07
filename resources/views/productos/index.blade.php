@@ -5,174 +5,21 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>NEOGAUCHO | Vintage catalogo</title>
 
-  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- Google Fonts -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;0,900;1,900&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
-  <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
+  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  
   
 </head>
 <body>
 
 
 <!-- ═══ NAVBAR ════════════════════════════════════════════ -->
-
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid px-0">
-    <a class="navbar-brand" href="{{ route('home') }}">NEOGAUCHO</a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
- 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('home')}}">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Shop
-          </a>
-          <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="shopDropdown" style="border-radius: 8px; background-color: #ffffff;">
-            <li>
-              <a class="dropdown-item small text-uppercase fw-bold" href="{{ route('productos.index') }}" style="font-family: 'Space Grotesk', sans-serif;">
-                Shop All
-              </a>
-            </li>
-            <li><hr class="dropdown-divider opacity-24"></li>
-            <li>
-              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'tops']) }}" style="font-family: 'Manrope', sans-serif;">
-                Tops
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'bottoms']) }}" style="font-family: 'Manrope', sans-serif;">
-                Bottoms
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'shoes']) }}" style="font-family: 'Manrope', sans-serif;">
-                Shoes
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item small" href="{{ route('productos.index', ['category' => 'accessories']) }}" style="font-family: 'Manrope', sans-serif;">
-                Accessories
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('comercializacion')}}">Comercialización</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('staff')}}">Quiénes Somos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('terminos')}}" >Términos</a>
-        </li>
-        @guest
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">Registro</a>
-          </li>
-        @endguest
-        <!-- Mostrar nombre del usuario y logout -->
-        @auth
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{ auth()->user()->nombre }}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li>
-                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                  @csrf
-                  <button type="submit" class="dropdown-item">Logout</button>
-                </form>
-              </li>
-            </ul>
-          </li>
-@endauth
-
-        @auth
-            @php
-                
-                $mi_carrito = \App\Models\VentaCabecera::where('user_id', auth()->id())->where('estado', 'carrito')->first();
-                $total_prendas = $mi_carrito ? $mi_carrito->detalles()->sum('cantidad') : 0;
-                $items_flotantes = $mi_carrito ? $mi_carrito->detalles()->with('producto')->get() : collect([]);
-
-                $precio_total = $mi_carrito ? $mi_carrito->detalles()->sum('subtotal') : 0;
-                
-            @endphp
-
-            <li class="nav-item dropdown list-unstyled align-self-center ms-lg-3">
-                <a class="nav-link dropdown-toggle position-relative d-flex align-items-center text-uppercase fw-bold p-0 shadow-none" 
-                   href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--text-primary); border: none;">
-                    <span class="material-symbols-outlined me-1" style="font-size: 1.4rem; vertical-align: middle;">shopping_bag</span>
-                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">Bag</span>
-                    
-                    @if($total_prendas > 0)
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
-                              style="font-size: 0.65rem; background-color: var(--primary); padding: 0.35em 0.5em;">
-                            {{ $total_prendas }}
-                        </span>
-                    @endif
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end p-3 border-0 shadow" aria-labelledby="cartDropdown" style="width: 320px; border-radius: 12px; background-color: #ffffff;">
-                    <h6 class="dropdown-header px-0 fw-bold border-bottom pb-2 mb-3" style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary);">
-                        TU CARTERA
-                    </h6>
-                    
-                    @if($items_flotantes->isEmpty())
-                        <div class="text-center py-3 text-muted">
-                            <p class="mb-0 small" style="font-family: 'Manrope', sans-serif;">Tu bolsa está vacía.</p>
-                        </div>
-                    @else
-                        <div style="max-height: 200px; overflow-y: auto;">
-                            @foreach($items_flotantes as $item)
-                                <div class="d-flex align-items-center mb-2 pb-2 border-bottom">
-                                    <div class="flex-grow-1">
-                                        <h6 class="my-0 small fw-bold text-truncate" style="max-width: 150px;">{{ $item->producto->nombre }}</h6>
-                                        <small class="text-muted">{{ $item->cantidad }} x ${{ number_format($item->precio_unitario, 0, ',', '.') }}</small>
-                                    </div>
-                                    <form action="{{ route('carrito.eliminar', $item->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-link text-danger p-0 shadow-none">
-                                            <span class="material-symbols-outlined" style="font-size: 1rem;">delete</span>
-                                        </button>
-                                    </form>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center py-2 my-2 border-bottom">
-                            <span class="fw-bold small text-uppercase" style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary);">Total:</span>
-                            <span class="fw-bold" style="color: var(--primary); font-family: 'Space Grotesk', sans-serif;">
-                                ${{ number_format($precio_total, 0, ',', '.') }}
-                            </span>
-                        </div>
-                        <div class="pt-2">
-                            <a href="{{ route('cliente.carrito') }}" class="btn text-white w-100 btn-sm text-uppercase fw-bold" style="background-color: var(--primary);">
-                                Ver Cartera Completa
-                            </a>
-                        </div>
-                    @endif
-                </div>
-            </li>
-        @endauth
-      </ul>
-    </div>
-  </div>
-</nav>
+@include('backend.usuarios.navbarCliente')
 
 <header class="hero">
   <div class="hero__bg">
@@ -247,7 +94,7 @@
 
 
  <!-- Bootstrap JS -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
