@@ -1,7 +1,7 @@
 <div align="center">
 
   
-  <h1>⚜️ NEOGAUCHO ⚜️</h1>
+  <h1>🎀 🩰 NEOGAUCHO 🩰 🎀</h1>
   <p><strong>Plataforma Web de Indumentaria Vintage & Luxury Archival</strong></p>
 
   <!-- Badges de Tecnologías -->
@@ -13,7 +13,7 @@
   </p>
 
   <!-- Botón de Demo en Vivo (Ajusta la URL) -->
-  <a href="https://tu-sitio-web.com" target="_blank">
+  <a href="https://neogaucho-production.up.railway.app/" target="_blank">
     <img src="https://img.shields.io/badge/🚀_VER_PROYECTO_EN_VIVO-4CAF50?style=for-the-badge&logoColor=white" alt="Live Demo">
   </a>
 
@@ -32,13 +32,7 @@
 * **🛍️ Portal del Cliente:** Navegación dinámica por catálogo de archivo con filtrado por categorías, bolsa de compras con validación estricta de stock en tiempo real por talle, flujo de confirmación de pedidos y generación automática de tickets digitales en PDF.
 * **🛡️ Panel de Administración:** Dashboard centralizado para la gestión del catálogo (CRUD completo y baja lógica para visibilidad), control de inventario detallado y módulo para la recepción y trazabilidad de consultas y transacciones.
 
----
 
-## 📸 Vista Previa (Showcase)
-
-| Portal del Cliente | Panel de Administración |
-| :---: | :---: |
-| <!-- Poner captura del cliente --> `![Cliente](URL_IMAGEN_CLIENTE)` | <!-- Poner captura del admin --> `![Admin](URL_IMAGEN_ADMIN)` |
 
 ---
 
@@ -75,7 +69,9 @@
   php artisan key:generate
   php artisan migrate --seed
 
+<br>
+--
 
-👥 Equipo de Desarrollo — Grupo 24
+## 👥 Equipo de Desarrollo — Grupo 24
 👩‍💻 Catalina Maidana
 👩‍💻 Camila Maidana
