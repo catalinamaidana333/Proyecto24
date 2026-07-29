@@ -1,30 +1,81 @@
-##  Integrantes - Grupo 24
-* **Catalina Maidana** 
-* **Camila Maidana** 
+<div align="center">
 
----
-##  NOTA - Hosting 
-El sitio está alojado en un servidor gratuito. Si accede por primera vez, puede demorar unos segundos en responder debido al proceso de arranque en frío (cold start) del contenedor
+  
+  <h1>⚜️ NEOGAUCHO ⚜️</h1>
+  <p><strong>Plataforma Web de Indumentaria Vintage & Luxury Archival</strong></p>
 
-##  Sobre el Proyecto
-**NEOGAUCHO** es una plataforma web desarrollada para la gestión y comercialización de indumentaria vintage y piezas de lujo de archivo. El sistema cuenta con dos grandes interfaces:
-1. **Portal del Cliente:** Navegación por catálogo de archivo filtrado por categorías, bolsa de compras con control estricto de stock por talle, confirmación de pedidos y emisión automatizada de tickets digitales de compra.
-2. **Panel de Administración (Backend):** Módulo centralizado para la gestión del catálogo (alta, edición y baja lógica de visibilidad de piezas), control de inventario de talles/stock y un panel  para la recepción y lectura de consultas y compras de usuarios.
+  <!-- Badges de Tecnologías -->
+  <p>
+    <img src="https://img.shields.io/badge/Laravel-13.3-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+    <img src="https://img.shields.io/badge/PHP-8.4-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+    <img src="https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+    <img src="https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+  </p>
 
----
+  <!-- Botón de Demo en Vivo (Ajusta la URL) -->
+  <a href="https://tu-sitio-web.com" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_VER_PROYECTO_EN_VIVO-4CAF50?style=for-the-badge&logoColor=white" alt="Live Demo">
+  </a>
 
-###  Tecnologías y Dependencias
-El proyecto está construido utilizando el ecosistema estándar de Laravel, requiriendo los siguientes entornos para su ejecución:
-
-* **Backend Framework:** Laravel 13.3.0
-* **Lenguaje:** PHP 8.4.19
-* **Gestor de Dependencias PHP:** Composer
-* **Base de Datos:** MySQL 
-* **Librerías Clave del Backend:** * `barryvdh/laravel-dompdf`: Paquete utilizado para la generación y maquetación de los comprobantes de compra en formato PDF.
-* **Frontend e Interfaz:**
-  * Bootstrap 5.3.0 (Estilos y componentes responsivos como modales y alertas)
-  * FontAwesome 6.4.0 (Biblioteca de íconos vectoriales para la interfaz)
-  * Google Fonts 
+</div>
 
 ---
 
+> ⚠️ **Nota de Hosting:** El sitio está alojado en un servidor gratuito. Si accedes por primera vez, puede demorar unos segundos en responder debido al proceso de *cold start* (arranque en frío) del contenedor.
+
+---
+
+## 📌 Sobre el Proyecto
+
+**NEOGAUCHO** es un e-commerce exclusivo diseñado para la gestión y comercialización de indumentaria vintage y piezas de lujo de archivo. La plataforma integra dos experiencias optimizadas:
+
+* **🛍️ Portal del Cliente:** Navegación dinámica por catálogo de archivo con filtrado por categorías, bolsa de compras con validación estricta de stock en tiempo real por talle, flujo de confirmación de pedidos y generación automática de tickets digitales en PDF.
+* **🛡️ Panel de Administración:** Dashboard centralizado para la gestión del catálogo (CRUD completo y baja lógica para visibilidad), control de inventario detallado y módulo para la recepción y trazabilidad de consultas y transacciones.
+
+---
+
+## 📸 Vista Previa (Showcase)
+
+| Portal del Cliente | Panel de Administración |
+| :---: | :---: |
+| <!-- Poner captura del cliente --> `![Cliente](URL_IMAGEN_CLIENTE)` | <!-- Poner captura del admin --> `![Admin](URL_IMAGEN_ADMIN)` |
+
+---
+
+## 🛠️ Stack Tecnológico & Dependencias
+
+| Categoría | Tecnología / Librería | Descripción |
+| :--- | :--- | :--- |
+| **Backend** | `Laravel v13.3.0` / `PHP v8.4.19` | Framework principal y entorno de ejecución. |
+| **Base de Datos** | `MySQL` | Persistencia relacional de datos. |
+| **PDF Engine** | `barryvdh/laravel-dompdf` | Generación y maquetación de tickets en formato PDF. |
+| **Frontend** | `Bootstrap 5.3` / `FontAwesome 6.4` | Maquetación responsiva, modales y tipografía de íconos. |
+
+---
+
+<details>
+<summary>⚙️ <b>Instalación y Configuración Local (Desplegar)</b></summary>
+
+<br>
+
+1. Clonar el repositorio:
+   ```bash
+   git clone [https://github.com/tu-usuario/tu-repo.git](https://github.com/tu-usuario/tu-repo.git)
+
+2. Dar formato a variables de entorno:
+  ```bash
+  cp .env.example .env
+
+3. Instalar dependencias con Composer:
+  ```bash
+  composer install
+
+4. Generar Key e iniciar migraciones:
+```bash
+  php artisan key:generate
+  php artisan migrate --seed
+
+
+👥 Equipo de Desarrollo — Grupo 24
+👩‍💻 Catalina Maidana
+👩‍💻 Camila Maidana
