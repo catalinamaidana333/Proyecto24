@@ -23,7 +23,28 @@ class UpdateProductoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'required|string|max:255',
+            'categoria_id' => 'required|exists:categorias,id',
+            'descripcion' => 'nullable|string',
+            'descripcion_drop' => 'nullable|string',
+            'diseñador' => 'nullable|string|max:255',
+            'año' => 'nullable|integer|min:1900|max:'.date('Y'),
+            'material' => 'nullable|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'estado' => 'required|in:activo,inactivo',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'talles' => 'required|array',
+            'talles.*.stock' => 'nullable|integer|min:0',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nombre.required' => 'El nombre del producto es obligatorio',
+            'categoria_id.required' => 'La categoría es obligatoria',
+            'precio.required' => 'El precio es obligatorio',
+            'talles.required' => 'Debes configurar los talles del producto',
         ];
     }
 }
