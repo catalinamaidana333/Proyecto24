@@ -64,9 +64,15 @@ Route::middleware(['auth', 'rol:1'])->group(function () {
     Route::post('/consultas/{id}/marcar-leido', [ContactoController::class, 'marcarLeido'])
     ->name('admin.consultas.marcar');
 
-    Route::get('/mis-compras', [ClienteController::class, 'historial'])->name('backend.usuarios.historial-compras');
+
+    Route::resource('productos', ProductoController::class);
+
+//Para poder ver los pedidos
+Route::get('/admin/pedidos', [AdminController::class, 'verPedidos'])->name('admin.pedidos');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
     
-    });
 
 
 //Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
@@ -107,8 +113,7 @@ Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura
         }
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
-});
-Route::resource('productos', ProductoController::class);
 
-//Para poder ver los pedidos
-Route::get('/admin/pedidos', [AdminController::class, 'verPedidos'])->name('admin.pedidos');
+    
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
