@@ -188,6 +188,15 @@ public function agregar(Request $request, $id)
 {
     // 1. Buscamos la venta cargando sus relaciones (detalles, productos y usuario)
     $venta = VentaCabecera::with(['detalles.producto', 'usuario'])->findOrFail($id);
+    
+
+    // 1. Validar propiedad o rol de administrador
+    $esPropietario = $venta->user_id === auth()->id();
+    $esAdmin = auth()->user()->rol_id === 1;
+
+    if (!$esPropietario && !$esAdmin) {
+        abort(403, 'No tienes autorización para acceder a esta factura.');
+    }
 
     // 2. Cargamos la vista de blade pasándole la variable $venta
     $pdf = Pdf::loadView('show.factura', compact('venta'));
