@@ -7,24 +7,24 @@
 ---
 
 ## 🏠 Home / Vista Principal
-- [ ] Ajustar el tamaño de la imagen de hero(la de las paletas de sombras).
-- [ ] Ajustar ubicacion de boton y titulo en NEW DROPS.
-- [ ] En Curated Collections, card grande redirige a /productos, card de carrie bradshaw NO debe ser btn y card archives of galliano redirigir a un producto de Galliano (a su show.blade)
+- [x ] Ajustar el tamaño de la imagen de hero(la de las paletas de sombras).
+- [x ] Ajustar ubicacion de boton y titulo en NEW DROPS.
+- [y ] En Curated Collections, card grande redirige a /productos, card de carrie bradshaw NO debe ser btn y card archives of galliano redirigir a un producto de Galliano (a su show.blade) FALTA LO DE GALLIANO
 
 
 ---
 ## 🏠 Shop
-- [ ] Ajustar el tamaño de la imagen de hero(la de gucci).
+- [ x] Ajustar el tamaño de la imagen de hero(la de gucci).
 - [ ] Añadir un titulo antes de mostrar los productos.
 
 ---
 ## 🏠 Comercializacion
-- [ ] Ajustar el tamaño de la imagen de hero(la de las chicas en el auto).
+- [ x] Ajustar el tamaño de la imagen de hero(la de las chicas en el auto).
 
 
 ---
 ## 🏠 Quienes Somos
-- [ ] Ajustar el tamaño de la imagen de hero(la de las camaras).
+- [x ] Ajustar el tamaño de la imagen de hero(la de las camaras).
 - [ ] INTENTAR que las imagenes del carrusel tengan todas el mismo tamaño.
 
 
