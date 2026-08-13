@@ -1,119 +1,78 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CarritoController;
-use Illuminate\Support\Facades\Route;
-//para que no lance que ContactoController es clase indefinida
 use App\Http\Controllers\ContactoController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
+use Illuminate\Support\Facades\Route;
 
-
-
-
-
-// Cambiamos la raíz para que use tu controlador
+// ==========================================
+// 1. RUTAS PÚBLICAS (Visitantes y Clientes)
+// ==========================================
 Route::get('/', [ProductoController::class, 'index'])->name('home');
-
-// Cambiamos /prueba-home para que use el mismo controlador
 Route::get('/prueba-home', [ProductoController::class, 'index']);
 
-// Cuando entrás a /prueba-home, se ejecuta 'indexHome' que es quien genera la variable
+// Catálogo y vista de productos (PÚBLICOS para comprar/ver)
+Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
+Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('productos.show');
 
-Route::get('/contacto', function () {
-return view('contacto');
-})->name('contacto');
+// Páginas informativas
+Route::get('/contacto', function () { return view('contacto'); })->name('contacto');
+Route::post('/contacto', [ContactoController::class, 'procesar'])->name('contacto.enviar');
+Route::get('/terminos-y-condiciones', function () { return view('terminos-y-condiciones'); })->name('terminos');
+Route::get('/quienes-somos', function () { return view('quienes-somos'); })->name('staff');
+Route::get('/comercializacion', function () { return view('comercializacion'); })->name('comercializacion');
 
-
-
-
-Route::get('/terminos-y-condiciones', function () {
-    return view('terminos-y-condiciones');
-})->name('terminos');
-
-Route::get('/quienes-somos', function () {
-    return view('quienes-somos');
-})->name('staff');
-
-Route::get('/comercializacion', function () {
-    return view('comercializacion');
-})->name('comercializacion');
-
-// Rutas públicas - sin middleware
+// Autenticación pública
 Route::get('/login', [AuthController::class, 'formularioLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'autenticar'])->name('autenticar');
 Route::get('/register', [AuthController::class, 'formularioRegistro'])->name('register');
 Route::post('/register', [AuthController::class, 'registrar'])->name('registrar');
 
-// Logout - necesita auth
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Admin - necesita auth + middleware admin
-Route::middleware(['auth', 'rol:1'])->group(function () {
-   
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    //crud (admin)probar
-    Route::get('/admin/productos', [ProductoController::class, 'indexAdmin'])->name('admin.productos.index');
-    Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
-    Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
-
-    Route::get('/consultas', [AdminController::class, 'verConsultas'])->name('admin.consultas');
-    
-    Route::post('/consultas/{id}/marcar-leido', [ContactoController::class, 'marcarLeido'])
-    ->name('admin.consultas.marcar');
-
-
-    Route::resource('productos', ProductoController::class);
-
-//Para poder ver los pedidos
-Route::get('/admin/pedidos', [AdminController::class, 'verPedidos'])->name('admin.pedidos');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
-
-    
-
-
-//Cuando se realiza una petición POST a /contacto se llama al método ‘procesar’ del
-//controlador ContactoController 
-Route::post('/contacto', [ContactoController::class, 'procesar'])->name('contacto.enviar');
-
-
-
-Route::middleware('auth')->group(function () {
-    
-    Route::get('/cliente', function () {
-        return "Bienvenido Cliente: " . Auth::user()->nombre;
-    })->name('cliente');
-});
-
-
-// Todas las rutas dentro de este grupo exigen inicio de sesión obligatorio
+// ==========================================
+// 2. RUTAS AUTENTICADAS (Cualquier usuario logueado)
+// ==========================================
 Route::middleware(['auth'])->group(function () {
     
-    // Ver pantalla del carrito
+    // Cierre de sesión (Única definición correcta)
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Carrito de compras
     Route::get('/carrito', [CarritoController::class, 'index'])->name('cliente.carrito');
-    
-    // Operaciones del carrito
     Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
     Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
-    // Ruta para descargar la factura pasando el ID de la venta
-Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura'])
-    ->name('factura.descargar');
-
-    //ver compras
+    
+    // Historial y Facturas
+    Route::get('/compras/factura/{id}', [CarritoController::class, 'descargarFactura'])->name('factura.descargar');
     Route::get('/mis-compras', [ClienteController::class, 'historial'])->name('backend.usuarios.historial-compras');
-
-    // Pantalla de Éxito posterior a la compra
     Route::get('/compra-confirmada', function () {
-        if (!session('total')) {
-            return redirect()->route('home');
-        }
+        if (!session('total')) return redirect()->route('home');
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
+});
 
+
+// ==========================================
+// 3. RUTAS DE ADMINISTRACIÓN (Solo Admin: auth + rol:1)
+// ==========================================
+Route::middleware(['auth', 'rol:1'])->group(function () {
     
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    
+    // CRUD Productos (Crear, Guardar, Editar, Actualizar, Borrar)
+    Route::get('/admin/productos', [ProductoController::class, 'indexAdmin'])->name('admin.productos.index');
+    Route::get('/admin/productos/crear', [ProductoController::class, 'create'])->name('admin.productos.create');
+    Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
+    Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
+    Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
+    Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
+
+    // Gestión de Consultas y Pedidos
+    Route::get('/consultas', [AdminController::class, 'verConsultas'])->name('admin.consultas');
+    Route::post('/consultas/{id}/marcar-leido', [ContactoController::class, 'marcarLeido'])->name('admin.consultas.marcar');
+    Route::get('/admin/pedidos', [AdminController::class, 'verPedidos'])->name('admin.pedidos');
 });
