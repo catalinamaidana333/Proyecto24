@@ -1,0 +1,71 @@
+# 📋 Listado de Correcciones - TP Web
+
+> **Instrucciones:** 
+> - Marca la casilla cuando completes una tarea: `- [x]`
+> - Podes agregar tus iniciales entre paréntesis al final de la linea `(C)` para que sepan quién está trabajando en cada punto.
+
+---
+
+## 🏠 Home / Vista Principal
+- [ ] Ajustar el tamaño de la imagen de hero(la de las paletas de sombras).
+- [ ] Ajustar ubicacion de boton y titulo en NEW DROPS.
+- [ ] En Curated Collections, card grande redirige a /productos, card de carrie bradshaw NO debe ser btn y card archives of galliano redirigir a un producto de Galliano (a su show.blade)
+
+
+---
+## 🏠 Shop
+- [ ] Ajustar el tamaño de la imagen de hero(la de gucci).
+- [ ] Añadir un titulo antes de mostrar los productos.
+
+---
+## 🏠 Comercializacion
+- [ ] Ajustar el tamaño de la imagen de hero(la de las chicas en el auto).
+
+
+---
+## 🏠 Quienes Somos
+- [ ] Ajustar el tamaño de la imagen de hero(la de las camaras).
+- [ ] INTENTAR que las imagenes del carrusel tengan todas el mismo tamaño.
+
+
+---
+## ADMIN
+- [ ] Corregir que en algunas views funciona el logout y en otras no.
+- [ ] En "Ver productos" NO muestra todos los productos, solo algunos.
+- [ ] Corregir como se visualiza el footer en "Ver productos".
+
+
+
+---
+
+## 📱 Responsive & Layout
+- [ ] **Mobile (< 576px):**
+  - [ ] EN ADMIN. Corregir vista de "Ver consultas".
+  - [ ] EN ADMIN. Corregir como se visualiza el footer en "Ver productos"
+
+---
+
+## 🎨 Estilos & Visual (CSS / UI)
+- [ ] Unificar la paleta de colores y variables CSS (botones, enlaces, encabezados).
+- [ ] Corregir márgenes y paddings inconsistentes entre secciones.
+- [ ] Revisar que el contraste de los textos sobre el fondo sea legible.
+
+---
+
+## 📝 Formularios & Validaciones
+- [ ] Validar que los campos obligatorios (`required`) muestren alerta si están vacíos.
+- [ ] Corregir los estilos del mensaje de éxito/error al enviar los datos.
+
+
+---
+
+## 📄 Otras Páginas / Vistas
+- [ ] Reemplazar cualquier texto borrador o *Lorem Ipsum* restante en las vistas.
+
+---
+
+## 🚀 Checklist para la Entrega
+- [ ] Limpiar código comentado y mensajes de depuración (`console.log`, `dd()`, etc.).
+- [ ] Verificar que no existan enlaces rotos o `href="#"` sin asignar.
+- [ ] Probar toda la navegación en modo incógnito.
+- [ ] Subir todos los cambios al repositorio (`git push`).
