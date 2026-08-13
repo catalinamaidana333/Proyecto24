@@ -37,11 +37,14 @@
 <!-- ═══ NEW DROPS ═════════════════════════════════════════ -->
 <section class="py-section" style="background: var(--surface);">
   <div class="container-xl px-4 px-md-5">
-    <div class="d-flex justify-content-between align-items-end mb-5">
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-end gap-3 mb-4">
       <div>
         <h2 class="section-title mb-0">New <span class="accent">Drops</span></h2>
         <p class="section-label mb-0">Updated every thursday</p>
       </div>
+      <a href="{{ route('productos.index') }}" class="btn-view-more">
+        View More
+      </a>
     </div>
 
     <div class="row g-4">
@@ -78,12 +81,6 @@
       @endforeach
 
     </div>
-
-    <div class="d-flex justify-content-center mt-5">
-      <a href="{{ route('productos.index') }}" class="btn-view-more">
-        View More
-      </a>
-    </div>
   </div>
 </section>
 
@@ -95,7 +92,7 @@
     <div class="bento-grid">
 
       <!-- Large-->
-      <div class="bento-card bento-large" style="min-height: 400px;">
+      <a href="{{ route('productos.index') }}" class="bento-card bento-large text-decoration-none" style="min-height: 400px; display: block;">
         <img src="{{ asset('images/card-port-enter.jpg') }}" alt="Y2K Tech"/>
         <div class="bento-card__overlay"></div>
         <div class="bento-card__content">
@@ -103,15 +100,15 @@
           <h3 class="bento-card__title">Edición<br/>de Culto</h3>
           <p class="bento-card__body">Piel de cristal, nervios de neón y una fuerza bruta que no conoce el cautiverio. El jaguareté de archivo: donde la estética de vanguardia se encuentra con el poder puro.</p>
           
-          <a href="{{ route('productos.index') }}" class="btn-teal-pill">
-    <span class="btn-text">Seguir el rastro</span>
-    <span class="btn-icon">→</span>
-</a>
+          <span class="btn-teal-pill">
+            <span class="btn-text">Seguir el rastro</span>
+            <span class="btn-icon">→</span>
+          </span>
         </div>
-      </div>
+      </a>
 
       <!-- Medium: Carrie Bradshaw-->
-      <div class="bento-card bento-medium" style="background: var(--primary-dim); min-height: 280px;">
+      <div class="bento-card bento-medium bento-card--static" style="background: var(--primary-dim); min-height: 280px;">
     
         <div class="bento-card__overlay-pink"></div>
         <div class="bento-center">

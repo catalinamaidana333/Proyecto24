@@ -728,12 +728,14 @@ h3 {
     /* ── Hero ──────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 55vh;
+  min-height: 400px;
+  max-height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: 6rem;
+  padding-top: 5rem;
 }
 
 /* ── MOBILE: Elimina padding y espacios innecesarios ──────────────────────────────────────────── */
@@ -1159,6 +1161,12 @@ margin-top: 0;
       overflow: hidden;
       /*sacarlo para contacto*/
       cursor: pointer;
+    }
+    .bento-card--static {
+      cursor: default !important;
+    }
+    .bento-card--static:hover {
+      transform: none !important;
     }
     .bento-card img {
       position: absolute; inset: 0;
