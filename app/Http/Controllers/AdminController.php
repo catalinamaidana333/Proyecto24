@@ -38,16 +38,16 @@ public function verPedidos(Request $request)
 }
 public function index()
     {
-        // Obtener los últimos 5 pedidos (ordenados por fecha descendente)
+        // Obtener los últimos 5 pedidos confirmados (ordenados por fecha descendente)
         $pedidosRecientes = VentaCabecera::with('usuario', 'detalles.producto')
+                            ->where('estado', 'confirmado')
                             ->orderBy('created_at', 'desc')
                             ->limit(5)
                             ->get();
 
-        // También puedes pasar los datos de estadísticas (totales, etc.)
+        // Estadísticas de ventas y pedidos confirmados
         $totalVentas = VentaCabecera::where('estado', 'confirmado')->sum('total');
-        $totalPedidos = VentaCabecera::count();
-        // ... otros stats
+        $totalPedidos = VentaCabecera::where('estado', 'confirmado')->count();
 
         return view('backend.admin.dashboard', compact('pedidosRecientes', 'totalVentas', 'totalPedidos'));
     }
