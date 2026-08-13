@@ -65,11 +65,11 @@ Route::middleware(['auth', 'rol:1'])->group(function () {
     
     // CRUD Productos (Crear, Guardar, Editar, Actualizar, Borrar)
     Route::get('/admin/productos', [ProductoController::class, 'indexAdmin'])->name('admin.productos.index');
-    Route::get('/admin/productos/crear', [ProductoController::class, 'create'])->name('admin.productos.create');
-    Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
+    Route::get('/admin/productos/crear', [ProductoController::class, 'create'])->name('productos.create');
+    Route::post('/admin/productos', [ProductoController::class, 'store'])->name('productos.store');
     Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
-    Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
-    Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
+    Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('productos.update');
+    Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
 
     // Gestión de Consultas y Pedidos
     Route::get('/consultas', [AdminController::class, 'verConsultas'])->name('admin.consultas');
