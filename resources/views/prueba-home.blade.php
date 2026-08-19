@@ -155,7 +155,7 @@
         <ul class="footer-col__links">
           <li><a href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
-          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          <li><a href="{{ route('contacto')}}">Contacto</a></li>
           {{-- Panel Admin dinámico en el footer --}}
     @auth
       @if(auth()->user()->rol_id === 1)

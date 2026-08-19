@@ -61,7 +61,6 @@
                     <div class="form-group">
                         <div class="form-label-row">
                             <label class="form-label" for="password" style="margin: 0;">Contraseña</label>
-                            <a href="#" class="forgot-link">¿Olvidaste?</a>
                         </div>
                         <div class="password-wrapper">
                             <input
@@ -108,7 +107,7 @@
                 <span>© 2024 NEOGAUCHO</span>
                 <div class="footer-links">
                     <a href="#">Privacidad</a>
-                    <a href="#">Términos</a>
+                    <a href="{{ route('terminos') }}">Términos</a>
                 </div>
             </footer>
         </section>

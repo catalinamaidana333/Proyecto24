@@ -453,7 +453,9 @@
                             });
                         }
                     })
-                    .catch(error => console.error('Error al actualizar la consulta:', error));
+                    .catch(() => {
+                        this.checked = false;
+                    });
                 }
             });
         });

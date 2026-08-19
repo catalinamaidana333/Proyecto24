@@ -77,7 +77,7 @@
         <ul class="footer-col__links">
           <li><a href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
-          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          <li><a href="{{ route('contacto')}}">Contacto</a></li>
           
         </ul>
       </div>

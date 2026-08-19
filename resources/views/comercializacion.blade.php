@@ -80,7 +80,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn-qs btn-comercializacion-primary">Volver al incio</a>
+            <a href="{{ route('home') }}" class="btn-qs btn-comercializacion-primary">Volver al inicio</a>
         </div>
     </div>
 </div>
@@ -105,7 +105,7 @@
         <ul class="footer-col__links">
           <li><a href="{{ route('productos.index') }}">Shop All</a></li>
           <li><a href="{{ route('terminos')}}" >Terminos</a></li>
-          <li><a href="{{ route('terminos')}}">Contacto</a></li>
+          <li><a href="{{ route('contacto')}}">Contacto</a></li>
           
         </ul>
       </div>
