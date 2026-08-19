@@ -15,7 +15,7 @@
 ---
 ## 🏠 Shop
 - [ x] Ajustar el tamaño de la imagen de hero(la de gucci).
-- [ ] Añadir un titulo antes de mostrar los productos.
+- [x ] Añadir un titulo antes de mostrar los productos.
 
 ---
 ## 🏠 Comercializacion
@@ -25,23 +25,23 @@
 ---
 ## 🏠 Quienes Somos
 - [x ] Ajustar el tamaño de la imagen de hero(la de las camaras).
-- [ ] INTENTAR que las imagenes del carrusel tengan todas el mismo tamaño.
+- [ x] INTENTAR que las imagenes del carrusel tengan todas el mismo tamaño.
 
 
 ---
 ## ADMIN
-- [ ] Corregir que en algunas views funciona el logout y en otras no.
-- [ ] En "Ver productos" NO muestra todos los productos, solo algunos.
-- [ ] Corregir como se visualiza el footer en "Ver productos".
+- [ x] Corregir que en algunas views funciona el logout y en otras no.
+- [ x] En "Ver productos" NO muestra todos los productos, solo algunos.
+- [ x] Corregir como se visualiza el footer en "Ver productos".
 
 
 
 ---
 
 ## 📱 Responsive & Layout
-- [ ] **Mobile (< 576px):**
-  - [ ] EN ADMIN. Corregir vista de "Ver consultas".
-  - [ ] EN ADMIN. Corregir como se visualiza el footer en "Ver productos"
+- [ x] **Mobile (< 576px):**
+  - [x ] EN ADMIN. Corregir vista de "Ver consultas".
+  - [x ] EN ADMIN. Corregir como se visualiza el footer en "Ver productos"
 
 ---
 

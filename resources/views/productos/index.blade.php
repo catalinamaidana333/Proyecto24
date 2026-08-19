@@ -28,7 +28,13 @@
 </header>
 
 <div class="container-xl px-3 px-md-4">
-  <div class="row g-4" style="margin-top: 5rem;">
+  <!-- TÍTULOS SUPERIORES ALINEADOS A LA DERECHA -->
+  <div class="product-header-banner mt-5 mb-4">
+    <h2 class="product-header-title">KEEP FASHION WEIRD</h2>
+    <h3 class="product-header-subtitle">buy now</h3>
+  </div>
+
+  <div class="row g-4">
     @foreach($productos as $producto)
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <a href="{{ route('productos.show', $producto->id) }}" class="product-card-link">

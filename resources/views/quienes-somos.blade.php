@@ -83,36 +83,44 @@
 
 
 <!-- CARRUSEL -->
-<div id="carouselExample" class="carousel slide mt-5" data-bs-ride="carousel-qs">
-    
-    <div class="carousel-inner">
-
-        <div class="carousel-item active">
-            <img src="{{ asset('images/carrusel-bottega.jpg') }}" class="d-block w-100" alt="Moda 1">
+<div class="container-qs my-5">
+    <div id="carouselExample" class="carousel slide carousel-qs" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
         </div>
 
-        <div class="carousel-item">
-            <img src="{{ asset('images/carrusel-pasarela1.jpg') }}" class="d-block w-100" alt="Moda 3">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('images/carrusel-bottega.jpg') }}" class="d-block w-100" alt="Bottega Fashion">
+            </div>
+
+            <div class="carousel-item">
+                <img src="{{ asset('images/carrusel-pasarela1.jpg') }}" class="d-block w-100" alt="Pasarela 1">
+            </div>
+
+            <div class="carousel-item">
+                <img src="{{ asset('images/carrusel-runway.jpg') }}" class="d-block w-100" alt="Runway Fashion">
+            </div>
+
+            <div class="carousel-item">
+                <img src="{{ asset('images/carrusel-byn.jpg') }}" class="d-block w-100" alt="Editorial Blanco y Negro">
+            </div>
         </div>
 
-        <div class="carousel-item">
-            <img src="{{ asset('images/carrusel-runway.jpg') }}" class="d-block w-100" alt="Moda 2">
-        </div>
+        <!-- BOTONES -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
 
-        <div class="carousel-item">
-            <img src="{{ asset('images/carrusel-byn.jpg') }}" class="d-block w-100" alt="Moda 4">
-        </div>
-
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
-
-    <!-- BOTONES -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
 </div>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->

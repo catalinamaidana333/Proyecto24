@@ -49,6 +49,50 @@ h3 {
     }
 
 
+/* ============================================
+   BANNER TITULOS DERECHA (CATALOGO / SHOP)
+   ============================================ */
+.product-header-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 100%;
+}
+
+.product-header-title {
+    font-family: 'Epilogue', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    color: var(--primary, #b50058);
+    line-height: 1.05;
+    margin: 0;
+}
+
+.product-header-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary, #5c5b5b);
+    margin-top: 0.35rem;
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .product-header-title {
+        font-size: 1.75rem;
+    }
+
+    .product-header-subtitle {
+        font-size: 0.85rem;
+    }
+}
+
 .product-card-link {
     text-decoration: none;
     color: inherit;
@@ -997,16 +1041,46 @@ margin-top: 0;
   color: var(--primary);
 }
 
-.carousel-qs img {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 15px; 
-}
-
 .carousel-qs {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     border-radius: 15px;
     overflow: hidden;
+}
+
+.carousel-qs .carousel-inner {
+    border-radius: 15px;
+}
+
+.carousel-qs .carousel-item {
+    height: 480px;
+    background-color: var(--surface-container, #eae7e7);
+}
+
+.carousel-qs .carousel-item img,
+.carousel-qs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .carousel-qs .carousel-item {
+        height: 380px;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-qs .carousel-item {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-qs .carousel-item {
+        height: 220px;
+    }
 }
 
 

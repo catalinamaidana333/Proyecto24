@@ -51,8 +51,8 @@ public function index(Request $request)
     public function indexAdmin()
     {
         try {
-            // Este queda exactamente igual porque el admin SI tiene que ver los inactivos
-            $productos = Producto::orderBy('created_at', 'desc')->paginate(10);
+            // Mostramos todos los productos para el panel de administración
+            $productos = Producto::orderBy('created_at', 'desc')->get();
             
             return view('backend.admin.productos.index', compact('productos'));
         } catch (\Exception $e) {
