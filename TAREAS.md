@@ -65,7 +65,7 @@
 ---
 
 ## 🚀 Checklist para la Entrega
-- [ ] Limpiar código comentado y mensajes de depuración (`console.log`, `dd()`, etc.).
-- [ ] Verificar que no existan enlaces rotos o `href="#"` sin asignar.
+- [x ] Limpiar mensajes de depuración (`console.log`, `dd()`, etc.).
+- [ x] Verificar que no existan enlaces rotos o `href="#"` sin asignar.
 - [ ] Probar toda la navegación en modo incógnito.
 - [ ] Subir todos los cambios al repositorio (`git push`).
