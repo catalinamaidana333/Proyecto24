@@ -13,15 +13,13 @@
   </p>
 
   <!-- Botón de Demo en Vivo (Ajusta la URL) -->
-  <a href="https://neogaucho-production.up.railway.app/" target="_blank">
-    <img src="https://img.shields.io/badge/🚀_VER_PROYECTO_EN_VIVO-4CAF50?style=for-the-badge&logoColor=white" alt="Live Demo">
-  </a>
+  
 
 </div>
 
 ---
 
-> ⚠️ **Nota de Hosting:** El sitio está alojado en un servidor gratuito. Si accedes por primera vez, puede demorar unos segundos en responder debido al proceso de *cold start* (arranque en frío) del contenedor.
+> ⚠️ **Nota de Hosting:**
 
 ---
 
