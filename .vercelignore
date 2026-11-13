@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+node_modules
+vendor
+dump-database
+SistemaVentas.zip
+tests
+phpunit.xml
+Dockerfile
+.dockerignore
